@@ -1695,32 +1695,32 @@ body {
   height: 8vw;
   width: 8vw;
 }
-.test-screen .radio-btn-container:nth-child(1) .radio-control,
-.test-screen .radio-btn-container:nth-child(2) .radio-control {
-  border-color: #5f394d;
+.test-screen .radio-btn-container:nth-child(4) .radio-control,
+.test-screen .radio-btn-container:nth-child(5) .radio-control {
+  border-color: #5f394d !important;
 }
 .test-screen .radio-btn-container:nth-child(3) .radio-control {
   border-color: #9b9faa;
 }
-.test-screen .radio-btn-container:nth-child(4) .radio-control,
-.test-screen .radio-btn-container:nth-child(5) .radio-control {
-  border-color: #56ac8a;
-}
-.test-screen .radio-btn-container:nth-child(1) input:checked + .radio-control,
-.test-screen .radio-btn-container:nth-child(1) input:hover + .radio-control,
-.test-screen .radio-btn-container:nth-child(2) input:checked + .radio-control,
-.test-screen .radio-btn-container:nth-child(2) input:hover + .radio-control {
-  background-color: #5f394d;
-  border-color: rgba(255, 255, 255, 0.3);
-  border-width: 3px;
-  border-radius: 50%;
+.test-screen .radio-btn-container:nth-child(1) .radio-control,
+.test-screen .radio-btn-container:nth-child(2) .radio-control {
+  border-color: #56ac8a !important;
 }
 .test-screen .radio-btn-container:nth-child(4) input:checked + .radio-control,
 .test-screen .radio-btn-container:nth-child(4) input:hover + .radio-control,
 .test-screen .radio-btn-container:nth-child(5) input:checked + .radio-control,
 .test-screen .radio-btn-container:nth-child(5) input:hover + .radio-control {
-  background-color: #56ac8a;
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: #5f394d !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  border-width: 3px;
+  border-radius: 50%;
+}
+.test-screen .radio-btn-container:nth-child(1) input:checked + .radio-control,
+.test-screen .radio-btn-container:nth-child(1) input:hover + .radio-control,
+.test-screen .radio-btn-container:nth-child(2) input:checked + .radio-control,
+.test-screen .radio-btn-container:nth-child(2) input:hover + .radio-control {
+  background-color: #56ac8a !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
   border-width: 3px;
   border-radius: 50%;
 }

@@ -5255,41 +5255,9 @@ var TestOptions = function TestOptions(_ref) {
         className: "radio-btn-container",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
           type: "radio",
-          value: 1,
+          value: 5,
           name: name,
-          checked: answer === 1,
-          onChange: onchangeHandler
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-          className: "radio-control",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: _svg_check_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-            alt: "Check icon",
-            className: "check-icon"
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "radio-btn-container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-          type: "radio",
-          value: 2,
-          name: name,
-          checked: answer === 2,
-          onChange: onchangeHandler
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-          className: "radio-control",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: _svg_check_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-            alt: "Check icon",
-            className: "check-icon"
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "radio-btn-container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-          type: "radio",
-          value: 3,
-          name: name,
-          checked: answer === 3,
+          checked: answer === 5,
           onChange: onchangeHandler
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: "radio-control",
@@ -5319,9 +5287,41 @@ var TestOptions = function TestOptions(_ref) {
         className: "radio-btn-container",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
           type: "radio",
-          value: 5,
+          value: 3,
           name: name,
-          checked: answer === 5,
+          checked: answer === 3,
+          onChange: onchangeHandler
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "radio-control",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+            src: _svg_check_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+            alt: "Check icon",
+            className: "check-icon"
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "radio-btn-container",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          type: "radio",
+          value: 2,
+          name: name,
+          checked: answer === 2,
+          onChange: onchangeHandler
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "radio-control",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+            src: _svg_check_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+            alt: "Check icon",
+            className: "check-icon"
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "radio-btn-container",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          type: "radio",
+          value: 1,
+          name: name,
+          checked: answer === 1,
           onChange: onchangeHandler
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: "radio-control",
@@ -5336,19 +5336,19 @@ var TestOptions = function TestOptions(_ref) {
       className: "texts-container",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         className: "radio-text",
-        children: "\u06A9\u0627\u0645\u0644\u0627 \u0645\u062E\u0627\u0644\u0641\u0645"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-        className: "radio-text",
-        children: "\u0645\u062E\u0627\u0644\u0641\u0645"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-        className: "radio-text",
-        children: "\u0646\u0638\u0631\u06CC \u0646\u062F\u0627\u0631\u0645"
+        children: "\u06A9\u0627\u0645\u0644\u0627 \u0645\u0648\u0627\u0641\u0642\u0645"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         className: "radio-text",
         children: "\u0645\u0648\u0627\u0641\u0642\u0645"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         className: "radio-text",
-        children: "\u06A9\u0627\u0645\u0644\u0627 \u0645\u0648\u0627\u0641\u0642\u0645"
+        children: "\u0646\u0638\u0631\u06CC \u0646\u062F\u0627\u0631\u0645"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+        className: "radio-text",
+        children: "\u0645\u062E\u0627\u0644\u0641\u0645"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+        className: "radio-text",
+        children: "\u06A9\u0627\u0645\u0644\u0627 \u0645\u062E\u0627\u0644\u0641\u0645"
       })]
     })]
   });
@@ -5440,6 +5440,7 @@ var Tests = function Tests(_ref) {
   }, []);
   var alerts = (0,_sessions_alertSession__WEBPACK_IMPORTED_MODULE_4__["default"])().getSession();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(userChoices);
     var title = document.querySelector('.container .title');
 
     if (currentPage > 1) {

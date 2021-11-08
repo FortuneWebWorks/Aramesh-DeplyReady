@@ -19,6 +19,7 @@ const Tests = ({ data, dataLimit, testTaker }) => {
   const alerts = alertSession().getSession();
 
   useEffect(() => {
+    console.log(userChoices)
     const title = document.querySelector('.container .title');
     if (currentPage > 1) {
       title.style.display = 'none';

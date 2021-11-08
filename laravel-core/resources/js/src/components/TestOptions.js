@@ -15,22 +15,9 @@ const TestOptions = ({name, answer, setAnswer, currentPage, dataLimit}) => {
 
   return (
     <div className="options-container">
-
       <div className="radio-btns-container">
         <div className="radio-btn-container">
-          <input type="radio" value={1} name={name} checked={answer === 1} onChange={onchangeHandler}/>
-          <span className="radio-control">
-            <img src={check} alt="Check icon" className="check-icon"/>
-          </span>
-        </div>
-        <div className="radio-btn-container">
-          <input type="radio" value={2} name={name} checked={answer === 2} onChange={onchangeHandler}/>
-          <span className="radio-control">
-            <img src={check} alt="Check icon" className="check-icon"/>
-          </span>
-        </div>
-        <div className="radio-btn-container">
-          <input type="radio" value={3} name={name} checked={answer === 3} onChange={onchangeHandler}/>
+          <input type="radio" value={5} name={name} checked={answer === 5} onChange={onchangeHandler}/>
           <span className="radio-control">
             <img src={check} alt="Check icon" className="check-icon"/>
           </span>
@@ -42,7 +29,19 @@ const TestOptions = ({name, answer, setAnswer, currentPage, dataLimit}) => {
           </span>
         </div>
         <div className="radio-btn-container">
-          <input type="radio" value={5} name={name} checked={answer === 5} onChange={onchangeHandler}/>
+          <input type="radio" value={3} name={name} checked={answer === 3} onChange={onchangeHandler}/>
+          <span className="radio-control">
+            <img src={check} alt="Check icon" className="check-icon"/>
+          </span>
+        </div>
+        <div className="radio-btn-container">
+          <input type="radio" value={2} name={name} checked={answer === 2} onChange={onchangeHandler}/>
+          <span className="radio-control">
+            <img src={check} alt="Check icon" className="check-icon"/>
+          </span>
+        </div>
+        <div className="radio-btn-container">
+          <input type="radio" value={1} name={name} checked={answer === 1} onChange={onchangeHandler}/>
           <span className="radio-control">
             <img src={check} alt="Check icon" className="check-icon"/>
           </span>
@@ -50,11 +49,11 @@ const TestOptions = ({name, answer, setAnswer, currentPage, dataLimit}) => {
       </div>
 
       <div className="texts-container">
-        <p className="radio-text">کاملا مخالفم</p>
-        <p className="radio-text">مخالفم</p>
-        <p className="radio-text">نظری ندارم</p>
-        <p className="radio-text">موافقم</p>
         <p className="radio-text">کاملا موافقم</p>
+        <p className="radio-text">موافقم</p>
+        <p className="radio-text">نظری ندارم</p>
+        <p className="radio-text">مخالفم</p>
+        <p className="radio-text">کاملا مخالفم</p>
       </div>
 
     </div>
