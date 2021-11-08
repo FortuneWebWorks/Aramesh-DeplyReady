@@ -1,0 +1,58 @@
+@use './variables' as *;
+@use './flex' as *;
+@use './buttons' as *;
+@use './user-select' as *;
+@use './mq' as *;
+@use './hide-appearance' as *;
+  
+  .dropdown-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .dropdown-header {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh 0;
+    // box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--auth-card-color);
+    background: #ffffff;
+    cursor: pointer;
+    @include user-select;
+  }
+
+  .dropdown-list-container {
+    position: relative;
+  }
+
+  .dropdown-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    @include user-select;
+
+    & :first-child {
+      border-bottom: 1px solid var(--border-color);
+    }
+  }
+
+  .list-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh 1vw;
+    padding-bottom: 1.5vh;
+    list-style: none;
+  }

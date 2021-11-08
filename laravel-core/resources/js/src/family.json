@@ -1,0 +1,91 @@
+{
+  "parents": [
+    {
+      "name": "Father",
+      "process": 1,
+      "content": 2,
+      "cs": 3,
+      "ps": 4,
+      "rfc": 5,
+      "cstra": 6,
+      "rb": 7,
+      "je": 8,
+      "tt": 9,
+      "fr": 10,
+      "ap": 11,
+      "pp": 12,
+      "ls": 13,
+      "ef": 14
+    },
+    {
+      "name": "Mother",
+      "process": 1,
+      "content": 2,
+      "cs": 3,
+      "ps": 4,
+      "rfc": 5,
+      "cstra": 6,
+      "rb": 7,
+      "je": 8,
+      "tt": 9,
+      "fr": 10,
+      "ap": 11,
+      "pp": 12,
+      "ls": 13,
+      "ef": 14
+    }
+  ],
+  "children": [
+    {
+      "name": "child1",
+      "process": 1,
+      "content": 2,
+      "cs": 3,
+      "ps": 4,
+      "rfc": 5,
+      "cstra": 6,
+      "rb": 7,
+      "je": 8,
+      "tt": 9,
+      "fr": 10,
+      "ap": 11,
+      "pp": 12,
+      "ls": 13,
+      "ef": 14
+    },
+    {
+      "name": "child2",
+      "process": 1,
+      "content": 2,
+      "cs": 3,
+      "ps": 4,
+      "rfc": 5,
+      "cstra": 6,
+      "rb": 7,
+      "je": 8,
+      "tt": 9,
+      "fr": 10,
+      "ap": 11,
+      "pp": 12,
+      "ls": 13,
+      "ef": 14
+    },
+    {
+      "name": "child3",
+      "process": 1,
+      "content": 2,
+      "cs": 3,
+      "ps": 4,
+      "rfc": 5,
+      "cstra": 6,
+      "rb": 7,
+      "je": 8,
+      "tt": 9,
+      "fr": 10,
+      "ap": 11,
+      "pp": 12,
+      "ls": 13,
+      "ef": 14
+    }
+  ]
+}

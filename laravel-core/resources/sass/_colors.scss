@@ -1,0 +1,23 @@
+@use 'variables' as *;
+
+// background colors
+.bg-secondary {
+  background-color: var(--secondary-bgcolor);
+}
+
+.bg-light {
+  background-color: #fff;
+}
+
+// colors
+.bg-dark {
+  background-color: #2b2b2b;
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}

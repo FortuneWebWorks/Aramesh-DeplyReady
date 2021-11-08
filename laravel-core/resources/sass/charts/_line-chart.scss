@@ -1,0 +1,111 @@
+@use '../chart-lables' as *;
+@use '../flex' as *;
+@use '../mq' as *;
+
+.line-chart,
+.biger-line-chart {
+  @include cflex-center;
+  height: auto !important;
+  border-radius: 4px;
+  justify-content: space-evenly;
+
+  .canvas-size {
+    width: 100%;
+    height: 90%;
+    position: relative;
+    margin-top: 0;
+    padding: 0 1vw !important;
+
+    @include mq(380px) {
+      margin-top: -1rem;
+    }
+    @include mq(600px) {
+      margin-top: -2rem;
+    }
+  }
+
+  h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5%;
+
+    @include mq(380px) {
+      top: 7.5%;
+    }
+    @include mq(600px) {
+      top: 10%;
+    }
+  }
+
+  #biger-line-chart-title,
+  #line-chart-title {
+    height: 4vh;
+    @include flex-center;
+    text-align: center;
+    font-size: 0.7rem;
+  }
+
+  .labels {
+    width: 80%;
+    @include lables;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1vh;
+    margin-bottom: 2vh;
+
+    div {
+      width: auto;
+      @include flex-center;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      padding: 0.7vh 0.5vw;
+      text-align: right;
+      font-size: 0.7rem;
+      transition: all 0.3s ease-out;
+
+      img {
+        height: 2vh;
+        margin-left: 0.5vw;
+      }
+
+      span {
+        transition: all 0.3s ease-in;
+      }
+    }
+  }
+
+  .biger-line-chart-hover,
+  .line-chart-hover {
+    border-radius: 5px;
+
+    span {
+      color: #000 !important;
+    }
+  }
+
+  .biger-line-chart-title {
+    text-align: center;
+  }
+
+  @include mq(768px) {
+    padding: 0 1.5vw;
+
+    .canvas-size {
+      @include cflex-center;
+      width: 100%;
+      height: 30%;
+      margin-top: 0;
+    }
+
+    h2 {
+      top: 5%;
+    }
+
+    .labels {
+      width: 80%;
+      // @include flex-center;
+      font-size: 1rem;
+    }
+  }
+}

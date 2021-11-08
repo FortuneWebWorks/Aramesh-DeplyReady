@@ -1,0 +1,9 @@
+@use 'variables' as *;
+
+@mixin s-hover {
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: darken(#fff, 10%);
+  }
+}

@@ -1,0 +1,105 @@
+@use '../chart-lables' as *;
+@use '../flex' as *;
+@use '../gradient' as *;
+@use '../mq' as *;
+
+.Content-process-members-container {
+  height: auto;
+  border-radius: 4px;
+  @include cflex-center;
+
+  .canvas-size {
+    height: auto;
+    width: fit-content;
+    @include gradient;
+  }
+
+  h2 {
+    margin-top: 2vh;
+  }
+
+  .labels {
+    width: 78%;
+    @include lables;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1vh;
+    margin: 2vh 0;
+
+    div {
+      border-radius: 5px;
+      width: auto;
+      @include flex-center;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      padding: 0.7vh 0.5vw;
+      text-align: right;
+      font-size: 0.9rem;
+
+      img {
+        height: 2vh;
+        margin-left: 0.5vw;
+      }
+    }
+
+    div.hov {
+      border-radius: 5px;
+
+      span {
+        color: #333 !important;
+      }
+    }
+  }
+
+  .point-value {
+    @include cflex-center;
+    align-items: flex-end;
+    height: 5vh;
+    width: 82.5%;
+    padding: 2vh 0;
+    text-align: left;
+    transition: all 0.3s ease;
+  }
+
+  @include mq(100px, 333px) {
+    .labels {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1vh;
+      margin: 2vh;
+    }
+
+    .point-value {
+      height: 2vh;
+      // width: 82.5%;
+      text-align: left;
+      font-size: 0.7rem;
+    }
+  }
+  @include mq(100px, 254px) {
+    .labels {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 1vh;
+      margin: 2vh;
+    }
+  }
+
+  @include mq(658px) {
+    .canvas-size {
+      width: auto;
+    }
+
+    .point-value {
+      width: 78%;
+      padding: 2vh 0;
+
+      span {
+        font-size: 0.9rem !important;
+      }
+    }
+  }
+  @include mq(900px) {
+    .point-value {
+      width: 77%;
+    }
+  }
+}

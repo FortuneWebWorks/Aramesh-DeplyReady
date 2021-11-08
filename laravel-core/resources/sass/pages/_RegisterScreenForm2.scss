@@ -1,0 +1,17 @@
+@use '../variables' as *;
+@use '../flex' as *;
+@use '../buttons' as *;
+
+.register-page-2 {
+  @include flex-center;
+  width: 100%;
+
+  .container {
+    margin: 2vh 0;
+    margin-bottom: 4vh !important;
+  }
+
+  input {
+    max-height: 5vh;
+  }
+}

@@ -1,0 +1,108 @@
+@use '../variables' as *;
+@use '../flex' as *;
+@use '../buttons' as *;
+@use '../user-select' as *;
+@use '../mq' as *;
+
+.user-panel-container {
+  @include flex-center;
+  width: 100%;
+
+  .container {
+    height: 100%;
+    width: 100%;
+    padding: 3vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 110%;
+
+    .btn {
+      width: 100% !important;
+      font-size: 1rem;
+      background-color: var(--primary-bgcolor);
+      padding: 0 1vw !important;
+    }
+
+    h5 {
+      font-weight: bold;
+    }
+  
+    h4 {
+      font-weight: bold;
+      line-height: 1.5rem;
+    }
+  }
+
+
+
+  .tested-people-section {
+    @include cflex-center;
+  }
+
+  .radio-btns {
+    // margin-top: 1vh;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+
+
+    .radio-btn-container {
+      position: relative;
+      margin: 1vh;
+      border-radius: 4px;
+      background-color: var(--auth-input-bgcolor);
+      text-align: center;
+
+      input {
+        height: 6vh;
+        width: 100%;
+        display: block;
+        direction: ltr;
+        background-color: var(--primary-bgcolor);
+        border-radius: 4px;
+        padding: 0 3vw;
+        cursor: pointer;
+      }
+
+      .radio-btn {
+        font-size: 85%;
+        font-weight: bolder;
+        padding: 1vh 0.5rem !important;
+        line-height: 140%;
+      }
+    }
+  }
+
+  .user-panel-footer {
+    width: 120%;
+    @include cflex-center;
+    text-align: center;
+    margin-bottom: 1vh;
+    padding: 0 0.5rem;
+  }
+
+
+
+  .card {
+    height: 55vh !important;
+  }
+
+  @include mq(100px, 400px) {
+    h5 {
+      font-size: 90%;
+    }
+
+    h4 {
+      font-size: 90%;
+    }
+
+    .radio-btn {
+      font-size: 0.8rem !important;
+    }
+
+    .btn {
+      font-size: 90%;
+    }
+  }
+}

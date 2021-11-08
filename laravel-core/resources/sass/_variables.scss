@@ -1,0 +1,171 @@
+@use "sass:math";
+// sizes
+$s-h1: 1.5rem;
+$s-p: 0.7rem;
+
+// media query sizes
+$mobile: 450px;
+$tablet: 700px;
+$pc: 800px;
+$tv: 1500px;
+
+// neumorphism background
+$neumorphism: 9px 9px 18px var(--neumorphism-color-1),
+  -9px -9px 18px var(--neumorphism-color-2);
+$home-neumorphism-card: 9px 9px 18px var(--home-neumorphism1),
+  -9px -9px 18px var(--home-neumorphism2);
+$home-neumorphism: 5px 5px 10px var(--neumorphism-home-color-1),
+  -1px -1px 10px var(--neumorphism-home-color-2);
+
+$admin-neumorphism-dark: 2px 2px 14px var(--admin-neumorphism-color-1),
+  -2px -2px 12px var(--admin-neumorphism-color-2);
+
+$admin-neumorphism-light: 9px 9px 18px var(--admin-neumorphism-color-1),
+  -2px -2px 14px var(--admin-neumorphism-color-2);
+
+$admin-neumorphism-toggler-dark: inset 2px 2px 4px
+    var(--admin-toggler-box-shadow-color-1),
+  inset -2px -2px 12px var(--admin-toggler-box-shadow-color-2);
+
+$admin-neumorphism-toggler-btn-dark: 2px -2px 14px var(--admin-neumorphism-color-1),
+  -2px 2px 12px var(--admin-neumorphism-color-2);
+
+// Toggler
+$toggler_color_checkbox_success: #4cd964;
+$toggler_color_checkbox_default: #8e8e93;
+$toggler_transition: 0.3s ease-out;
+$toggler_width: 4em;
+$toggler_height: math.div($toggler_width, 2);
+$themes: (
+  'light': (
+    'colors': (
+      'home-bg': #f4f4f4,
+      'home-text': #333,
+      'home-neumorphism1': #ccc,
+      'home-neumorphism2': rgb(230, 230, 230),
+      'back-bgcolor': #fff,
+      'card-color': #f4f4f4,
+      'header-bgcolor': #2b2b2b,
+      'header-textcolor': #f4f4f4,
+      'btn-bgcolor': #eccd66,
+      'primary-bgcolor': #fff,
+      'secondary-bgcolor': rgba(0, 0, 0, 0.15),
+      'text-color': #000,
+      'main-textcolor': rgba(51, 51, 51, 0.527),
+      'primary-color': #000,
+      'secondary-color': #828282,
+      'success': #14d68d,
+      'danger': #ec6666,
+      'purple-color': #2b2b2b,
+      'border-color': #c4c4c4,
+      'dropdown-arrow-color': #000,
+      'user-panel-user-bgcolor': #ebebeb,
+      'admin-text-color': #000,
+      'admin-border-color': #c4c4c4,
+      'admin-box-shadow': $admin-neumorphism-light,
+      'admin-clinicNumber-color': rgba(0, 0, 0, 0.5),
+      'admin-secondary-color': #828282,
+      'neumorphism-color-1': #d6d6d6,
+      'neumorphism-color-2': #fff,
+      'admin-neumorphism-color-1': #d6d6d6,
+      'admin-neumorphism-color-2': #ddd,
+      'admin-toggler-box-shadow': $admin-neumorphism-toggler-dark,
+      'admin-toggler-box-shadow-color-1': $admin-neumorphism-toggler-dark,
+      'admin-toggler-box-shadow-color-2': $admin-neumorphism-toggler-dark,
+      'admin-toggler-box-shadow-bgcolor': rgba(#000, 0.8),
+      'admin-toggler-control-bgcolor': rgba(#fff, 0.8),
+      'neumorphism-home-color-1': #c4aa55,
+      'neumorphism-home-color-2': #fff077,
+      'table1-color': rgb(0, 0, 0),
+      'table2-color': #f4f4f4,
+      'table3-color': rgb(120, 146, 135),
+      'bar-scrollbar': rgba(51, 51, 51, 1),
+      'auth-card-bgcolor': #f4f4f4,
+      'auth-card-color': #333,
+      'auth-input-bgcolor': rgba(0, 0, 0, 0.13),
+      'auth-select-bgcolor': rgba(0, 0, 0, 0.15),
+      'label-color': #333,
+    ),
+  ),
+  'dark': (
+    'colors': (
+      'home-bg': #f4f4f4,
+      'home-text': #333,
+      'home-neumorphism1': #ccc,
+      'home-neumorphism2': rgb(230, 230, 230),
+      'back-bgcolor': #1b1c1e,
+      'card-color': #1b1c1e,
+      'header-bgcolor': #2b2b2b,
+      'header-textcolor': #f4f4f4,
+      'btn-bgcolor': #eccd66,
+      'primary-bgcolor': #1b1c1e,
+      'secondary-bgcolor': rgba(255, 255, 255, 0.15),
+      'text-color': #fff,
+      'main-textcolor': green,
+      'primary-color': #fff,
+      'secondary-color': #828282,
+      'success': #14d68d,
+      'danger': #ec6666,
+      'border-color': #c4c4c4,
+      'dropdown-arrow-color': #000,
+      'user-panel-user-bgcolor': #ebebeb,
+      'admin-text-color': #f4f4f4,
+      'admin-border-color': #c4c4c4,
+      'admin-box-shadow': $admin-neumorphism-dark,
+      'admin-clinicNumber-color': rgba(255, 255, 255, 0.5),
+      'admin-secondary-color': #828282,
+      'neumorphism-color-1': #111,
+      'neumorphism-color-2': #181818,
+      'admin-neumorphism-color-1': #000,
+      'admin-neumorphism-color-2': rgba(0, 0, 0, 0.06),
+      'admin-toggler-box-shadow': $admin-neumorphism-toggler-dark,
+      'admin-toggler-btn-box-shadow': $admin-neumorphism-toggler-btn-dark,
+      'admin-toggler-box-shadow-color-1': #d6d6d6,
+      'admin-toggler-box-shadow-color-2': #f4f4f4,
+      'admin-toggler-box-shadow-bgcolor': rgba(#fff, 1),
+      'admin-toggler-control-bgcolor': rgba(#000, 0.5),
+      'neumorphism-home-color-1': #c4aa55,
+      'neumorphism-home-color-2': #fff077,
+      'table1-color': #ddd,
+      'table2-color': #1b1c1e,
+      'table3-color': rgba(148, 147, 147, 0.486),
+      'bar-scrollbar': rgb(226, 226, 226),
+      'auth-card-bgcolor': #f4f4f4,
+      'auth-card-color': #333,
+      'auth-input-bgcolor': rgba(0, 0, 0, 0.13),
+      'auth-select-bgcolor': rgba(0, 0, 0, 0.133),
+      'label-color': #fff,
+    ),
+  ),
+);
+
+@each $theme-name, $theme-vars in $themes {
+  $colors: map-get($theme-vars, 'colors');
+  // $colors: map-get($theme-vars, 'colors');
+
+  // $theme: (
+  //   'bg-color': map-get($shades, 'shade-1'),
+  //   'border-color': map-get($shades, 'shade-2'),
+  //   'border-focus-color': map-get($shades, 'shade-3'),
+  //   'subtle': map-get($shades, 'shade-4'),
+  //   'muted': map-get($shades, 'shade-5'),
+  //   'text-color': map-get($shades, 'shade-6'),
+  // );
+
+  #app.#{$theme-name} {
+    // define a css variable for each shade
+    // @each $name, $color in $shades {
+    //   --#{$name}: #{$color};
+    // }
+
+    // define a css variable for each color
+    @each $name, $color in $colors {
+      --#{$name}: #{$color} !important;
+    }
+
+    // define a css variable for each theme color
+    // @each $name, $color in $theme {
+    //   --#{$name}: #{$color};
+    // }
+  }
+}

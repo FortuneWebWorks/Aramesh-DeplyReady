@@ -1,0 +1,114 @@
+@use '../chart-lables' as *;
+@use '../flex' as *;
+@use '../gradient' as *;
+@use '../mq' as *;
+
+.Content-process-family-container {
+  height: auto;
+  border-radius: 4px;
+  @include cflex-center;
+  padding: 0 7vw;
+
+  .canvas-size {
+    height: auto;
+    width: fit-content;
+    @include gradient;
+  }
+
+  h2 {
+    margin-top: 2vh;
+  }
+
+  .labels {
+    width: 82%;
+    @include lables;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1vh;
+    margin: 2vh;
+
+    div {
+      width: auto;
+      @include flex-center;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      padding: 0.7vh 0.5vw;
+      text-align: right;
+      font-size: 0.9rem;
+
+      img {
+        height: 2vh;
+        margin-left: 0.5vw;
+      }
+    }
+
+    div.hov {
+      border-radius: 4px;
+      box-shadow: inset -21px 21px 24px #9ad6c0, inset 21px -21px 24px #a8a3d83d;
+
+      span {
+        color: #333 !important;
+      }
+    }
+  }
+
+  .point-value {
+    @include cflex-center;
+    align-items: flex-end;
+    height: 4vh;
+    width: 82%;
+    padding: 2vh 0;
+    text-align: left;
+    transition: all 1s ease;
+  }
+
+  @include mq(100px, 333px) {
+    .labels {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1vh;
+      margin: 2vh;
+    }
+
+    .point-value {
+      height: 2vh;
+      width: 82%;
+      text-align: left;
+      font-size: 0.7rem;
+    }
+  }
+  @include mq(100px, 254px) {
+    .labels {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 1vh;
+      margin: 2vh;
+    }
+  }
+
+  @include mq(658px) {
+    padding: 0 2.5vw;
+
+    .canvas-size {
+      width: auto;
+    }
+
+    .point-value {
+      width: 84%;
+      padding: 2vh 0;
+
+      span {
+        font-size: 0.9rem !important;
+      }
+    }
+  }
+
+  @include mq(640px, 760px) {
+    .point-value {
+      width: 82%;
+      padding: 2vh 0;
+
+      span {
+        font-size: 0.9rem !important;
+      }
+    }
+  }
+}

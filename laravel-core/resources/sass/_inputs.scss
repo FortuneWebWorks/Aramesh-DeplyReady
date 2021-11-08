@@ -1,0 +1,27 @@
+@use 'variables' as *;
+
+.input-container {
+  width: 100%;
+  display: flex;
+  direction: rtl;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 3vh;
+
+  input {
+    height: 6vh;
+    width: 100%;
+    display: block;
+    direction: ltr;
+    background-color: var(--secondary-bgcolor);
+    border-radius: 4px;
+    padding: 1vh 3vw;
+  }
+
+  label {
+    margin-bottom: 2vh;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}

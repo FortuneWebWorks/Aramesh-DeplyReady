@@ -1,0 +1,17 @@
+@mixin lables {
+  span.family::after {
+    content: 'خانواده';
+  }
+  span.father::after {
+    content: attr(data-before);
+  }
+  span.mother::after {
+    content: attr(data-before);
+  }
+  span.daughter::after {
+    content: attr(data-before);
+  }
+  span.son::after {
+    content: attr(data-before);
+  }
+}

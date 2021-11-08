@@ -1,0 +1,16 @@
+laravel-core/node_modules
+laravel-core/public_html/hot
+laravel-core/public_html/storage
+laravel-core/storage/*.key
+laravel-core/vendor
+laravel-core/.env
+laravel-core/.env.backup
+laravel-core/.phpunit.result.cache
+laravel-core/docker-compose.override.yml
+laravel-core/Homestead.json
+laravel-core/Homestead.yaml
+laravel-core/npm-debug.log
+laravel-core/yarn-error.log
+laravel-core/.idea
+laravel-core/.vscode
+laravel-core/.editorconfig

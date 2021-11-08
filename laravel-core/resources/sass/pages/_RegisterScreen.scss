@@ -1,0 +1,64 @@
+@use '../variables' as *;
+@use '../flex' as *;
+@use '../buttons' as *;
+
+#app {
+  .register-page-container {
+    @include flex-center;
+    width: 100%;
+  }
+}
+
+.register-page {
+  height: 100%;
+  width: 80%;
+  @include cflex-center;
+  justify-content: space-evenly !important;
+  margin: 6vh 0 !important;
+
+  .phone-number-container {
+    width: 100%;
+    @include cflex-center;
+    direction: rtl;
+    margin-bottom: 6vh;
+    margin-top: 2vh;
+  }
+
+  .phone-number-input-container {
+    width: 100%;
+    @include flex-bottom;
+    justify-content: space-between;
+  }
+
+  .phone-number-input-container input {
+    width: 22%;
+    text-align: center;
+    @include flex-center;
+  }
+
+  .phone-number {
+    width: 75%;
+    @include cflex-center;
+    align-items: flex-start;
+  }
+
+  #phone-number {
+    width: 100%;
+    text-align: left;
+  }
+
+  input {
+    width: 100%;
+    display: block;
+    direction: ltr;
+    background-color: var(--secondary-bgcolor);
+    border-radius: 4px;
+    padding: 1vh 3vw;
+  }
+
+  label {
+    margin-bottom: 2vh;
+    font-size: 1rem !important;
+    font-weight: bold;
+  }
+}

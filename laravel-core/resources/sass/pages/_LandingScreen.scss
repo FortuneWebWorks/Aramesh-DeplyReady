@@ -1,0 +1,82 @@
+@use '../variables' as *;
+@use '../flex' as *;
+@use '../buttons' as *;
+
+#app {
+  .landingPage {
+    @include flex-center;
+    width: 100%;
+  }
+}
+
+.landing-page {
+  direction: rtl;
+  height: 100%;
+  max-width: 80%;
+  text-align: center;
+  @include cflex-center;
+
+  .landing {
+    height: 100%;
+    width: 100%;
+    direction: rtl;
+    @include cflex-center;
+    justify-content: space-between;
+    padding: 5vh 0;
+  }
+
+  .landing h5 {
+    width: 100%;
+    height: 30%;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  .radio-btns {
+    height: auto;
+    height: 80%;
+    width: 100%;
+    @include cflex-center;
+    justify-content: space-between;
+  }
+
+  .radio-btn-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 2vh 0;
+  }
+
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .radio-btn {
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    background-color: var(--user-panel-user-bgcolor);
+    border-radius: 4px;
+    @include flex-center;
+    line-height: initial;
+    padding: 1vh 0.8vw !important;
+  }
+
+  input:checked + .radio-btn {
+    color: var(--secondary-color);
+    background-color: var(--secondary-bgcolor);
+  }
+
+  .btn {
+    margin-top: 6vh;
+    font-weight: bold;
+  }
+}

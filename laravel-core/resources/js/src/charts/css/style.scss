@@ -1,0 +1,644 @@
+@import url(./font/style.css);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: auto;
+  background-color: #f4f4f4;
+  overflow-y: auto;
+}
+
+img {
+  height: 1.8vh;
+  margin-left: 1vw;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    'a b'
+    'a b'
+    'c c';
+}
+
+.chart {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20px;
+  // background: #f4f4f4;
+  box-shadow: 5px 5px 20px #cfcfcf, -5px -5px 20px #ffffff;
+  border-radius: 20px;
+  // background: #e0e0e0;
+  // box-shadow: 5px 5px 100px #7b7b7b, -5px -5px 100px #ffffff;
+
+  .s-chart .title {
+    transform: translateY(4vh);
+  }
+  .t-chart .title {
+    transform: translateY(4vh);
+  }
+
+  .canvas-size {
+    /* ff 3.6+ */
+    background: -moz-linear-gradient(
+      43deg,
+      rgba(255, 0, 0, 0.35) 0%,
+      rgba(255, 221, 221, 1) 37%,
+      rgba(130, 238, 190, 0.65) 100%
+    );
+
+    /* safari 5.1+,chrome 10+ */
+    background: -webkit-linear-gradient(
+      43deg,
+      rgba(255, 0, 0, 0.35) 0%,
+      rgba(255, 221, 221, 1) 37%,
+      rgba(130, 238, 190, 0.65) 100%
+    );
+
+    /* opera 11.10+ */
+    background: -o-linear-gradient(
+      43deg,
+      rgba(255, 0, 0, 0.35) 0%,
+      rgba(255, 221, 221, 1) 37%,
+      rgba(130, 238, 190, 0.65) 100%
+    );
+
+    /* ie 6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF0000', endColorstr='#82EEBE', GradientType=1 );
+
+    /* ie 10+ */
+    background: -ms-linear-gradient(
+      43deg,
+      rgba(255, 0, 0, 0.35) 0%,
+      rgba(255, 221, 221, 1) 37%,
+      rgba(130, 238, 190, 0.65) 100%
+    );
+
+    /* global 94%+ browsers support */
+    background: linear-gradient(
+      43deg,
+      rgba(255, 0, 0, 0.35) 0%,
+      rgba(255, 221, 221, 1) 37%,
+      rgba(130, 238, 190, 0.65) 100%
+    );
+    position: relative;
+    width: 80%;
+    height: 85%;
+    overflow: hidden;
+  }
+  .canvas-size.no-back {
+    background: none;
+  }
+
+  canvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    // background-color: #aaa;
+  }
+
+  // #tite {
+  //   position: absolute;
+  //   bottom: 3vh;
+  //   left: 50%;
+  //   font-size: 10px;
+  //   font-weight: bold;
+  //   text-align: center;
+  //   transform: translateX(-37%);
+  // }
+
+  .point-val,
+  .fpoint-val {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: 7vh;
+    width: 80%;
+    color: #aaa;
+    // align-self: flex-end;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    span {
+      margin-bottom: -0.9vh;
+    }
+  }
+
+  .labels {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    margin-top: 5vh;
+
+    div {
+      margin-bottom: 1vh;
+      margin-left: 15%;
+      padding: 0 1vw;
+      display: flex;
+      flex-flow: row-reverse;
+      justify-content: flex-end;
+      align-items: center;
+      transition: all 0.2s ease;
+      padding-right: 0;
+    }
+
+    // div.hov,
+    // div.line-chart-hover,
+    // div.gline-chart-hover,
+    // div.hover {
+    //   border-radius: 5px;
+    //   box-shadow: inset 13.81px 13.81px 31px #c1c2c6,
+    //     inset -13.81px -13.81px 31px #ffffff;
+
+    //   padding-right: 1vh;
+    // }
+
+    span.family::after {
+      content: 'خانواده';
+    }
+    span.father::after {
+      content: attr(data-before); /* value that that refers to CSS 'content' */
+    }
+    span.mother::after {
+      // content: 'مادر';
+      content: attr(data-before); /* value that that refers to CSS 'content' */
+    }
+    span.daughter::after {
+      content: attr(data-before); /* value that that refers to CSS 'content' */
+    }
+    span.son::after {
+      content: attr(data-before); /* value that that refers to CSS 'content' */
+    }
+    // // daughters
+    // span.first-daughter::after {
+    //   // content: 'دختر(اول)';
+    //   content: attr(data-before); /* value that that refers to CSS 'content' */
+    // }
+    // span.second-daughter::after {
+    //   // content: 'دختر(دوم)';
+    //   content: attr(data-before); /* value that that refers to CSS 'content' */
+    // }
+    // span.third-daughter::after {
+    //   // content: 'دختر(سوم)';
+    //   content: attr(data-before); /* value that that refers to CSS 'content' */
+    // }
+    // span.fourth-daughter::after {
+    //   // content: 'دختر(چهارم)';
+    // }
+    // span.fifth-daughter::after {
+    //   // content: 'دختر(پنجم)';
+    // }
+    // // sons
+    // span.first-son::after {
+    //   // content: 'پسر(اول)';
+    // }
+    // span.second-son::after {
+    //   // content: 'پسر(دوم)';
+    // }
+    // span.third-son::after {
+    //   // content: 'پسر(سوم)';
+    // }
+    // span.fourth-son::after {
+    //   // content: 'پسر(چهارم)';
+    // }
+    // span.fifth-son::after {
+    //   // content: 'پسر(پنجم)';
+    // }
+
+    img {
+      height: 1.8vh;
+      margin-left: 1vw;
+    }
+
+    @media (max-width: 1130px) {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  #line-chart-labels {
+    div.line-chart-hover {
+      border-radius: 5px;
+      box-shadow: inset 13.81px 13.81px 31px #c1c2c6,
+        inset -13.81px -13.81px 31px #ffffff;
+
+      padding-right: 1vh;
+    }
+  }
+  #biger-line-chart-labels {
+    div.biger-line-chart-hover {
+      border-radius: 5px;
+      box-shadow: inset 13.81px 13.81px 31px #c1c2c6,
+        inset -13.81px -13.81px 31px #ffffff;
+
+      padding-right: 1vh;
+    }
+  }
+}
+
+// change some property for those to charts
+.s-chart {
+  height: 95%;
+  width: 90%;
+  padding: 3vh 0;
+  grid-area: a;
+
+  .labels {
+    .s {
+      transition: all 0.5s ease;
+    }
+  }
+
+  div.hov {
+    border-radius: 5px;
+    box-shadow: inset 13.81px 13.81px 31px #c1c2c6,
+      inset -13.81px -13.81px 31px #ffffff;
+
+    padding-right: 1vh;
+  }
+
+  #sep-chart-labels {
+    span.father::after {
+      content: 'پدر';
+    }
+    span.mother::after {
+      content: 'مادر';
+    }
+    // daughters
+    span.first-daughter::after {
+      content: 'دختر(اول)';
+    }
+    span.second-daughter::after {
+      content: 'دختر(دوم)';
+    }
+    span.third-daughter::after {
+      content: 'دختر(سوم)';
+    }
+    span.fourth-daughter::after {
+      content: 'دختر(چهارم)';
+    }
+    span.fifth-daughter::after {
+      content: 'دختر(پنجم)';
+    }
+    // sons
+    span.first-son::after {
+      content: 'پسر(اول)';
+    }
+    span.second-son::after {
+      content: 'پسر(دوم)';
+    }
+    span.third-son::after {
+      content: 'پسر(سوم)';
+    }
+    span.fourth-son::after {
+      content: 'پسر(چهارم)';
+    }
+    span.fifth-son::after {
+      content: 'پسر(پنجم)';
+    }
+  }
+  #ep-chart-labels {
+    span.father::after {
+      content: 'پدر';
+    }
+    span.mother::after {
+      content: 'مادر';
+    }
+    // daughters
+    span.first-daughter::after {
+      content: 'دختر(اول)';
+    }
+    span.second-daughter::after {
+      content: 'دختر(دوم)';
+    }
+    span.third-daughter::after {
+      content: 'دختر(سوم)';
+    }
+    span.fourth-daughter::after {
+      content: 'دختر(چهارم)';
+    }
+    span.fifth-daughter::after {
+      content: 'دختر(پنجم)';
+    }
+    // sons
+    span.first-son::after {
+      content: 'پسر(اول)';
+    }
+    span.second-son::after {
+      content: 'پسر(دوم)';
+    }
+    span.third-son::after {
+      content: 'پسر(سوم)';
+    }
+    span.fourth-son::after {
+      content: 'پسر(چهارم)';
+    }
+    span.fifth-son::after {
+      content: 'پسر(پنجم)';
+    }
+  }
+
+  img.s.family {
+    height: 4vh !important;
+  }
+}
+
+.t-chart {
+  height: 95%;
+  width: 95%;
+  padding: 3vh 0;
+  grid-area: b;
+
+  .title {
+    transform: translateY(-2vh);
+  }
+  .canvas-size {
+    width: 75%;
+  }
+}
+
+.chart .labels img.family {
+  height: 2.3vh;
+  margin-left: 1vw;
+}
+
+// media querys
+// width
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+    height: auto;
+  }
+  .chart {
+    margin: auto;
+  }
+
+  .s-chart {
+    width: 85%;
+    height: 95%;
+    padding: 7vh 0;
+
+    .canvas-size {
+      width: 80%;
+      height: 65%;
+    }
+
+    .point-val,
+    .fpoint-val {
+      width: 80%;
+      height: 5vh;
+      margin: 0;
+      justify-content: space-evenly;
+    }
+  }
+
+  .t-chart {
+    width: 85%;
+    height: 95%;
+    padding: 7vh 0;
+
+    .canvas-size {
+      width: 70%;
+      height: 80%;
+    }
+  }
+}
+// width and height
+@media (max-width: 1024px) and (max-height: 670px) {
+  body {
+    height: auto;
+    padding: 5vh 0;
+  }
+
+  .s-chart {
+    width: 60%;
+    height: 95%;
+    padding: 5vh 0;
+
+    .canvas-size {
+      width: 80%;
+      height: 65%;
+    }
+
+    .point-val,
+    .fpoint-val {
+      width: 80%;
+      height: 6vh;
+      margin: 0;
+      justify-content: space-evenly;
+    }
+  }
+
+  .t-chart {
+    width: 60%;
+    height: 95%;
+    padding: 7vh 0;
+
+    .canvas-size {
+      width: 80%;
+      height: 70%;
+    }
+  }
+}
+// width
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+    height: auto;
+  }
+  .chart {
+    margin: auto;
+  }
+
+  .s-chart {
+    width: 65%;
+    height: 95%;
+
+    .canvas-size {
+      width: 80%;
+      height: 65%;
+    }
+
+    .point-val,
+    .fpoint-val {
+      width: 80%;
+      height: 5vh;
+      margin: 0;
+      justify-content: space-evenly;
+    }
+  }
+
+  .t-chart {
+    width: 65%;
+    height: 95%;
+
+    .canvas-size {
+      width: 80%;
+      height: 80%;
+    }
+  }
+}
+// width and height
+@media (max-width: 768px) and (max-height: 670px) {
+  .s-chart .title {
+    transform: translateY(1vh);
+  }
+  .s-chart {
+    width: 70%;
+    height: 95%;
+    padding: 3vh 0;
+
+    .canvas-size {
+      width: 80%;
+      height: 65%;
+    }
+
+    .point-val,
+    .fpoint-val {
+      width: 80%;
+      height: 7vh;
+      margin: 0;
+      justify-content: space-evenly;
+    }
+  }
+
+  .t-chart .title {
+    transform: translateY(-4vh);
+  }
+
+  .t-chart {
+    width: 70%;
+    height: 90%;
+
+    .canvas-size {
+      width: 80%;
+      height: 30%;
+    }
+  }
+}
+// width
+@media (max-width: 550px) {
+  .s-chart {
+    width: 85%;
+    height: 95%;
+
+    .canvas-size {
+      width: 80%;
+      height: 65%;
+    }
+
+    .point-val,
+    .fpoint-val {
+      width: 80%;
+      margin: 0;
+    }
+  }
+
+  .t-chart {
+    width: 90%;
+    height: 95%;
+
+    .canvas-size {
+      width: 75%;
+      height: 80%;
+    }
+  }
+}
+// width
+@media (max-width: 375px) {
+  .container {
+    height: auto;
+    width: auto;
+  }
+
+  .s-chart .title {
+    transform: translateY(2vh);
+  }
+
+  .s-chart {
+    width: 90%;
+    height: 95%;
+    margin: auto;
+
+    .canvas-size {
+      width: 82%;
+      height: 70%;
+    }
+
+    .point-val,
+    .fpoint-val {
+      width: 82%;
+    }
+  }
+
+  .t-chart {
+    width: 90%;
+    height: 95%;
+    margin: auto;
+    padding: 5vh 0;
+
+    .canvas-size {
+      width: 90%;
+      height: 80%;
+    }
+  }
+}
+// width
+@media (max-width: 285px) {
+  .s-chart .title {
+    transform: translateY(0.5vh);
+  }
+
+  .point-val,
+  .fpoint-val {
+    width: 82%;
+  }
+}
+
+// bar chart
+.bar-chart-container {
+  grid-area: c;
+  direction: ltr;
+  height: 95vh;
+  width: 95vw;
+  margin: auto;
+  padding: 1vh 1vw;
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px #cfcfcf, -5px -5px 20px #ffffff;
+  text-align: center;
+  overflow-x: scroll;
+  display: block;
+
+  .canvas-size {
+    width: 70rem;
+    height: 95%;
+    position: relative;
+  }
+
+  canvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 2vw;
+    padding-right: 5vw;
+  }
+}

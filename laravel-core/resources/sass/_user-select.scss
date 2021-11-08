@@ -1,0 +1,9 @@
+@mixin user-select {
+  user-select: none;
+  /* Mozilla-specific values */
+  -moz-user-select: none;
+  /* WebKit-specific values */
+  -webkit-user-select: none;
+  /* Microsoft-specific values */
+  -ms-user-select: none;
+}

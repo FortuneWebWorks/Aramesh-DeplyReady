@@ -1,0 +1,66 @@
+@use '../variables' as *;
+@use '../flex' as *;
+@use '../buttons' as *;
+@use '../user-select' as *;
+
+.family-supervisor {
+  @include flex-center;
+  width: 100%;
+
+  .card {
+    height: auto;
+  }
+
+  .radio-container {
+    width: 105% !important;
+  }
+
+  .supervisor-container {
+    padding: 3vh 0;
+  }
+
+  .supervisor-name-container {
+    @include flex-center;
+    justify-content: space-between;
+    width: 100% !important;
+  }
+
+  .input-container {
+    max-width: 53%;
+    font-size: 0.9rem;
+  }
+
+  #input {
+    text-align: right;
+  }
+
+  .radio-btns {
+    @include flex-center;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    margin-bottom: 3vh;
+  }
+
+  .radio-btn-container {
+    position: relative;
+    @include flex-center;
+    justify-content: flex-start;
+    margin: 1vh;
+    border-radius: 4px;
+    background-color: var(--secondary-bgcolor);
+
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+  }
+
+  .btn {
+    width: 9rem !important;
+    padding: 0 0.8rem !important;
+  }
+}

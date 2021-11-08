@@ -1,0 +1,260 @@
+@use "sass:math";
+@use '.' as *;
+@import '../js/src/css/WebFonts/css/style.css';
+@import 'mq';
+//---//
+html {
+  direction: rtl;
+}
+//---//
+body {
+  height: 100vh;
+}
+
+#app {
+  @include flex-center;
+  align-items: flex-start;
+  width: 100vw;
+  height: auto;
+  background-color: var(--primary-bgcolor);
+  transition: background 0.3s ease, color 0.3s ease;
+
+  label {
+    font-size: 1rem !important;
+    color: var(--auth-card-color);
+  }
+
+  input {
+    padding: 1vh 1vw;
+    height: 5vh !important;
+    color: var(--auth-card-color);
+    background-color: var(--auth-input-bgcolor);
+  }
+
+  #phone-number {
+    padding: 1vh 1vw !important;
+  }
+
+  #def-number {
+    padding: 0 !important;
+  }
+
+  .container {
+    width: 80%;
+    @include cflex-center;
+    justify-content: space-between;
+  }
+
+  .card {
+    @include cflex-center;
+    justify-content: space-between;
+    max-width: 18rem;
+    width: 80%;
+    height: auto;
+    border-radius: 5px !important;
+    // box-shadow: $card-shadow;
+    background-color: var(--auth-card-bgcolor);
+  }
+
+  .guide {
+    width: 80%;
+    text-align: right;
+    margin-top: 1vh;
+    line-height: 1.5rem;
+    color: darkred;
+    font-size: 0.9rem;
+  }
+
+  table,
+  th,
+  td {
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .header {
+    width: 100%;
+    @include flex-center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    padding: 2vh 1.8rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    .header-text {
+      font-size: 1rem !important;
+      color: var(--auth-card-color);
+
+      @include mq(760px) {
+        margin-right: 0;
+      }
+    }
+
+    .header-back-btn {
+      height: 12px;
+      width: 12px;
+      border-left: 2px solid var(--auth-card-color);
+      border-bottom: 2px solid var(--auth-card-color);
+      transform: rotate(45deg);
+    }
+  }
+
+  .admin-panel-header-container {
+    width: 100%;
+    height: 13vh;
+    background-color: var(--admin-secondary-color);
+    direction: rtl;
+    @include flex-center;
+  }
+
+  .admin-panel-header-container-logo {
+    height: 9vh;
+    margin-left: 2vw;
+  }
+
+  .admin-panel-header-container-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+
+  .radio-btns {
+    height: auto;
+    width: 100%;
+    @include flex-center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .radio-btns .radio-btn-container {
+    position: relative;
+  }
+
+  .radio-btns .radio-btn-container {
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      padding: 0;
+    }
+  }
+
+  .radio-btns .radio-btn-container {
+    input:checked + .radio-btn {
+      color: var(--auth-card-color);
+      background-color: var(--auth-select-bgcolor);
+    }
+  }
+
+  .radio-btns .radio-btn-container .radio-btn {
+    font-size: 1rem;
+    color: var(--auth-card-color);
+    border-radius: 4px;
+    @include flex-center;
+    padding: 1vh 2.5vw;
+  }
+
+  // btn hover
+  .btn {
+    @include flex-center;
+    color: #000;
+    justify-content: space-evenly;
+    height: 6vh;
+    width: 6rem;
+    font-size: 1.1rem;
+    padding-left: 3.5vw;
+    background-color: var(--auth-input-bgcolor);
+
+    & > span {
+      color: #000;
+    }
+  }
+
+  .btn.home {
+    @include flex-center;
+    height: 5vh;
+    width: 9rem;
+    font-size: 1.5rem;
+
+    span {
+      margin-left: 1rem;
+    }
+
+    @include mq(760px) {
+      width: 12rem;
+      height: 7vh;
+    }
+  }
+
+  .btn {
+    span {
+      transition: all 0.5s ease;
+      margin-left: 1vw;
+    }
+
+    &:hover {
+      span {
+        transform: translateX(30%) !important;
+      }
+    }
+  }
+
+  .toggle {
+    .toggle-control {
+      transition: $toggler_transition;
+      width: $toggler_width;
+      height: $toggler_height;
+      display: block;
+      // border: 2px solid $toggler_color_checkbox_default;
+      border-radius: $toggler_height;
+      background-color: var(--admin-toggler-box-shadow-bgcolor);
+      position: relative;
+
+      &:after {
+        transition: $toggler_transition;
+        content: '';
+        width: math.div($toggler_width, 2);
+        height: $toggler_height;
+        display: block;
+        background-color: var(--admin-toggler-control-bgcolor);
+        border-radius: 50%;
+        box-shadow: 0 1px 2px var(--admin-toggler-box-shadow-color),
+          0 3px 2px var(--admin-toggler-box-shadow-color);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    input {
+      display: none;
+      &:checked + .toggle-control {
+        border-color: transparent;
+        background-color: var(--admin-toggler-box-shadow-bgcolor);
+        box-shadow: var(--admin-toggler-box-shadow);
+        &:after {
+          left: math.div($toggler_width, 2);
+          box-shadow: var(--admin-toggler-btn-box-shadow);
+        }
+      }
+    }
+  }
+
+
+}
+
+.test-completed {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}

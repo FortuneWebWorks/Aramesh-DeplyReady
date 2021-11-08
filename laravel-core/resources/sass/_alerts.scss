@@ -1,0 +1,28 @@
+@use 'variables' as *;
+
+.alert {
+  height: 6vh;
+  width: 100%;
+  color: var(--secondary-color);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh 0.5vh;
+}
+
+.alert p {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-weight: 900;
+  line-height: 140%;
+}
+
+.alert.alert-danger {
+  background-color: var(--danger);
+}
+
+.alert.alert-danger p {
+  color: #fff;
+}

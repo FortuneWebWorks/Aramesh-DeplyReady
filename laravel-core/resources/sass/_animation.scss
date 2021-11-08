@@ -1,0 +1,29 @@
+// mustash
+@keyframes mus {
+  0% {
+    transform: translateY(40rem) translateX(4.2rem) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(40rem) translateX(4.2rem) rotate(5deg);
+  }
+}
+
+// booteh
+@keyframes boot {
+  0% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(3deg);
+  }
+}
+
+// skirt
+@keyframes skirt {
+  0% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(-1deg);
+  }
+}
