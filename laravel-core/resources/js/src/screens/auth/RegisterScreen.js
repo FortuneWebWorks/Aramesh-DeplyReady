@@ -6,6 +6,7 @@ import Card from '../../components/Card';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Inertia } from '@inertiajs/inertia';
+import { Head } from '@inertiajs/inertia-react';
 import { useCallback } from 'react/cjs/react.development';
 import alertSession from '../../sessions/alertSession';
 import registerSession from '../../sessions/registerSession'
@@ -65,40 +66,48 @@ const RegisterScreen = () => {
   };
 
   return (
-    <div className="bg-height-100 bg-dark register-page-container">
-      <Card>
-        <Header title="ثبت نام" backTo="/start" />
-        <div
-          className="container register-page"
-          style={{ marginBottom: '5vw' }}
-        >
-          <Input
-            title="نام و نام خانوادگی"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+    <>
+      <Head>
+        <title>وبسایت آرامش | ثبت نام</title>
+        <meta name="description" content="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                  استفاده از طراحان"/>
+        <meta name="keywords" content="آرامش, aramesh, aramesh.org, aramesh.ir, aramesh_login, ثبت نام, ثبت نام آرامش"/>
+      </Head>
+      <div className="bg-height-100 bg-dark register-page-container">
+        <Card>
+          <Header title="ثبت نام" backTo="/start" />
+          <div
+            className="container register-page"
+            style={{ marginBottom: '5vw' }}
+          >
+            <Input
+              title="نام و نام خانوادگی"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
 
-          <PhoneNumber
-            value={phoneNumber}
-            onChange={(e) => phoneNumberSet(e.target.value)}
-          />
+            <PhoneNumber
+              value={phoneNumber}
+              onChange={(e) => phoneNumberSet(e.target.value)}
+            />
 
-          <Button
-            text="ادامه"
-            secondary
-            onClick={() => {
-              if (validator()) redirect();
-            }}
-          />
-        </div>
-        {/* Alert */}
-        {alerts && alerts.length > 0 ? (
-          <Alert text={alerts[alerts.length - 1]} />
-        ) : (
-          ''
-        )}
-      </Card>
-    </div>
+            <Button
+              text="ادامه"
+              secondary
+              onClick={() => {
+                if (validator()) redirect();
+              }}
+            />
+          </div>
+          {/* Alert */}
+          {alerts && alerts.length > 0 ? (
+            <Alert text={alerts[alerts.length - 1]} />
+          ) : (
+            ''
+          )}
+        </Card>
+      </div>
+    </>
   );
 };
 
