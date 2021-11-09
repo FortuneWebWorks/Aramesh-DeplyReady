@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from '@inertiajs/inertia-react';
 import { Inertia } from '@inertiajs/inertia';
-import { useCallback } from 'react/cjs/react.development';
 import Alert from '../../components/Alert';
 import Button from '../../components/Button';
 import Card from '../../components/Card';

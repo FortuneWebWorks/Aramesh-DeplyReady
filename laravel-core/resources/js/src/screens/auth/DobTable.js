@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useCallback, useEffect } from "react/cjs/react.development";
+import React, { useState, useCallback, useEffect } from "react";
 import Card from "../../components/Card";
 import Header from "../../components/Header";
 import Input from "../../components/Input";

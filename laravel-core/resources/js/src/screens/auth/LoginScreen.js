@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { Head } from '@inertiajs/inertia-react';
 import Alert, {alertsUpdate} from '../../components/Alert';
@@ -7,7 +7,6 @@ import PhoneNumber from '../../components/PhoneNumber';
 import Card from '../../components/Card';
 import alertSession from '../../sessions/alertSession';
 import Button from '../../components/Button';
-import { useCallback } from 'react/cjs/react.development';
 
 const LoginScreen = (props) => {
   const [phoneNumber, setPhoneNumber] = useState(props.phoneNumber ? props.phoneNumber : '');

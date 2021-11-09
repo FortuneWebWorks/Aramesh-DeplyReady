@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Alert, { alertsUpdate } from '../../components/Alert';
 import Header from '../../components/Header';
 import PhoneNumber from '../../components/PhoneNumber';
@@ -7,7 +7,6 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Inertia } from '@inertiajs/inertia';
 import { Head } from '@inertiajs/inertia-react';
-import { useCallback } from 'react/cjs/react.development';
 import alertSession from '../../sessions/alertSession';
 import registerSession from '../../sessions/registerSession'
 

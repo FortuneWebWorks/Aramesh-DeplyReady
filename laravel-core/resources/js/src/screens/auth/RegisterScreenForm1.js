@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Inertia } from '@inertiajs/inertia';
-import { useCallback } from 'react/cjs/react.development';
 import Alert, { alertsUpdate } from '../../components/Alert';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
