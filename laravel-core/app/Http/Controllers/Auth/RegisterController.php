@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\VerificationCode;
 use Carbon\Carbon;
 use Faker\Core\Number;
+use Ghasedak\GhasedakApi;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -111,12 +112,18 @@ class RegisterController extends Controller
 
         if($user) {
             $prevCode = $user->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
+            $api = new GhasedakApi(env('GHASEDAKAPI_KEY'));
+
             if(!$prevCode) {
                 $code = $this->makeVerificationCode($user);
+                $api->SendSimple(
+                    "0".$phoneNumber,  // receptor
+                    "کد احراز هویت شما در وبسایت آرامش \n " . $code, // message
+                    "2000235"    // choose a line number from your account
+                    );
                 return Inertia::render('auth/UserConfirm', [
                     'phoneNumber'=> $phoneNumber,
                     'nextRoute' => request()->input('nextRoute'),
-                    'verificationCode' => $code
                 ]);
             } else {
                 return Inertia::render('auth/UserConfirm', [
@@ -129,10 +136,14 @@ class RegisterController extends Controller
             $prevCode = $practitioner->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
             if(!$prevCode) {
                 $code = $this->makeVerificationCode($practitioner);
+                $api->SendSimple(
+                    "0".$phoneNumber,  // receptor
+                    "کد احراز هویت شما در وبسایت آرامش \n " . $code, // message
+                    "2000235"    // choose a line number from your account
+                    );
                 return Inertia::render('auth/UserConfirm', [
                     'phoneNumber'=> $phoneNumber,
                     'nextRoute' => request()->input('nextRoute'),
-                    'verificationCode' => $code
                 ]);
             } else {
                 return Inertia::render('auth/UserConfirm', [

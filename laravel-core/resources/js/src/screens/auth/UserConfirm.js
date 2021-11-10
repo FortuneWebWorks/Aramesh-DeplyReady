@@ -27,7 +27,6 @@ const UserConfirm = (props) => {
         forceUpdate();
       }, 5100);
     }
-    console.log(props);
   });
 
   const counterHandler = () => {
