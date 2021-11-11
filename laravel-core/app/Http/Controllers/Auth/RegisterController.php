@@ -115,7 +115,7 @@ class RegisterController extends Controller
             
             if(!$prevCode) {
                 $code = $this->makeVerificationCode($user);
-                $api = new GhasedakApi(env('GHASEDAKAPI_KEY'));
+                $api = new GhasedakApi('a123f3641bba2295c4dee65abff2b02464621368a3794c8e557278910975392a');
                 $api->SendSimple(
                     "0".$phoneNumber,  // receptor
                     "کد احراز هویت شما در وبسایت آرامش \n " . $code, // message
@@ -136,7 +136,7 @@ class RegisterController extends Controller
             $prevCode = $practitioner->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
             if(!$prevCode) {
                 $code = $this->makeVerificationCode($practitioner);
-                $api = new GhasedakApi(env('GHASEDAKAPI_KEY'));
+                $api = new GhasedakApi('a123f3641bba2295c4dee65abff2b02464621368a3794c8e557278910975392a');
                 $api->SendSimple(
                     "0".$phoneNumber,  // receptor
                     "کد احراز هویت شما در وبسایت آرامش \n " . $code, // message
