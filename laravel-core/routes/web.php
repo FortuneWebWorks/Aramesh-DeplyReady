@@ -115,13 +115,13 @@ Route::get('/data', function () {
     $aramesh->practitioners()->create([
         'name' => 'دکتر سیامک سامانی',
         'code' => '342',
-        'phone-number' => '1111111111'
+        'phone-number' => '9173150780'
     ]);
 
     $aramesh->practitioners()->create([
         'name' => 'دکتر نادره سهرابی',
         'code' => '3565',
-        'phone-number' => '2222222222'
+        'phone-number' => '9176307130'
     ]);
 
     $hamgam = $shiraz->clinics()->create([
@@ -134,7 +134,7 @@ Route::get('/data', function () {
     $hamgam->practitioners()->create([
         'name' => 'لیلا رشیدبیگی',
         'code' => '755',
-        'phone-number' => '3333333333'
+        'phone-number' => '9909772805'
     ]);
 
     $raheZendegi = $shiraz->clinics()->create([
@@ -147,7 +147,7 @@ Route::get('/data', function () {
     $raheZendegi->practitioners()->create([
         'name' => 'سعید رحیمی خواه',
         'code' => '1730',
-        'phone-number' => '4444444444'
+        'phone-number' => '9173017886'
     ]);
 
     $zendegiAgahane = $shiraz->clinics()->create([
@@ -160,7 +160,7 @@ Route::get('/data', function () {
     $zendegiAgahane->practitioners()->create([
         'name' => 'بهاره زارع',
         'code' => '7916',
-        'phone-number' => '5555555555'
+        'phone-number' => '9308137354'
     ]);
 
     $aban = $shiraz->clinics()->create([
@@ -173,7 +173,7 @@ Route::get('/data', function () {
     $aban->practitioners()->create([
         'name' => 'فاطمه حسنی',
         'code' => '3487',
-        'phone-number' => '6666666666'
+        'phone-number' => '9173131259'
     ]);
 
     $peyman = $marvdasht->clinics()->create([
@@ -186,6 +186,6 @@ Route::get('/data', function () {
     $peyman->practitioners()->create([
         'name' => 'امید زارع نژاد',
         'code' => '2388',
-        'phone-number' => '7777777777'
+        'phone-number' => '9019783535'
     ]);
 });
