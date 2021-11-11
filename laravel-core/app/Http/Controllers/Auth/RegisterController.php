@@ -109,13 +109,13 @@ class RegisterController extends Controller
     {
         $user = User::where('phone-number', $phoneNumber)->first();
         $practitioner = Practitioner::where('phone-number', $phoneNumber)->first();
-
+        
         if($user) {
             $prevCode = $user->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
-            $api = new GhasedakApi(env('GHASEDAKAPI_KEY'));
-
+            
             if(!$prevCode) {
                 $code = $this->makeVerificationCode($user);
+                $api = new GhasedakApi(env('GHASEDAKAPI_KEY'));
                 $api->SendSimple(
                     "0".$phoneNumber,  // receptor
                     "کد احراز هویت شما در وبسایت آرامش \n " . $code, // message
@@ -136,6 +136,7 @@ class RegisterController extends Controller
             $prevCode = $practitioner->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
             if(!$prevCode) {
                 $code = $this->makeVerificationCode($practitioner);
+                $api = new GhasedakApi(env('GHASEDAKAPI_KEY'));
                 $api->SendSimple(
                     "0".$phoneNumber,  // receptor
                     "کد احراز هویت شما در وبسایت آرامش \n " . $code, // message
