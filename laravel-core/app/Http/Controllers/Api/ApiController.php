@@ -45,7 +45,6 @@ class ApiController extends Controller
     public function sendConfirmationCode(Request $request) {
         $user = User::where('phone-number', $request['phone-number'])->first();
         $practitioner = Practitioner::where('phone-number', $request['phone-number'])->first();
-        
         if($user) {
             $prevCode = $user->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
             
@@ -70,21 +69,21 @@ class ApiController extends Controller
                 $userResponse = curl_exec($req);
                 curl_close($req);
                 if(json_decode($userResponse)->result->code !== 200) {
-                    return [
-                        "success" => false,
-                        "message" => json_decode($userResponse)->result->message
-                    ];
+                    return response()->json([
+                        'success' => 'false',
+                        'message' => json_decode($userResponse)->result->message
+                    ], 200);
                 } else {
-                    return [
-                        "success" => true,
-                        "message" => "رمز عبور برای شما ارسال شد"
-                    ];
+                    return response()->json([
+                        'success' => true,
+                        'message' => "رمز عبور برای شما ارسال شد"
+                    ], 200);
                 }
             } else {
-                return [
-                    "success" => false,
-                    "message" => "کد فعالسازی قبلا برای شما ارسال شده است لطفا دو دقیقه ی دیگر دوباره تلاش کنید"
-                ];
+                return response()->json([
+                    'success' => false,
+                    'message' => 'کد فعالسازی قبلا برای شما ارسال شده است لطفا دو دقیقه ی دیگر دوباره تلاش کنید'
+                ], 200);
             }
         } else if (!$user && $practitioner) {
             $prevCode = $practitioner->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
@@ -109,23 +108,24 @@ class ApiController extends Controller
                 $adminResponse = curl_exec($req);
                 curl_close($req);
                 if(json_decode($adminResponse)->result->code !== 200) {
-                    return [
-                        "success" => false,
-                        "message" => json_decode($adminResponse)->result->message
-                    ];
+                    return response()->json([
+                        'success' => false,
+                        'message' => json_decode($adminResponse)->result->message
+                    ], 200);
                 } else {
-                    return [
-                        "success" => true,
-                        "message" => "رمز عبور برای شما ارسال شد"
-                    ];
+                    return response()->json([
+                        'success' => true,
+                        'message' => "رمز عبور برای شما ارسال شد"
+                    ], 200);
                 }
             } else {
-                return [
-                    "success" => false,
-                    "message" => "کد فعالسازی قبلا برای شما ارسال شده است لطفا دو دقیقه ی دیگر دوباره تلاش کنید"
-                ];
+                return response()->json([
+                    'success' => false,
+                    'message' => "کد فعالسازی قبلا برای شما ارسال شده است لطفا دو دقیقه ی دیگر دوباره تلاش کنید"
+                ], 200);
             }
         }
+        return response()->json(['request' => request()->all()], 200);
     }
 
     

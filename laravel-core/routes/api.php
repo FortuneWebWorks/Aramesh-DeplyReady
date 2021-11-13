@@ -19,4 +19,4 @@ Route::get('user-exists/{phoneNumber}', [ApiController::class, 'userExists']);
 Route::get('/cities/{city}', [ApiController::class, 'clinics']);
 Route::get('/clinics/{clinic}', [ApiController::class, 'practitioners']);
 Route::get('/admin-user/{phoneNumber}', [ApiController::class, 'isAdmin']);
-Route::post('/user-confirm/{phoneNumber}', [ApiController::class, 'sendConfirmationCode']);
+Route::post('/user-confirm', [ApiController::class, 'sendConfirmationCode']);

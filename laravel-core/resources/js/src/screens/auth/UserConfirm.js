@@ -29,18 +29,31 @@ const UserConfirm = (props) => {
     }
   });
 
-  const counterHandler = () => {
-    if (counter === 0 || counter === undefined) {
-      alertSession().addAlert('کد ورود جدید ارسال شد')
-      alertsUpdate();
-      setCounter(5);
-
-      refs.current.hello = setInterval(() => {
-        setCounter((prevCounter) => {
-          if (prevCounter > 0) return prevCounter - 1;
-        });
-      }, 1000);
-    }
+  const counterHandler = async () => {
+    if(counter === 0 || counter === undefined) {
+      const codeRequest = await fetch('http://aramesh.org/api/user-confirm', {
+        method: 'POST',
+        body: JSON.stringify({'phone-number': phoneNumber}),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      const codeResponse = await codeRequest.json();
+      if(codeResponse.success) {
+        alertSession().addAlert(codeResponse.message)
+        alertsUpdate();
+        setCounter(60);
+  
+        refs.current.hello = setInterval(() => {
+          setCounter((prevCounter) => {
+            if (prevCounter > 0) return prevCounter - 1;
+          });
+        }, 1000);
+      } else {
+        alertSession().addAlert(codeResponse.message);
+        alertsUpdate();
+      }
+    } 
   };
 
   const validator = () => {
