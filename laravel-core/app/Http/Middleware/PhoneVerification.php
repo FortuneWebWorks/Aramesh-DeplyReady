@@ -62,6 +62,5 @@ class PhoneVerification extends Middleware
             'phoneNumber'=> $request['phone-number'],
             'nextRoute' => $request['nextRoute'],
         ])->with(['errors'=> array("کاربری با این شماره تلفن یافت نشد لطفا دوباره وارد شوید")]);
-        return redirect()->route('login')->withError('کاربری با این شماره تلفن یافت نشد لطفا دوباره وارد شوید');
     }
 }
