@@ -145,7 +145,6 @@ class PractitionerController extends Controller
             }
             
         } else if(!$user && $practitioner) {
-            // return redirect()->route('admin.login', ['practitioner' =>  $practitioner], 308);
             Auth::guard('practitioner')->loginUsingId($practitioner->id);
             foreach($practitioner->verificationCodes()->get() as $verificationCode) {
                 $verificationCode->delete();

@@ -44,15 +44,12 @@ const LoginScreen = (props) => {
   };
 
   const redirect = async () => {
-    const userExist = await fetch(`http://aramesh.org/api/user-exists/${phoneNumber}`);
+    const userExist = await fetch(`http://localhost:8000/api/user-exists/${phoneNumber}`);
     const userLoginResponse = await userExist.json();
     if(!userLoginResponse) {
-        console.log("no visit")
-
         alertSession().addAlert('حساب کاربری با این شماره تلفن موجود نیست');
         alertsUpdate(forceUpdate);
     } else {
-      console.log("visit")
       Inertia.visit(`/user-confirm/${phoneNumber}`, {
           method: 'get',
           data: {
@@ -91,7 +88,7 @@ const LoginScreen = (props) => {
             />
           </div>
           {/* Alert */}
-          {alerts && alerts.length > 0 ? (
+          {(alerts && alerts.length > 0) || (props.errors && props.errors[0]) ? (
             <Alert text={alerts[alerts.length - 1]}/>
           ) : (
             ''

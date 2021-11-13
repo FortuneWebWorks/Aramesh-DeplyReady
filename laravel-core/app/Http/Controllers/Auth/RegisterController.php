@@ -115,16 +115,32 @@ class RegisterController extends Controller
             
             if(!$prevCode) {
                 $code = $this->makeVerificationCode($user);
-                $api = new GhasedakApi('a123f3641bba2295c4dee65abff2b02464621368a3794c8e557278910975392a');
-                $api->SendSimple(
-                    "0".$phoneNumber,  // receptor
-                    "کد احراز هویت شما در وبسایت آرامش \n " . $code, // message
-                    "2000235"    // choose a line number from your account
-                    );
-                return Inertia::render('auth/UserConfirm', [
-                    'phoneNumber'=> $phoneNumber,
-                    'nextRoute' => request()->input('nextRoute'),
+                $req = curl_init();
+                curl_setopt_array($req, [
+                    CURLOPT_URL => "https://api.ghasedak.me/v2/verification/send/simple",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 60,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "receptor=0".$phoneNumber."&template=aramesh&type=1&param1=".$code,
+                    CURLOPT_HTTPHEADER => array(
+                    "apikey: ". env("GHASEDAKAPI_KEY"),
+                    "cache-control: no-cache",
+                    "content-type: application/x-www-form-urlencoded",
+                    )
                 ]);
+                $userResponse = curl_exec($req);
+                curl_close($req);
+                if(json_decode($userResponse)->result->code !== 200) {
+                    return redirect()->back()->withError(json_decode($userResponse)->result->message);
+                } else {
+                    return Inertia::render('auth/UserConfirm', [
+                        'phoneNumber'=> $phoneNumber,
+                        'nextRoute' => request()->input('nextRoute'),
+                    ]);
+                }
             } else {
                 return Inertia::render('auth/UserConfirm', [
                     'phoneNumber'=> $phoneNumber,
@@ -136,16 +152,32 @@ class RegisterController extends Controller
             $prevCode = $practitioner->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
             if(!$prevCode) {
                 $code = $this->makeVerificationCode($practitioner);
-                $api = new GhasedakApi('a123f3641bba2295c4dee65abff2b02464621368a3794c8e557278910975392a');
-                $api->SendSimple(
-                    "0".$phoneNumber,  // receptor
-                    "کد احراز هویت شما در وبسایت آرامش \n " . $code, // message
-                    "2000235"    // choose a line number from your account
-                    );
-                return Inertia::render('auth/UserConfirm', [
-                    'phoneNumber'=> $phoneNumber,
-                    'nextRoute' => request()->input('nextRoute'),
+                $req = curl_init();
+                curl_setopt_array($req, [
+                    CURLOPT_URL => "https://api.ghasedak.me/v2/verification/send/simple",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 60,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "receptor=0".$phoneNumber."&template=aramesh&type=1&param1=".$code,
+                    CURLOPT_HTTPHEADER => array(
+                    "apikey: ". env("GHASEDAKAPI_KEY"),
+                    "cache-control: no-cache",
+                    "content-type: application/x-www-form-urlencoded",
+                    )
                 ]);
+                $adminResponse = curl_exec($req);
+                curl_close($req);
+                if(json_decode($adminResponse)->result->code !== 200) {
+                    return redirect()->back()->withError(json_decode($adminResponse)->result->message);
+                } else {
+                    return Inertia::render('auth/UserConfirm', [
+                        'phoneNumber'=> $phoneNumber,
+                        'nextRoute' => request()->input('nextRoute'),
+                    ]);
+                }
             } else {
                 return Inertia::render('auth/UserConfirm', [
                     'phoneNumber'=> $phoneNumber,

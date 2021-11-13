@@ -59,14 +59,11 @@ const UserConfirm = (props) => {
   }
 
   const redirect = async () => {
-    Inertia.visit('/login', {
-      method: 'post',
-      data: {
-          'phone-number': phoneNumber,
-          'password': '',
-          'code': code
-      }
-      });
+    Inertia.post('/login', {
+      'phone-number': phoneNumber,
+      'password': '',
+      'code': code
+    })
   };
 
   return (

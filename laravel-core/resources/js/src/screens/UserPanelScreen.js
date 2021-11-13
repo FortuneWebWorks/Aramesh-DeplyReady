@@ -77,7 +77,7 @@ const UserPanel = (props) => {
                     </h5>
                     <RadioButtonContainer>
                         {props.family.map((member, index) => {
-                            return member.tested === true && <RadioButton key={index} text={member.role} disabled />
+                            return member.tested == true && <RadioButton key={index} text={member.role} disabled />
                         })}
                     </RadioButtonContainer>
 
@@ -90,7 +90,7 @@ const UserPanel = (props) => {
 
                         {props.family.map((member, index) => {
                             return (
-                                member.tested === false &&
+                                member.tested == false &&
                                 <RadioButton
                                     key={index}
                                     text={member.role}
