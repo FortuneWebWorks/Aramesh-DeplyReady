@@ -51,7 +51,7 @@ class TestController extends Controller
 
         $users = request()->user();
         foreach($users->members()->get() as $user) {
-            if($user->tested === false) {
+            if($user->tested == false) {
                 return redirect()->action([ResultController::class, 'results'], [
                     'role' => request()->input('testTaker')
                 ]);
