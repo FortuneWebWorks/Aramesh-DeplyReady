@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import RadioButton, { RadioButtonContainer }  from '../components/RadioButton';
 import Button from '../components/Button';
-// import { useHistory } from 'react-router-dom';
 import { Inertia } from '@inertiajs/inertia';
 import Card from '../components/Card';
 import alertSession from '../sessions/alertSession';
@@ -77,7 +76,7 @@ const FamilyTestRetained = (props) => {
               {
                 props.family.map((member, index) => {
                   return (
-                    member.tested === false &&
+                    member.tested == false &&
                     <RadioButton
                         key={index}
                         text={member.role}
