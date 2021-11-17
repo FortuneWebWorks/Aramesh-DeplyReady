@@ -109,18 +109,13 @@
       height: 100%;
     }
 
-    // .input-container:active + div p {
-    //   text-align: right;
-    // }
-    // .input-container:focus-within input {
-    //   text-align: left;
-    // }
-
     .befNum {
       flex: 1;
       height: 100%;
       width: 50%;
-      // justify-items: right;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       p {
         width: 100%;
         transition: all 1s ease;
@@ -187,4 +182,3 @@
     overflow: hidden;
   }
 }
-// hsfdlh
