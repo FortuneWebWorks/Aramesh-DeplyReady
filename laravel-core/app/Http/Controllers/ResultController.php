@@ -32,35 +32,35 @@ class ResultController extends Controller
             $member->answers()->each(function($answer, $key) use($member) {
             
                 $result =  $member->results()->make();
-                $result->content = number_format(ResultController::avg(ResultController::arrayMaker(1, 38, $answer)), 2);
-                $result->process = number_format(ResultController::avg(ResultController::arrayMaker(39, 81, $answer)), 2);
+                $result->content = number_format(ResultController::avg(ResultController::arrayMaker(1, 38, $answer)), 2, '.', '');
+                $result->process = number_format(ResultController::avg(ResultController::arrayMaker(39, 81, $answer)), 2, '.', '');
                 $array = ResultController::arrayMaker(20, 24, $answer);
                 $array['q28'] = $answer['q28'];
-                $result->je = number_format(ResultController::avg($array), 2);
+                $result->je = number_format(ResultController::avg($array), 2, '.', '');
                 $array = ResultController::arrayMaker(6, 9, $answer);
                 $array['q11'] = $answer['q11'];
                 $array['q12'] = $answer['q12'];
-                $result->tt = number_format(ResultController::avg($array), 2);
-                $result->fs = number_format(ResultController::avg(ResultController::arrayMaker(1, 5, $answer)), 2);
+                $result->tt = number_format(ResultController::avg($array), 2, '.', '');
+                $result->fs = number_format(ResultController::avg(ResultController::arrayMaker(1, 5, $answer)), 2, '.', '');
                 $array = ResultController::arrayMaker(13, 16, $answer);
                 $array['q18'] = $answer['q18'];
                 $array['q19'] = $answer['q19'];
-                $result->ap = number_format(ResultController::avg($array), 2);
-                $result->pp = number_format(ResultController::avg(ResultController::arrayMaker(34, 38, $answer)), 2);
-                $result->ls = number_format(ResultController::avg(ResultController::arrayMaker(31, 33, $answer)), 2);
-                $result->ef = number_format(ResultController::avg(ResultController::arrayMaker(25, 27, $answer)), 2); 
-                $result->ps = number_format(ResultController::avg(ResultController::arrayMaker(66, 75, $answer)), 2); 
-                $result->cstra = number_format(ResultController::avg(ResultController::arrayMaker(54, 64, $answer)), 2); 
+                $result->ap = number_format(ResultController::avg($array), 2, '.', '');
+                $result->pp = number_format(ResultController::avg(ResultController::arrayMaker(34, 38, $answer)), 2, '.', '');
+                $result->ls = number_format(ResultController::avg(ResultController::arrayMaker(31, 33, $answer)), 2, '.', '');
+                $result->ef = number_format(ResultController::avg(ResultController::arrayMaker(25, 27, $answer)), 2, '.', ''); 
+                $result->ps = number_format(ResultController::avg(ResultController::arrayMaker(66, 75, $answer)), 2, '.', ''); 
+                $result->cstra = number_format(ResultController::avg(ResultController::arrayMaker(54, 64, $answer)), 2, '.', ''); 
                 $array = ResultController::arrayMaker(47, 53, $answer);
                 $array['q40'] = $answer['q40'];
                 $array['q41'] = $answer['q41'];
                 $array['q42'] = $answer['q42'];
-                $result->rfc = number_format(ResultController::avg($array), 2); 
+                $result->rfc = number_format(ResultController::avg($array), 2, '.', ''); 
                 $array = ResultController::arrayMaker(43, 55, $answer);
                 $array['q39'] = $answer['q39'];
                 $array['q41'] = $answer['q41'];
-                $result->cs = number_format(ResultController::avg($array), 2); 
-                $result->rb = number_format(ResultController::avg(ResultController::arrayMaker(76, 81, $answer)), 2);
+                $result->cs = number_format(ResultController::avg($array), 2, '.', ''); 
+                $result->rb = number_format(ResultController::avg(ResultController::arrayMaker(76, 81, $answer)), 2, '.', '');
                 $result->save();
             
             });
@@ -166,8 +166,8 @@ class ResultController extends Controller
             foreach($integrations as $index => $IntegrationValue) {
                 request()->user()->integrations()->create([
                     'role' => $index,
-                    'integration' => number_format($IntegrationValue, 2),
-                    'family-integration' => number_format($familyIntegration, 2)
+                    'integration' => number_format($IntegrationValue, 2, '.', ''),
+                    'family-integration' => number_format($familyIntegration, 2, '.', '')
                 ]);
             }
         }
