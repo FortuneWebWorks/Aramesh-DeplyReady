@@ -98,8 +98,8 @@ const RegisterScreen = () => {
             <Button
               text="ادامه"
               secondary
-              onClick={() => {
-                if (validator()) redirect();
+              onClick={async () => {
+                if (await validator()) redirect();
               }}
             />
           </div>
