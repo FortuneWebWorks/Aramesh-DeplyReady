@@ -6,7 +6,7 @@ const emptyCellsRender = (array, empty, field, className) => {
   return array.map((obj) => {
     return (
       <td key={`${obj.role}-${obj.results.field}`} className={className}>
-        {!empty ? obj.results.length > 0 ? obj.results[0][field] : '' : ''}
+        {!empty ? obj.results.length > 0 ? obj.results[0][field].toFixed(2) : '' : ''}
       </td>
     );
   });

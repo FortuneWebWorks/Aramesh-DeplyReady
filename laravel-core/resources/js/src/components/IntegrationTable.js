@@ -3,7 +3,7 @@ import '../css/styles.css';
 
 const emptyCellsRender = (array, field, empty) => {
   return array.map((obj, index) => {
-    return <td key={`data-fields-${index}`}>{!empty ? obj[field] : ''}</td>;
+    return <td key={`data-fields-${index}`}>{!empty ? obj[field].toFixed(2) : ''}</td>;
   });
 };
 
