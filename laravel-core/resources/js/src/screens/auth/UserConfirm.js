@@ -31,13 +31,24 @@ const UserConfirm = (props) => {
 
   const counterHandler = async () => {
     if(counter === 0 || counter === undefined) {
-      const codeRequest = await fetch('http://aramesh.org/api/user-confirm', {
-        method: 'POST',
-        body: JSON.stringify({'phone-number': phoneNumber}),
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
+      let codeRequest;
+      try {
+        codeRequest = await fetch('http://aramesh.org/api/user-confirm', {
+          method: 'POST',
+          body: JSON.stringify({'phone-number': phoneNumber}),
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+      } catch (error) {
+        codeRequest = await fetch('https://aramesh.org/api/user-confirm', {
+          method: 'POST',
+          body: JSON.stringify({'phone-number': phoneNumber}),
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+      }
       const codeResponse = await codeRequest.json();
       if(codeResponse.success) {
         alertSession().addAlert(codeResponse.message)

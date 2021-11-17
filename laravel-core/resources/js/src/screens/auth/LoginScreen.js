@@ -44,7 +44,13 @@ const LoginScreen = (props) => {
   };
 
   const redirect = async () => {
-    const userExist = await fetch(`https://aramesh.org/api/user-exists/${phoneNumber}`);
+    let userExist;
+    try {
+      userExist = await fetch(`http://aramesh.org/api/user-exists/${phoneNumber}`);
+    } catch (error) {
+      userExist = await fetch(`https://aramesh.org/api/user-exists/${phoneNumber}`);
+    }
+
     const userLoginResponse = await userExist.json();
     if(!userLoginResponse) {
         alertSession().addAlert('حساب کاربری با این شماره تلفن موجود نیست');

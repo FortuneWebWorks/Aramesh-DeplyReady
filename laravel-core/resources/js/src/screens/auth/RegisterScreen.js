@@ -54,13 +54,18 @@ const RegisterScreen = () => {
   }
 
   const redirect = async () => {
-      const userExist = await fetch(`http://aramesh.org/api/user-exists/${phoneNumber}`);
-      if(await userExist.json()) {
-          alertSession().addAlert('حساب کاربری با این شماره تلفن موجود است');
-          alertsUpdate(forceUpdate);
-      } else {
-          Inertia.visit(`/register/form-1`)
-      }
+    let userExist;
+    try {
+      userExist = await fetch(`http://aramesh.org/api/user-exists/${phoneNumber}`);
+    } catch (error) {
+      userExist = await fetch(`https://aramesh.org/api/user-exists/${phoneNumber}`);
+    }
+    if(await userExist.json()) {
+        alertSession().addAlert('حساب کاربری با این شماره تلفن موجود است');
+        alertsUpdate(forceUpdate);
+    } else {
+        Inertia.visit(`/register/form-1`)
+    }
 
   };
 

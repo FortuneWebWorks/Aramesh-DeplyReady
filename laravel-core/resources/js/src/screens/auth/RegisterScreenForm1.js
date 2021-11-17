@@ -47,13 +47,23 @@ const RegisterScreenForm1 = (props) => {
 
   const changeCity = async (e) => {
     setCity(e.name)
-    const clinics = await fetch(`http://aramesh.org/api/cities/${e.id}`);
+    let clinics;
+    try {
+      clinics = await fetch(`http://aramesh.org/api/cities/${e.id}`);
+    } catch (error) {
+      clinics = await fetch(`https://aramesh.org/api/cities/${e.id}`);
+    }
     setClinics(await clinics.json());
   }
 
   const changeClinic = async (e) => {
     setClinic(e.name)
-    const practitioners = await fetch(`http://aramesh.org/api/clinics/${e.id}`);
+    let practitioners;
+    try {
+      practitioners = await fetch(`http://aramesh.org/api/clinics/${e.id}`);
+    } catch (error) {
+      practitioners = await fetch(`https://aramesh.org/api/clinics/${e.id}`);
+    }
     setPractitioners(await practitioners.json())
   }
 
