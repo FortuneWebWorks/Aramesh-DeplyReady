@@ -262,20 +262,38 @@ const DobTable = () => {
 
         setTimeout(() => {
             labelChildren();
-            if (emptyInputs()) {
-                registerSession().setRegister({ familyData: formData });
-                Inertia.visit("/register", {
-                    method: 'post',
-                    data: {
-                        'data': registerSession().getRegister()
-                    }
-                });
+            if(Number(familyNum) - (Number(sonsNum) + Number(daughterNum)) !== 1) {
+                if (emptyInputs()) {
+                    registerSession().setRegister({ familyData: formData });
+                    Inertia.visit("/register", {
+                        method: 'post',
+                        data: {
+                            'data': registerSession().getRegister()
+                        }
+                    });
+                } else {
+                    alertSession().addAlert('لطفا سن تمام اعضای خانواده را وارد کنید');
+                    alertsUpdate(forceUpdate);
+                }
             } else {
-                setAlerts((prevAlerts) => {
-                    prevAlerts.push("لطفا سن تمام اعضای خانواده را وارد کنید");
-                    return prevAlerts;
-                });
-                forceUpdate();
+                const formRows = document.querySelectorAll("tr");
+                if(!formRows[1].childNodes[1].childNodes[0].childNodes[0].getAttribute("value").includes('پدر') && !formRows[1].childNodes[1].childNodes[0].childNodes[0].getAttribute("value").includes('مادر')) {
+                    alertSession().addAlert('لطفا والد خانواده را انتخاب نمایید');
+                    alertsUpdate(forceUpdate);
+                } else {
+                    if (emptyInputs()) {
+                        registerSession().setRegister({ familyData: formData });
+                        Inertia.visit("/register", {
+                            method: 'post',
+                            data: {
+                                'data': registerSession().getRegister()
+                            }
+                        });
+                    } else {
+                        alertSession().addAlert('لطفا سن تمام اعضای خانواده را وارد کنید');
+                        alertsUpdate(forceUpdate);
+                    }
+                }
             }
         }, 100);
     };
