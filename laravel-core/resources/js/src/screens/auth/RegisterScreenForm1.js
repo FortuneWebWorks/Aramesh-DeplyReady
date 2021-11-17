@@ -76,11 +76,6 @@ const RegisterScreenForm1 = (props) => {
       <Card>
         <Header title="ثبت نام" backTo="/register" />
         <div className="container" style={{ marginBottom: '5vw' }}>
-          {/* <Input
-            title="شهر خود را انتخاب کنید"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          /> */}
 
           <div className="register-dropdown-container">
             <DropDown
