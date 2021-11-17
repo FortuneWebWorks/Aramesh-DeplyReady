@@ -54,6 +54,8 @@
   }
 
   .file-list-container {
+    width: 80%;
+    max-width: 40%;
     @include cflex-center;
   }
 
@@ -138,6 +140,9 @@
 
   // responsive
   @include mq(600px) {
+    .file-list-container {
+      max-width: 40%;
+    }
     .file-list-header {
       font-size: 1.2rem;
     }
@@ -147,9 +152,12 @@
     }
   }
 
-  @include mq(100px, 400px) {
+  @include mq(100px, 600px) {
+    .file-list-container {
+      max-width: 80%;
+    }
     .search-container {
-      width: 30%;
+      width: 60%;
     }
 
     .file-list-header {

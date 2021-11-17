@@ -11,7 +11,7 @@
   transition: background 0.3s ease, color 0.3s ease;
 
   .container {
-    max-width: 40% !important;
+    max-width: 40%;
   }
 
   .admin-panel-title {
@@ -192,7 +192,10 @@
     background-color: var(--admin-clinicNumber-color);
   }
 
-  @include mq(100px, 360px) {
+  @include mq(100px, 600px) {
+    .container {
+      max-width: 80% !important;
+    }
     .admin-files-container {
       font-size: 4vw;
     }
