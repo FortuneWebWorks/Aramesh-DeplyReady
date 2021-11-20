@@ -45,7 +45,7 @@ const ChartScreen = (props) => {
           familyChart(props, configFamilyChart);
           barChart(props, configBarChart);
         }
-      }, 1000);
+      }, 2000);
     }
   });
 
