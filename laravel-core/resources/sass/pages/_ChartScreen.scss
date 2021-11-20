@@ -50,6 +50,8 @@
     // charts lable color
     span {
       color: var(--label-color) !important;
+      width: 100%;
+      z-index: 20;
     }
   }
 
@@ -180,5 +182,10 @@
       box-shadow: $neumorphism;
       font-size: 0.685rem;
     }
+  }
+
+  .point-value {
+    width: 100% !important;
+    margin-left: 5px !important;
   }
 }

@@ -156,16 +156,10 @@ img {
       padding-right: 0;
     }
 
-    // div.hov,
-    // div.line-chart-hover,
-    // div.gline-chart-hover,
-    // div.hover {
-    //   border-radius: 5px;
-    //   box-shadow: inset 13.81px 13.81px 31px #c1c2c6,
-    //     inset -13.81px -13.81px 31px #ffffff;
-
-    //   padding-right: 1vh;
-    // }
+    span {
+      width: 100%;
+      z-index: 20;
+    }
 
     span.family::after {
       content: 'خانواده';

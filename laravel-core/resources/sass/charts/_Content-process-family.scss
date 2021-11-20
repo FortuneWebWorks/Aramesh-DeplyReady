@@ -56,7 +56,7 @@
     @include cflex-center;
     align-items: flex-end;
     height: 4vh;
-    width: 82%;
+    width: 100%;
     padding: 2vh 0;
     text-align: left;
     transition: all 1s ease;
@@ -71,7 +71,7 @@
 
     .point-value {
       height: 2vh;
-      width: 82%;
+      width: 100%;
       text-align: left;
       font-size: 0.7rem;
     }
@@ -92,7 +92,7 @@
     }
 
     .point-value {
-      width: 84%;
+      width: 100%;
       padding: 2vh 0;
 
       span {
@@ -103,7 +103,7 @@
 
   @include mq(640px, 760px) {
     .point-value {
-      width: 82%;
+      width: 100%;
       padding: 2vh 0;
 
       span {

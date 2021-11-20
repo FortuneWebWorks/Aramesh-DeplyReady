@@ -12,6 +12,7 @@ export const configSmallerLineChart = {
   sizeY: 5,
   sizeX: 5,
   color: '#222',
+  title: 'نمودار آسیب شناسی فرایند',
 };
 export const configBigLineChart = {
   containerClass: 'biger-line-chart',
@@ -23,6 +24,7 @@ export const configBigLineChart = {
   sizeY: 5,
   sizeX: 7,
   color: '#222',
+  title: 'نمودار آسیب شناسی محتوا',
 };
 export const configEpChart = {
   containerClass: 'Content-process-members-container',
@@ -32,6 +34,7 @@ export const configEpChart = {
   titleId: 'Content-process-members-chart-title',
   hoverClass: 'Content-process-members-chart-hover',
   pointValueId: 'Content-process-members-chart-point-value',
+  title: 'دیاگرام یکپارچگی خانواده',
 };
 export const configFamilyChart = {
   containerClass: 'Content-process-family-container',
@@ -41,6 +44,7 @@ export const configFamilyChart = {
   titleId: 'Content-process-family-chart-title',
   hoverClass: 'Content-process-family-chart-hover',
   pointValueId: 'Content-process-family-chart-point-value',
+  title: 'دیاگرام گونه شناسی خانواده',
 };
 export const configBarChart = {
   containerClass: 'bar-chart-container',
@@ -645,26 +649,28 @@ export function lineChart(data, config) {
       labels1[0].forEach((item) => {
         mergRole.push(item.role);
       });
-      console.log("merg", merg)
       document
         .getElementById(`${config.labelsId}`)
         .addEventListener('click', (e) => {
           merg.forEach((label) => {
-            if (e.target.classList.contains(this.roleFinder(label.role))) {
+            if (e.target.getAttribute('data-before') === label.role) {
               addLabel();
               let peoples = merg;
+              let targetRole = e.target.getAttribute('data-before');
 
               let people = peoples.find((item) => {
-                return item.role === label.role;
+                return item.role === targetRole;
               });
 
               update();
               addPoints(people, people.role);
               outChart.pointConnect();
-              document
-                .getElementById(`${config.labelsId}`)
-                .querySelector(`.${this.roleFinder(label.role)}`)
-                .classList.add(`${config.hoverClass}`);
+
+              // document
+              //   .getElementById(`${config.labelsId}`)
+              //   .querySelector(`.${e.target.classList[0]}`)
+              //   .classList.add(`${config.hoverClass}`);
+              e.target.classList.add(config.hoverClass);
 
               this.shadowGiver(label.role);
             }
@@ -724,11 +730,19 @@ export function lineChart(data, config) {
         return item.rol === this.roleFinder(role);
       });
 
-      document
+      const el = document
         .getElementById(`${config.labelsId}`)
-        .querySelector(
-          `.${this.roleFinder(role)}`
-        ).style.boxShadow = `inset -21px 21px 24px ${currRole[0].color}, inset 21px -21px 24px #a8a3d83d`;
+        .querySelector(`[data-before="${role}"]`);
+
+      if (el) {
+        el.parentElement.style.boxShadow = `inset -21px 21px 24px ${currRole[0].color}, inset 21px -21px 24px #a8a3d83d`;
+      } else {
+        document
+          .getElementById(`${config.labelsId}`)
+          .querySelector(
+            `.${this.roleFinder(role)}`
+          ).style.boxShadow = `inset -21px 21px 24px ${currRole[0].color}, inset 21px -21px 24px #a8a3d83d`;
+      }
     }
   }
 
