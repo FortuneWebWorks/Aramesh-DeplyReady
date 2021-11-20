@@ -15,6 +15,7 @@ import {
   configBigLineChart,
   configSmallerLineChart,
 } from '../charts/app';
+import Alert from '../components/Alert';
 
 const ChartScreen = (props) => {
   
@@ -24,6 +25,7 @@ const ChartScreen = (props) => {
   const light  = themeSession().getSession();
   
   useEffect(() => {
+    console.log(props)
     if (!light && loaderSession().getLoader()) {
       configSmallerLineChart.color = '#fff';
       configBigLineChart.color = '#fff';
@@ -38,14 +40,14 @@ const ChartScreen = (props) => {
       setTimeout(() => {
         loaderSession().setLoader(false);
         forceUpdate()        
-        if(!document.querySelector('.chart.line-chart')) {
+        if(props.testCompleted && !document.querySelector('.chart.line-chart')) {
           lineChart(props, configSmallerLineChart);
           lineChart(props, configBigLineChart);
           epChart(props, configEpChart);
           familyChart(props, configFamilyChart);
           barChart(props, configBarChart);
         }
-      }, 1000);
+      }, 2000);
     }
   });
 
@@ -53,7 +55,13 @@ const ChartScreen = (props) => {
 
   return (
     <>
-      {loaderSession().getLoader() ? <Spinner/> : (
+      {!props.testCompleted ? 
+        (
+          <div className="container">
+            <Alert text="تست خانواده کامل نیست"/>
+          </div>
+        )
+      : loaderSession().getLoader() ? <Spinner/> : (
         <div>
           <div className="charts-container">
             <div className="table-scroll table-1">
