@@ -33,7 +33,7 @@ const UserConfirm = (props) => {
     if(counter === 0 || counter === undefined) {
       let codeRequest;
       try {
-        codeRequest = await fetch('http://aramesh.org/api/user-confirm', {
+        codeRequest = await fetch('http://localhost:8000/api/user-confirm', {
           method: 'POST',
           body: JSON.stringify({'phone-number': phoneNumber}),
           headers: {
@@ -41,7 +41,7 @@ const UserConfirm = (props) => {
           }
         });
       } catch (error) {
-        codeRequest = await fetch('https://aramesh.org/api/user-confirm', {
+        codeRequest = await fetch('https://localhost:8000/api/user-confirm', {
           method: 'POST',
           body: JSON.stringify({'phone-number': phoneNumber}),
           headers: {
