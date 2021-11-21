@@ -151,9 +151,9 @@ export function lineChart(data, config) {
 
   // create canvas and constructor
   const html = `
-  <div class="canvas-size" id="${config.cnavasSizeId}">
-      <h2>سلامت روان</h2>
-      <canvas class="canvas" id="${config.canvasId}"></canvas>
+  <div class="canvas-size" style="text-align: center" id="${config.cnavasSizeId}">
+      <h2>${config.title}</h2>
+      <canvas class="canvas" style="text-align: center" id="${config.canvasId}"></canvas>
       <span id="${config.titleId}"></span>
     </div>
     <div class="labels" id="${config.labelsId}"></div>
@@ -829,7 +829,7 @@ export function barChart(data, config) {
 
   // create canvas and constructor
   const html = `
-      <h2>سلامت روان</h2>
+      <h2  style="text-align: center" >${config.title}</h2>
       <div class="canvas-size" id="${config.cnavasSizeId}">
         <canvas class="canvas" id="${config.canvasId}"></canvas>
       </div>
@@ -1096,7 +1096,7 @@ export function epChart(data, config) {
 
   // create canvas and constructor
   const html = `
-      <h2>سلامت روان</h2>
+      <h2 style="text-align: center" >${config.title}</h2>
       <div class="point-value" id="${config.pointValueId}"></div>
       <div class="canvas-size" id="${config.cnavasSizeId}">
         <canvas class="canvas" id="${config.canvasId}"></canvas>
@@ -1261,7 +1261,7 @@ export function epChart(data, config) {
         ctx.beginPath();
         girl.arc(this.px, this.py, 15, 0, Math.PI * 2, false);
         ctx.moveTo(this.px, this.py);
-        if (this.hov === this.roleFinder(role)) {
+        if (this.hov === role) {
           ctx.arc(this.px, this.py, 10, 0, Math.PI * 2, false);
           ctx.fillStyle = this.girl;
         } else {
@@ -1271,13 +1271,13 @@ export function epChart(data, config) {
         ctx.fillStyle = this.girl;
         ctx.fill();
         ctx.closePath();
-        this.pers.push({ name: this.roleFinder(role), path: girl });
+        this.pers.push({ name: role, path: girl });
       }
       if (rl === 'مادر') {
         const mother = new Path2D();
         ctx.beginPath();
         mother.arc(this.px, this.py, 15, 0, Math.PI * 2, false);
-        if (this.hov === 'mother') {
+        if (this.hov === role) {
           ctx.lineTo(this.px, this.py - 12);
           ctx.moveTo(this.px, this.py - 12);
           ctx.lineTo(this.px - 10, this.py + 5);
@@ -1295,14 +1295,14 @@ export function epChart(data, config) {
         ctx.fillStyle = this.mother;
         ctx.fill();
         ctx.closePath();
-        this.pers.push({ name: this.roleFinder(role), path: mother });
+        this.pers.push({ name: role, path: mother });
       }
       if (rl === 'پدر') {
         const father = new Path2D();
         ctx.beginPath();
         ctx.moveTo(this.px - 5, this.py - 5);
         father.arc(this.px, this.py, 15, 0, Math.PI * 2, false);
-        if (this.hov === 'father') {
+        if (this.hov === role) {
           ctx.rect(this.px - 7, this.py - 7, 15, 15);
           ctx.fillStyle = this.father;
         } else {
@@ -1312,7 +1312,7 @@ export function epChart(data, config) {
         ctx.fillStyle = this.father;
         ctx.fill();
         ctx.closePath();
-        this.pers.push({ name: this.roleFinder(role), path: father });
+        this.pers.push({ name: role, path: father });
       }
       if (rl === 'پسر') {
         const son = new Path2D();
@@ -1320,7 +1320,7 @@ export function epChart(data, config) {
         son.arc(this.px, this.py, 15, 0, Math.PI * 2, false);
 
         for (let i = 0; i < this.sons.length; i++) {
-          if (this.hov === this.roleFinder(role)) {
+          if (this.hov === role) {
             ctx.moveTo(this.px, this.py - 11);
             ctx.lineTo(this.px - 20 / 2, this.py + 15 / 2 - 7);
             ctx.lineTo(this.px, this.py + 20 - 7);
@@ -1337,7 +1337,7 @@ export function epChart(data, config) {
         ctx.fillStyle = this.son;
         ctx.fill();
         ctx.closePath();
-        this.pers.push({ name: this.roleFinder(role), path: son });
+        this.pers.push({ name: role, path: son });
       }
     }
 
@@ -1419,6 +1419,7 @@ export function epChart(data, config) {
         epAddPoints();
         eChart.pointConnect();
       }
+
       canvas.addEventListener('mousemove', (e) => {
         let mouse = this.mousePos(e);
 
@@ -1429,7 +1430,8 @@ export function epChart(data, config) {
             document.getElementById(`${config.pointValueId}`).innerHTML = '';
 
             document
-              .querySelector(`#${config.labelsId} .s.${item.name}`)
+              .getElementById(`${config.labelsId}`)
+              .querySelector(`[data-before="${item.name}"]`)
               .classList.remove('hov');
 
             inUpdate(false);
@@ -1439,7 +1441,7 @@ export function epChart(data, config) {
         this.pers.forEach((item) => {
           if (ctx.isPointInPath(item.path, mouse.x, mouse.y)) {
             let role = this.valuesData.find((rol) => {
-              return this.roleFinder(rol.role) === item.name;
+              return rol.role === item.name;
             });
 
             let html = `
@@ -1457,7 +1459,8 @@ export function epChart(data, config) {
             }
 
             document
-              .querySelector(`#${config.labelsId} .s.${item.name}`)
+              .getElementById(`${config.labelsId}`)
+              .querySelector(`[data-before="${item.name}"]`)
               .classList.add('hov');
           }
         });
@@ -1492,32 +1495,35 @@ export function epChart(data, config) {
         }
 
         if (e.target.classList.contains('s')) {
-          let targetClass = e.target.classList[1];
+          let targetClass = e.target.getAttribute('data-before');
           let role = thi.valuesData.find((rol) => {
-            return thi.roleFinder(rol.role) === targetClass;
+            return rol.role === targetClass;
           });
           // points hover effect
-          let html = `
-        <span>process: ${role.x}</span>
-        <span>content: ${role.y}</span>
-        `;
-          document.getElementById(`${config.pointValueId}`).innerHTML = html;
-          document.getElementById(`${config.pointValueId}`).style.opacity = '1';
-          inUpdate(thi.roleFinder(role.role));
+          let html = '';
+          if (role) {
+            html = `
+              <span>process: ${role.x}</span>
+              <span>content: ${role.y}</span>
+              `;
+            document.getElementById(`${config.pointValueId}`).innerHTML = html;
+            document.getElementById(`${config.pointValueId}`).style.opacity =
+              '1';
+            inUpdate(role.role);
 
-          if (document.querySelector(`.s`)) {
-            document.querySelectorAll(`.s`).forEach((item) => {
-              item.classList.remove('hov');
-            });
+            if (document.querySelector(`.s`)) {
+              document.querySelectorAll(`.s`).forEach((item) => {
+                item.classList.remove('hov');
+              });
+            }
+
+            document
+              .getElementById(`${config.labelsId}`)
+              .querySelector(`[data-before="${role.role}"]`)
+              .classList.add('hov');
+
+            thi.shadowGiver(role.role);
           }
-
-          document
-            .querySelector(
-              `#${config.labelsId} .s.${thi.roleFinder(role.role)}`
-            )
-            .classList.add('hov');
-
-          thi.shadowGiver(thi.roleFinder(role.role));
         }
       };
 
@@ -1568,7 +1574,11 @@ export function epChart(data, config) {
       ];
 
       let currRole = colors.filter((item) => {
-        return item.rol === role;
+        if (item.rol === role) {
+          return item;
+        } else if (item.rol === this.roleFinder(role)) {
+          return item;
+        }
       });
 
       let all = document
@@ -1579,11 +1589,19 @@ export function epChart(data, config) {
         item.style.boxShadow = 'none';
       });
 
-      document
+      const el = document
         .getElementById(`${config.labelsId}`)
-        .querySelector(
-          `.${role}`
-        ).style.boxShadow = `inset -21px 21px 24px ${currRole[0].color}, inset 21px -21px 24px #a8a3d83d`;
+        .querySelector(`[data-before="${role}"]`);
+
+      if (el) {
+        el.parentElement.style.boxShadow = `inset -21px 21px 24px ${currRole[0].color}, inset 21px -21px 24px #a8a3d83d`;
+      } else {
+        document
+          .getElementById(`${config.labelsId}`)
+          .querySelector(
+            `.${role}`
+          ).style.boxShadow = `inset -21px 21px 24px ${currRole[0].color}, inset 21px -21px 24px #a8a3d83d`;
+      }
     }
   }
 
@@ -1739,7 +1757,7 @@ export function familyChart(data, config) {
 
   // create canvas and constructor
   const html = `
-      <h2>سلامت روان</h2>
+      <h2 style="text-align: center" >${config.title}</h2>
       <div class="point-value" id="${config.pointValueId}"></div>
       <div class="canvas-size" id="${config.cnavasSizeId}">
         <canvas class="canvas" id="${config.canvasId}"></canvas>

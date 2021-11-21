@@ -40,25 +40,12 @@ class AdminController extends Controller
                 array_push($children, $member);
             }
         }
-
-        foreach($members as $member) {
-            if(sizeof($member->results) === 0) {
-                return Inertia::render('ChartScreen', [
-                    'family' => User::find($id), 
-                    'parents' => $parents,
-                    'children' => $children,
-                    'integration' => User::find($id)->integrations()->get(),
-                    'testCompleted' => false
-                ]);
-            }
-        }
         
         return Inertia::render('ChartScreen', [
             'family' => User::find($id), 
             'parents' => $parents,
             'children' => $children,
-            'integration' => User::find($id)->integrations()->get(),
-            'testCompleted' => true
+            'integration' => User::find($id)->integrations()->get()
         ]);
     }
 }
