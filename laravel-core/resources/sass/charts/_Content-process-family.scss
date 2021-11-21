@@ -37,7 +37,7 @@
       font-size: 0.9rem;
 
       img {
-        height: 2vh;
+        height: 1rem;
         margin-left: 0.5vw;
       }
     }
@@ -92,7 +92,7 @@
     }
 
     .point-value {
-      width: 100%;
+      width: 100% !important;
       padding: 2vh 0;
 
       span {

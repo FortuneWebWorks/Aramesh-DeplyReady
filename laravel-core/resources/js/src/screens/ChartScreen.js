@@ -17,12 +17,11 @@ import {
 } from '../charts/app';
 
 const ChartScreen = (props) => {
-  
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
 
-  const light  = themeSession().getSession();
-  
+  const light = themeSession().getSession();
+
   useEffect(() => {
     if (!light && loaderSession().getLoader()) {
       configSmallerLineChart.color = '#fff';
@@ -34,11 +33,11 @@ const ChartScreen = (props) => {
       configBarChart.color = '#4f4f4f';
     }
 
-    if(loaderSession().getLoader()) {
+    if (loaderSession().getLoader()) {
       setTimeout(() => {
         loaderSession().setLoader(false);
-        forceUpdate()        
-        if(!document.querySelector('.chart.line-chart')) {
+        forceUpdate();
+        if (!document.querySelector('.chart.line-chart')) {
           lineChart(props, configSmallerLineChart);
           lineChart(props, configBigLineChart);
           epChart(props, configEpChart);
@@ -49,20 +48,23 @@ const ChartScreen = (props) => {
     }
   });
 
-
-
   return (
     <>
-      {loaderSession().getLoader() ? <Spinner/> : (
+      {loaderSession().getLoader() ? (
+        <Spinner />
+      ) : (
         <div>
           <div className="charts-container">
             <div className="table-scroll table-1">
-              <Table parents={props.parents} children={props.children}/>
+              <h2 className="tabel-title">
+                جدول نمره اعضای خانواده در ابعاد پرسشنامه ها
+              </h2>
+              <Table parents={props.parents} children={props.children} />
             </div>
             <div className="table-scroll table-2">
-              <IntegrationTable {...props}/>
+              <h2 className="tabel-title">جدول مقادیر دونفره</h2>
+              <IntegrationTable {...props} />
             </div>
-
           </div>
         </div>
       )}

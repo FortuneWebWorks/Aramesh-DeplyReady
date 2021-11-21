@@ -56,6 +56,7 @@ export const configBarChart = {
   sizeY: 5,
   sizeX: 5,
   color: '#222',
+  title: 'نمودار یکپارچگی بین فردی اعضای خانواده',
 };
 
 // async function grabData() {
@@ -183,9 +184,21 @@ export function lineChart(data, config) {
     const labes = document.getElementById(`${config.labelsId}`);
     let element = undefined;
     if (labes.querySelector(`.${config.hoverClass}`)) {
-      let labels = data['members-cp-data'];
+      let labels1 = [];
+      let labels2 = [];
+      let merg = [];
+      labels1 = Array(data['children']);
+      labels2 = Array(data['parents']);
       element = labes.querySelector(`.${config.hoverClass}`).classList;
-      let res = labels.filter((item) => item.role === element[0]);
+
+      labels2[0].forEach((item) => {
+        merg.push(item);
+      });
+      labels1[0].forEach((item) => {
+        merg.push(item);
+      });
+
+      let res = merg.filter((item) => item.role === element[0]);
       if (res.length > 0) {
         update();
         addPoints(res[0], res[0].role);
@@ -820,11 +833,11 @@ export function barChart(data, config) {
   let resWidth;
   let resHeight;
   if (window.innerWidth < 660) {
-    resWidth = 600;
+    resWidth = 800; // 600
     resHeight = 1.3;
   } else {
     resWidth = 1000;
-    resHeight = 2.7; //2.2
+    resHeight = 2.7; // 2.2
   }
 
   // create canvas and constructor
@@ -1239,6 +1252,49 @@ export function epChart(data, config) {
       ctx.lineWidth = '2';
       ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
       ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(this.ax * 2 + this.fontSize / 3, 0);
+      ctx.font = `16px Arial`;
+      ctx.fillStyle = '#333';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      // text: right-bottom
+      ctx.fillText(
+        `دارای مشکل`,
+        this.ax * 3 + this.fontSize / 3,
+        this.ay * 3.15 - this.fontSize / 3 - 10
+      );
+      ctx.fillText(
+        `محتوایی`,
+        this.ax * 3 + this.fontSize / 3,
+        this.ay * 3.15 - this.fontSize / 3 + 10
+      );
+      // text: left-bottom
+      ctx.fillText(
+        `ناکارآمد`,
+        this.ax * 1 + this.fontSize / 3,
+        this.ay * 3.15 - this.fontSize / 3
+      );
+      // text: left-top
+      ctx.fillText(
+        `دارای مشکل`,
+        this.ax * 1 + this.fontSize / 3,
+        this.ay * 1.15 - this.fontSize / 3 - 10
+      );
+      ctx.fillText(
+        `فرایندی`,
+        this.ax * 1 + this.fontSize / 3,
+        this.ay * 1.15 - this.fontSize / 3 + 10
+      );
+      // text: right-top
+      ctx.fillText(
+        `کارآمد`,
+        this.ax * 3 + this.fontSize / 3,
+        this.ay * 1.15 - this.fontSize / 3
+      );
+      ctx.stroke();
+      ctx.closePath();
     }
 
     addPoint(x, y, role) {
@@ -1853,6 +1909,49 @@ export function familyChart(data, config) {
       ctx.lineWidth = '2';
       ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
       ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(this.ax * 2 + this.fontSize / 3, 0);
+      ctx.font = `16px Arial`;
+      ctx.fillStyle = '#333';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      // text: right-bottom
+      ctx.fillText(
+        `دارای مشکل`,
+        this.ax * 3 + this.fontSize / 3,
+        this.ay * 3.15 - this.fontSize / 3 - 10
+      );
+      ctx.fillText(
+        `محتوایی`,
+        this.ax * 3 + this.fontSize / 3,
+        this.ay * 3.15 - this.fontSize / 3 + 10
+      );
+      // text: left-bottom
+      ctx.fillText(
+        `ناکارآمد`,
+        this.ax * 1 + this.fontSize / 3,
+        this.ay * 3.15 - this.fontSize / 3
+      );
+      // text: left-top
+      ctx.fillText(
+        `دارای مشکل`,
+        this.ax * 1 + this.fontSize / 3,
+        this.ay * 1.15 - this.fontSize / 3 - 10
+      );
+      ctx.fillText(
+        `فرایندی`,
+        this.ax * 1 + this.fontSize / 3,
+        this.ay * 1.15 - this.fontSize / 3 + 10
+      );
+      // text: right-top
+      ctx.fillText(
+        `کارآمد`,
+        this.ax * 3 + this.fontSize / 3,
+        this.ay * 1.15 - this.fontSize / 3
+      );
+      ctx.stroke();
+      ctx.closePath();
     }
 
     addPoint(x, y, role) {

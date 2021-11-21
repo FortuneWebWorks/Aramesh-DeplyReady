@@ -39,7 +39,7 @@
   }
 
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.1rem !important;
     color: var(--text-color);
   }
 
@@ -80,6 +80,7 @@
   }
 
   .table-scroll {
+    position: relative;
     margin: 3vh 0;
     width: auto;
     padding: 5vh;
@@ -89,10 +90,15 @@
     box-shadow: $neumorphism;
     background-color: var(--card-color);
     font-size: 0.7rem;
+    text-align: center;
 
     h2 {
       margin-bottom: 1rem;
     }
+  }
+  .tabel-title {
+    position: absolute;
+    top: 20px;
   }
 
   @media (max-width: 550px) {
@@ -111,9 +117,22 @@
       font-size: 0.4rem;
     }
 
-    // .charts-table {
-    //   width: 80%;
-    // }
+    h2 {
+      font-size: 1rem;
+      color: var(--text-color);
+      // margin-bottom: 1rem;
+    }
+
+    .table-scroll {
+      max-width: 80% !important;
+      width: auto;
+      height: 31rem !important;
+      padding: 5vh;
+      border-radius: 10px;
+      @include cflex-center;
+      box-shadow: $neumorphism;
+      font-size: 0.685rem;
+    }
   }
 
   @include mq(761px) {
@@ -157,7 +176,7 @@
       grid-area: f;
       @include flex-center;
       justify-content: space-between;
-      width: 84vw;
+      width: 80vw;
 
       @media (max-width: 1024px) {
         flex-direction: column;
@@ -170,22 +189,22 @@
         .charts-table {
           width: 80%;
         }
+
+        h2 {
+          font-size: 1rem;
+          color: var(--text-color);
+        }
       }
     }
     .table-scroll {
-      max-width: 100%;
+      max-width: 80% !important;
       width: auto;
-      height: 27rem;
+      height: 31rem !important;
       padding: 5vh;
       border-radius: 10px;
       @include cflex-center;
       box-shadow: $neumorphism;
       font-size: 0.685rem;
     }
-  }
-
-  .point-value {
-    width: 100% !important;
-    margin-left: 5px !important;
   }
 }
