@@ -150,7 +150,7 @@
       'f g' !important;
 
     .chart {
-      width: 40vw;
+      // width: 40vw;
       min-height: 32rem;
       // width: 92% !important;
       padding: 0 2vw !important;
@@ -193,6 +193,18 @@
     }
     .table-2 {
       grid-area: g;
+    }
+
+    @media (min-width: 1000px) {
+      justify-items: end !important;
+
+      .bar-chart-container {
+        justify-self: center;
+      }
+
+      .table-scroll {
+        justify-self: center;
+      }
     }
   }
 }
