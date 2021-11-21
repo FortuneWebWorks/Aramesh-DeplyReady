@@ -14,6 +14,7 @@
   justify-content: space-between;
   background-color: var(--back-bgcolor);
   padding: 5vh 5vw;
+  flex-direction: column-reverse;
 
   .chart {
     width: 78vw;
@@ -146,12 +147,14 @@
       'a b'
       'c d'
       'e e'
-      'f f';
+      'f g' !important;
 
     .chart {
       width: 40vw;
+      min-height: 32rem;
       // width: 92% !important;
       padding: 0 2vw !important;
+      page-break-after: always;
     }
 
     .line-chart {
@@ -163,6 +166,7 @@
     .bar-chart-container {
       grid-area: e;
       width: 84vw;
+      page-break-after: always;
     }
     .Content-process-family-container {
       grid-area: c;
@@ -172,30 +176,7 @@
       grid-area: d;
       padding: 0 4.5vw !important;
     }
-    .tables {
-      grid-area: f;
-      @include flex-center;
-      justify-content: space-between;
-      width: 80vw;
 
-      @media (max-width: 1024px) {
-        flex-direction: column;
-
-        .table-scroll {
-          width: 85vw;
-          height: 33rem;
-        }
-
-        .charts-table {
-          width: 80%;
-        }
-
-        h2 {
-          font-size: 1rem;
-          color: var(--text-color);
-        }
-      }
-    }
     .table-scroll {
       max-width: 80% !important;
       width: auto;
@@ -205,6 +186,36 @@
       @include cflex-center;
       box-shadow: $neumorphism;
       font-size: 0.685rem;
+    }
+
+    .table-1 {
+      grid-area: f;
+    }
+    .table-2 {
+      grid-area: g;
+    }
+  }
+}
+
+@media only print {
+  body {
+    .charts-container {
+      grid-template-areas:
+        'a b'
+        'c d'
+        'e e'
+        'f f'
+        'g g' !important;
+
+      .table-2 {
+        height: 22rem !important;
+      }
+
+      .bar-chart-container {
+        h2 {
+          transform: translateY(1px) !important;
+        }
+      }
     }
   }
 }
