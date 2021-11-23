@@ -277,7 +277,7 @@ $questionsCollection = array(
         ),
         array(
             "id" => 'processQuestion31',
-      "question" => 'در تصمیم گیری ها میان اعضای خانواده ما نظر زیادی وجود دارد. '
+      "question" => 'در تصمیم گیری ها میان اعضای خانواده ما اختلاف نظر زیادی وجود دارد. '
         ),
         array(
             "id" => 'processQuestion32',
@@ -289,7 +289,7 @@ $questionsCollection = array(
         ),
         array(
             "id" => 'processQuestion34',
-      "question" => 'اعضای خانواده ما در حل مشکلات اغلب غلط را انتخاب میکنند. '
+      "question" => 'اعضای خانواده ما در حل مشکلات اغلب راه غلط را انتخاب میکنند. '
         ),
         array(
             "id" => 'processQuestion35',
