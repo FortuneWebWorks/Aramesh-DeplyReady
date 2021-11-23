@@ -41,6 +41,7 @@
 
   h2 {
     font-size: 1.1rem !important;
+    line-height: 1.4rem;
     color: var(--text-color);
   }
 
@@ -100,11 +101,13 @@
   .tabel-title {
     position: absolute;
     top: 20px;
+    line-height: 1.5rem;
   }
 
   @media (max-width: 550px) {
     .table-scroll {
       width: 75vw;
+      height: 34rem;
       font-size: 0.5rem;
     }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { Head } from '@inertiajs/inertia-react';
-import Alert, {alertsUpdate} from '../../components/Alert';
+import Alert, { alertsUpdate } from '../../components/Alert';
 import Header from '../../components/Header';
 import PhoneNumber from '../../components/PhoneNumber';
 import Card from '../../components/Card';
@@ -9,20 +9,25 @@ import alertSession from '../../sessions/alertSession';
 import Button from '../../components/Button';
 
 const LoginScreen = (props) => {
-  const [phoneNumber, setPhoneNumber] = useState(props.phoneNumber ? props.phoneNumber : '');
-  const alerts = alertSession().getSession()
+  const [phoneNumber, setPhoneNumber] = useState(
+    props.phoneNumber ? props.phoneNumber : ''
+  );
+  const alerts = alertSession().getSession();
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
 
   useEffect(() => {
-    if(sessionStorage.getItem('register-form')) sessionStorage.removeItem('register-form');
-  })
+    if (sessionStorage.getItem('register-form'))
+      sessionStorage.removeItem('register-form');
+  });
 
   const onChangeHandler = (e) => {
-    if(e.target.value.length >= 0 && e.target.value.length <= 10) {
+    if (e.target.value.length >= 0 && e.target.value.length <= 10) {
       setPhoneNumber(e.target.value);
     } else {
-      alertSession().addAlert("شماره تلفن وارد شده نمی تواند از 10 رقم بیشتر باشد");
+      alertSession().addAlert(
+        'شماره تلفن وارد شده نمی تواند از 10 رقم بیشتر باشد'
+      );
       alertsUpdate(forceUpdate);
       e.target.value = phoneNumber;
     }
@@ -31,13 +36,13 @@ const LoginScreen = (props) => {
   const validator = () => {
     if (!phoneNumber) {
       alertSession().addAlert('لطفا شماره تماس خود را وارد کنید');
-      forceUpdate()
-      setTimeout(() => forceUpdate(), 5100)
+      forceUpdate();
+      setTimeout(() => forceUpdate(), 5100);
       return false;
     } else if (phoneNumber.length !== 10) {
-        alertSession().addAlert('شماره تلفن وارد شده معتبر نمی باشد');
-        alertsUpdate(forceUpdate);
-        return false;
+      alertSession().addAlert('شماره تلفن وارد شده معتبر نمی باشد');
+      alertsUpdate(forceUpdate);
+      return false;
     } else {
       return true;
     }
@@ -46,41 +51,58 @@ const LoginScreen = (props) => {
   const redirect = async () => {
     let userExist;
     try {
-      userExist = await fetch(`http://aramesh.org/api/user-exists/${phoneNumber}`);
+      userExist = await fetch(
+        `http://localhost:8000/api/user-exists/${phoneNumber}`
+      );
     } catch (error) {
-      userExist = await fetch(`https://aramesh.org/api/user-exists/${phoneNumber}`);
+      userExist = await fetch(
+        `https://localhost:8000/api/user-exists/${phoneNumber}`
+      );
     }
 
     const userLoginResponse = await userExist.json();
-    if(!userLoginResponse) {
-        alertSession().addAlert('حساب کاربری با این شماره تلفن موجود نیست');
-        alertsUpdate(forceUpdate);
+    if (!userLoginResponse) {
+      alertSession().addAlert('حساب کاربری با این شماره تلفن موجود نیست');
+      alertsUpdate(forceUpdate);
     } else {
       Inertia.visit(`/user-confirm/${phoneNumber}`, {
-          method: 'get',
-          data: {
-              nextRoute: '/dashboard',
-          }
-      })
-      }
+        method: 'get',
+        data: {
+          nextRoute: '/dashboard',
+        },
+      });
+    }
   };
 
   return (
     <>
       <Head>
         <title>وبسایت آرامش | ورود</title>
-        <meta name="description" content="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                  استفاده از طراحان"/>
-        <meta name="keywords" content="آرامش, aramesh, aramesh.org, aramesh.ir, aramesh_login, ورود, آرامش_ورود"/>
+        <meta
+          name="description"
+          content="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                  استفاده از طراحان"
+        />
+        <meta
+          name="keywords"
+          content="آرامش, aramesh, aramesh.org, aramesh.ir, aramesh_login, ورود, آرامش_ورود"
+        />
       </Head>
-      <div
-        className="bg-height-100 bg-dark login-page-container"
-      >
+      <div className="bg-height-100 bg-dark login-page-container">
         <Card>
           <Header title="ورود" backTo="/" />
           <div className="container login-page" style={{ marginBottom: '5vw' }}>
-
-            {props.message && <p style={{color: 'var(--success)', marginBottom: '10%', lineHeight: '140%'}}>{props.message}</p>}
+            {props.message && (
+              <p
+                style={{
+                  color: 'var(--success)',
+                  marginBottom: '10%',
+                  lineHeight: '140%',
+                }}
+              >
+                {props.message}
+              </p>
+            )}
             <PhoneNumber
               onChange={(e) => onChangeHandler(e)}
               value={phoneNumber}
@@ -94,8 +116,9 @@ const LoginScreen = (props) => {
             />
           </div>
           {/* Alert */}
-          {(alerts && alerts.length > 0) || (props.errors && props.errors[0]) ? (
-            <Alert text={alerts[alerts.length - 1]}/>
+          {(alerts && alerts.length > 0) ||
+          (props.errors && props.errors[0]) ? (
+            <Alert text={alerts[alerts.length - 1]} />
           ) : (
             ''
           )}

@@ -59,86 +59,6 @@ export const configBarChart = {
   title: 'نمودار یکپارچگی بین فردی اعضای خانواده',
 };
 
-// async function grabData() {
-//   const response = await fetch('./data/data.json', {
-//     headers: {
-//       'Content-Type': 'application/json',
-
-//     },
-//   });
-
-//   const data = await response.json();
-
-//   // create config
-//   const configSmallerLineChart = {
-//     canvasId: 'line-chart',
-//     cnavasSizeId: 'line-chart-size',
-//     labelsId: 'line-chart-labels',
-//     titleId: 'line-chart-title',
-//     hoverClass: 'line-chart-hover',
-//     sizeY: 5,
-//     sizeX: 5,
-//   };
-//   const configBigLineChart = {
-//     canvasId: 'biger-line-chart',
-//     cnavasSizeId: 'biger-line-chart-size',
-//     labelsId: 'biger-line-chart-labels',
-//     titleId: 'biger-line-chart-title',
-//     hoverClass: 'biger-line-chart-hover',
-//     sizeY: 5,
-//     sizeX: 7,
-//   };
-//   const configEpChart = {
-//     canvasId: 'ep-chart',
-//     cnavasSizeId: 'ep-chart-size',
-//     labelsId: 'ep-chart-labels',
-//     titleId: 'ep-chart-title',
-//     hoverClass: 'ep-chart-hover',
-//     pointValueId: 'ep-chart-point-value',
-//   };
-//   const configFamilyChart = {
-//     canvasId: 'family-chart',
-//     cnavasSizeId: 'family-chart-size',
-//     labelsId: 'family-chart-labels',
-//     titleId: 'family-chart-title',
-//     hoverClass: 'family-chart-hover',
-//     pointValueId: 'family-chart-point-value',
-//   };
-//   const configFamilyChart2 = {
-//     canvasId: 'ffamily-chart',
-//     cnavasSizeId: 'ffamily-chart-size',
-//     labelsId: 'ffamily-chart-labels',
-//     titleId: 'ffamily-chart-title',
-//     hoverClass: 'ffamily-chart-hover',
-//     pointValueId: 'ffamily-chart-point-value',
-//   };
-//   const configBarChart = {
-//     canvasId: 'bar-chart',
-//     cnavasSizeId: 'bar-chart-size',
-//     labelsId: 'bar-chart-labels',
-//     titleId: 'bar-chart-title',
-//     hoverClass: 'bar-chart-hover',
-//     sizeY: 5,
-//     sizeX: 5,
-//   };
-//   const configBarChart2 = {
-//     canvasId: 'hbar-chart',
-//     cnavasSizeId: 'hbar-chart-size',
-//     labelsId: 'hbar-chart-labels',
-//     titleId: 'hbar-chart-title',
-//     hoverClass: 'hbar-chart-hover',
-//   };
-//   // create charts
-//   // lineChart(data, configSmallerLineChart);
-//   lineChart(data, configBigLineChart);
-//   epChart(data, configEpChart);
-//   familyChart(data, configFamilyChart);
-//   barChart(data, configBarChart);
-//   // barChart(data, configBarChart2);
-// }
-// grabData();
-// line chart driver
-
 export function lineChart(data, config) {
   let resWidth;
   let resHeight;
@@ -314,7 +234,8 @@ export function lineChart(data, config) {
       // x axis
       ctx.beginPath();
       ctx.moveTo(0, this.ch);
-      ctx.font = `${this.fontSize}px Arial`;
+      ctx.font = `${this.fontSize}px IRANSans`;
+      console.log(this.fontSize);
       ctx.fillStyle = config.color;
       for (let i = 1; i < this.sizeY; i++) {
         ctx.fillText(`${this.sizeY - i}`, 10, this.ay * (i + 0.5));
@@ -334,7 +255,7 @@ export function lineChart(data, config) {
       }
 
       ctx.beginPath();
-      ctx.font = `${this.fontSize}px Arial`;
+      ctx.font = `${this.fontSize}px IRANSans`;
       ctx.textAlign = 'center';
       ctx.fillStyle = this.color;
       if (this.sizeX <= 5) {
@@ -666,26 +587,53 @@ export function lineChart(data, config) {
         .getElementById(`${config.labelsId}`)
         .addEventListener('click', (e) => {
           merg.forEach((label) => {
-            if (e.target.getAttribute('data-before') === label.role) {
-              addLabel();
-              let peoples = merg;
-              let targetRole = e.target.getAttribute('data-before');
+            if (e.target.tagName !== 'DIV') {
+              if (e.target.getAttribute('data-before') === label.role) {
+                addLabel();
+                let peoples = merg;
+                let targetRole = e.target.getAttribute('data-before');
 
-              let people = peoples.find((item) => {
-                return item.role === targetRole;
-              });
+                let people = peoples.find((item) => {
+                  return item.role === targetRole;
+                });
 
-              update();
-              addPoints(people, people.role);
-              outChart.pointConnect();
+                update();
+                addPoints(people, people.role);
+                outChart.pointConnect();
 
-              // document
-              //   .getElementById(`${config.labelsId}`)
-              //   .querySelector(`.${e.target.classList[0]}`)
-              //   .classList.add(`${config.hoverClass}`);
-              e.target.classList.add(config.hoverClass);
+                // document
+                //   .getElementById(`${config.labelsId}`)
+                //   .querySelector(`.${e.target.classList[0]}`)
+                //   .classList.add(`${config.hoverClass}`);
+                e.target.classList.add(config.hoverClass);
 
-              this.shadowGiver(label.role);
+                this.shadowGiver(label.role);
+              } else if (
+                e.target.classList.contains(this.roleFinder(label.role))
+              ) {
+                addLabel();
+                let peoples = merg;
+                let targetRole =
+                  e.target.previousElementSibling.getAttribute('data-before');
+
+                let people = peoples.find((item) => {
+                  return item.role === targetRole;
+                });
+
+                update();
+                addPoints(people, people.role);
+                outChart.pointConnect();
+
+                // document
+                //   .getElementById(`${config.labelsId}`)
+                //   .querySelector(`.${e.target.classList[0]}`)
+                //   .classList.add(`${config.hoverClass}`);
+                e.target.previousElementSibling.classList.add(
+                  config.hoverClass
+                );
+
+                this.shadowGiver(label.role);
+              }
             }
           });
 
@@ -830,10 +778,17 @@ export function lineChart(data, config) {
 }
 // bar chart driver
 export function barChart(data, config) {
+  console.log(data);
   let resWidth;
   let resHeight;
-  if (window.innerWidth < 660) {
-    resWidth = 800; // 600
+
+  if (window.innerWidth < 550) {
+    console.log('hell');
+    resWidth = 300;
+    resHeight = 1.3;
+  } else if (window.innerWidth < 660) {
+    console.log('hole');
+    resWidth = 600; // 600
     resHeight = 1.3;
   } else {
     resWidth = 1000;
@@ -928,7 +883,7 @@ export function barChart(data, config) {
       // x axis
       ctx.beginPath();
       ctx.moveTo(0, this.ch);
-      ctx.font = `${this.fontSize}px Arial`;
+      ctx.font = `${this.fontSize}px IRANSans`;
       ctx.fillStyle = this.color;
 
       ctx.fillText('5', 10, this.ay * 1.5);
@@ -969,7 +924,7 @@ export function barChart(data, config) {
       }
       ctx.stroke();
 
-      ctx.font = `${this.fontSize}px Arial`;
+      ctx.font = `${this.fontSize}px IRANSans`;
       ctx.textAlign = 'center';
       ctx.fillStyle = this.color;
       ctx.beginPath();
@@ -1236,9 +1191,10 @@ export function epChart(data, config) {
     }
 
     drawChart() {
+      ctx.font = `16px IRANSans`;
       // middle line X axis
       ctx.beginPath();
-      ctx.globalCompositeOperation = 'xor';
+      ctx.globalCompositeOperation = 'source-over';
       ctx.moveTo(0, this.ay * 2.2 - this.fontSize / 3);
       ctx.lineTo(this.cw, this.ay * 2.2 - this.fontSize / 3);
       ctx.lineWidth = '2';
@@ -1246,7 +1202,7 @@ export function epChart(data, config) {
       ctx.stroke();
       // middle line Y axis
       ctx.beginPath();
-      ctx.globalCompositeOperation = 'xor';
+      ctx.globalCompositeOperation = 'source-over';
       ctx.moveTo(this.ax * 2 + this.fontSize / 3, 0);
       ctx.lineTo(this.ax * 2 + this.fontSize / 3, this.ch);
       ctx.lineWidth = '2';
@@ -1255,7 +1211,7 @@ export function epChart(data, config) {
 
       ctx.beginPath();
       ctx.moveTo(this.ax * 2 + this.fontSize / 3, 0);
-      ctx.font = `16px Arial`;
+      ctx.font = `16px IRANSans`;
       ctx.fillStyle = '#333';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -1311,6 +1267,8 @@ export function epChart(data, config) {
 
       let rl = role.split('-');
       rl = rl[0].trim();
+
+      ctx.font = `16px IRANSans`;
 
       if (rl === 'دختر') {
         const girl = new Path2D();
@@ -1411,6 +1369,7 @@ export function epChart(data, config) {
     }
 
     pointConnect() {
+      ctx.font = `16px IRANSans`;
       let grahamNeed = [];
 
       this.positions.map((item) => {
@@ -1421,7 +1380,7 @@ export function epChart(data, config) {
       graham.setPoints(grahamNeed);
       grahamNeed = graham.getHull();
 
-      ctx.globalCompositeOperation = 'destination-over';
+      ctx.globalCompositeOperation = 'overlay';
       ctx.beginPath();
       ctx.moveTo(grahamNeed[0][0], grahamNeed[0][1]);
       grahamNeed.forEach((item) => {
@@ -1581,6 +1540,39 @@ export function epChart(data, config) {
             thi.shadowGiver(role.role);
           }
         }
+
+        if (e.target.tagName === 'IMG') {
+          let targetClass =
+            e.target.previousElementSibling.getAttribute('data-before');
+          let role = thi.valuesData.find((rol) => {
+            return rol.role === targetClass;
+          });
+          // points hover effect
+          let html = '';
+          if (role) {
+            html = `
+              <span>process: ${role.x}</span>
+              <span>content: ${role.y}</span>
+              `;
+            document.getElementById(`${config.pointValueId}`).innerHTML = html;
+            document.getElementById(`${config.pointValueId}`).style.opacity =
+              '1';
+            inUpdate(role.role);
+
+            if (document.querySelector(`.s`)) {
+              document.querySelectorAll(`.s`).forEach((item) => {
+                item.classList.remove('hov');
+              });
+            }
+
+            document
+              .getElementById(`${config.labelsId}`)
+              .querySelector(`[data-before="${role.role}"]`)
+              .classList.add('hov');
+
+            thi.shadowGiver(role.role);
+          }
+        }
       };
 
       window.addEventListener('click', (e) => {
@@ -1652,11 +1644,23 @@ export function epChart(data, config) {
       if (el) {
         el.parentElement.style.boxShadow = `inset -21px 21px 24px ${currRole[0].color}, inset 21px -21px 24px #a8a3d83d`;
       } else {
-        document
-          .getElementById(`${config.labelsId}`)
-          .querySelector(
-            `.${role}`
-          ).style.boxShadow = `inset -21px 21px 24px ${currRole[0].color}, inset 21px -21px 24px #a8a3d83d`;
+        if (
+          document
+            .getElementById(`${config.labelsId}`)
+            .querySelector(`.${role}`)
+        ) {
+          document
+            .getElementById(`${config.labelsId}`)
+            .querySelector(
+              `.${role}`
+            ).style.boxShadow = `inset -21px 21px 24px ${currRole[0].color}, inset 21px -21px 24px #a8a3d83d`;
+        } else {
+          document
+            .getElementById(`${config.labelsId}`)
+            .querySelector(
+              `.mother`
+            ).style.boxShadow = `inset -21px 21px 24px ${currRole[0].color}, inset 21px -21px 24px #a8a3d83d`;
+        }
       }
     }
   }
@@ -1797,7 +1801,9 @@ export function epChart(data, config) {
     chart.displayLabels();
     chart.shadowGiver('father');
   };
-  epUpdate(false);
+  setTimeout(() => {
+    epUpdate(false);
+  }, 200);
 }
 // family chart
 export function familyChart(data, config) {
@@ -1912,7 +1918,7 @@ export function familyChart(data, config) {
 
       ctx.beginPath();
       ctx.moveTo(this.ax * 2 + this.fontSize / 3, 0);
-      ctx.font = `16px Arial`;
+      ctx.font = `16px IRANSans`;
       ctx.fillStyle = '#333';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -2235,5 +2241,7 @@ export function familyChart(data, config) {
     eChart.pointConnect();
     eChart.displayLabels();
   };
-  epUpdate(false);
+  setTimeout(() => {
+    epUpdate(false);
+  }, 200);
 }

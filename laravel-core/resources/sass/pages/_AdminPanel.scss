@@ -41,6 +41,8 @@
 
   .admin-files-container .admin-files-title {
     color: var(--admin-text-color);
+    font-size: 1rem;
+    line-height: 1.4rem;
   }
 
   .admin-panel-card {
@@ -90,7 +92,7 @@
     display: flex;
     width: 50%;
     justify-content: space-evenly;
-    
+
     p {
       color: var(--admin-clinicNumber-color);
     }
@@ -208,7 +210,10 @@
     align-items: center;
 
     & > p {
-      color: var(--admin-text-color)
+      color: var(--admin-text-color);
     }
+  }
+
+  @include mq(500px) {
   }
 }

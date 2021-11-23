@@ -14,4 +14,12 @@
   span.son::after {
     content: attr(data-before);
   }
+
+  span {
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
