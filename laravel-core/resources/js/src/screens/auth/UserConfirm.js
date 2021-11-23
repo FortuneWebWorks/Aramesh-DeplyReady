@@ -20,6 +20,7 @@ const UserConfirm = (props) => {
   const refs = useRef([]);
 
   useEffect(() => {
+    console.log(props);
     if (counter === 0) clearInterval(refs.current.hello || '');
     if(props.errors && props.errors[0]) {
       setTimeout(() => {
