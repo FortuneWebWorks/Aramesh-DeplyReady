@@ -105,14 +105,28 @@ class ResultController extends Controller
             }
 
             // Calculating deltap and deltac
-            $data = array(
-                'parents' => array('F', 'M'),
-            );
+            $data = array();
+
+            if(sizeof($parents) >= 2) {
+                $data = array(
+                    'parents' => array('F', 'M'),
+                );
+            } else {
+                if(str_contains($parents[0]->role, 'پدر')) {
+                    $data = array(
+                        'parents' => array('F'),
+                    );
+                } else if(str_contains($parents[0]->role, 'مادر')) {
+                    $data = array(
+                        'parents' => array('M'),
+                    );
+                }
+            }
+            
 
             if (sizeof($parents) >= 2) {
                 for ($i = 0; $i < sizeof($parents); $i++) {
                     for ($j = $i + 1; $j < sizeof($parents); $j++) {
-                        //   $tableData->paretParent.push(`${data.parents[$i]}/${data.parents[$j]}`);
                         $tableData['paretParent'][$data['parents'][$i].'/'.$data['parents'][$j]]['deltap'] = 
                         $parents[$i]->results()->first()['process'] - $parents[$j]->results()->first()['process'];
                         $tableData['paretParent'][$data['parents'][$i].'/'.$data['parents'][$j]]['deltac'] = 
