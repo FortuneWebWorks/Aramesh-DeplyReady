@@ -18,7 +18,7 @@ class AdminController extends Controller
     protected function files (): \Inertia\Response
     {
         return Inertia::render('admin/AdminPanelFiles', [
-            'users' => User::all('id', 'name')
+            'users' => request()->user()->users()
         ]);
     }
 
