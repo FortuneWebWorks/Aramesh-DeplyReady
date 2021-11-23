@@ -87,14 +87,14 @@ class RegisterController extends Controller
      */
     protected function create()
     {
-        $practitioners = Practitioner::where('name', request()->input('data')['advisor'])->first()->users()->create([
+        $newUser = Practitioner::where('name', request()->input('data')['advisor'])->first()->users()->create([
             'name' => request()->input('data')['name'],
             'phone-number' => request()->input('data')['phoneNumber'],
             'both-parents' => request()->input('data')['bothParents'] === "false" ? false : true
         ]);
 
         foreach(request()->input('data')['familyData'] as $member) {
-            $practitioners->members()->create([
+            $newUser->members()->create([
                 'role' => $member['role'] ,
                 'date-of-birth' => $member['birthDate']
             ]);
