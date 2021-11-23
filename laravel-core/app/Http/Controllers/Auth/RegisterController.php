@@ -139,7 +139,6 @@ class RegisterController extends Controller
                     return Inertia::render('auth/UserConfirm', [
                         'phoneNumber'=> $phoneNumber,
                         'nextRoute' => request()->input('nextRoute'),
-                        'code' => $code
                     ]);
                 }
             } else {
@@ -177,7 +176,6 @@ class RegisterController extends Controller
                     return Inertia::render('auth/UserConfirm', [
                         'phoneNumber'=> $phoneNumber,
                         'nextRoute' => request()->input('nextRoute'),
-                        'code' => $code
                     ]);
                 }
             } else {
