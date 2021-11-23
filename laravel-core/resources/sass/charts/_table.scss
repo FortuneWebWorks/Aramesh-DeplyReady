@@ -2,6 +2,7 @@
 @use '../variables' as *;
 
 .charts-table {
+  width: 50%;
   direction: ltr;
   margin: auto;
   overflow: hidden;
@@ -71,6 +72,8 @@
 
 // table 2
 .table-2 {
+  overflow-x: auto;
+  direction: ltr;
   .charts-table {
     &::-webkit-scrollbar {
       height: 1vw;

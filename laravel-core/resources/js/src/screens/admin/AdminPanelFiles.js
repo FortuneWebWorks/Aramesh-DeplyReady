@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchBar from '../../components/admin/SearchInput';
 import SortdownIcon from '../../svg/sort-down.svg';
 import AdminPanelHeader from '../../components/AdminPanelHeader';
 import themeSession from '../../sessions/themeSession';
+import loaderSession from '../../sessions/loaderSession';
 import FolderIcon from '../../svg_components/FolderIcon';
 import { Link } from '@inertiajs/inertia-react'
 
@@ -31,6 +32,10 @@ const ListItem = ({ familyName, testNum, id }) => {
 const AdminPanelFiles = (props) => {
   
   const [families, setFamilies] = useState(props.users);
+
+  useEffect(() => {
+    if(!loaderSession().getLoader()) loaderSession().setLoader(true);
+  });
 
   const search = (e) => {
     const filteredFamilies = props.users.filter(user => user.name.includes(e.target.value))

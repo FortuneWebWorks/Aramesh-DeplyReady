@@ -28,13 +28,16 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 5%;
+    top: 0 !important;
 
     @include mq(380px) {
-      top: 7.5%;
+      top: 10% !important;
     }
     @include mq(600px) {
-      top: 10%;
+      top: 10% !important;
+    }
+    @include mq(1023px) {
+      top: 10% !important;
     }
   }
 
@@ -65,7 +68,7 @@
       transition: all 0.3s ease-out;
 
       img {
-        height: 2vh;
+        height: 1rem !important;
         margin-left: 0.5vw;
       }
 
