@@ -166,7 +166,7 @@ class ResultController extends Controller
             
             foreach($tableData as $group) {
                 foreach($group as $integrationName => $integrationData) {
-                    $integration = sqrt(pow($integrationData['deltap'], 2) + pow($integrationData['deltac'], 2));
+                    $integration = 5.656 - sqrt(pow($integrationData['deltap'], 2) + pow($integrationData['deltac'], 2));
                     $integrations[$integrationName] = (($integration * 4) / 5) + 1;
                 }
             }
