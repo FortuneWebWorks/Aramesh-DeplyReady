@@ -56,9 +56,9 @@ const RegisterScreen = () => {
   const redirect = async () => {
     let userExist;
     try {
-      userExist = await fetch(`http://localhost:8000/api/user-exists/${phoneNumber}`);
+      userExist = await fetch(`http://aramesh.org/api/user-exists/${phoneNumber}`);
     } catch (error) {
-      userExist = await fetch(`https://localhost:8000/api/user-exists/${phoneNumber}`);
+      userExist = await fetch(`https://aramesh.org/api/user-exists/${phoneNumber}`);
     }
     if(await userExist.json()) {
         alertSession().addAlert('حساب کاربری با این شماره تلفن موجود است');
