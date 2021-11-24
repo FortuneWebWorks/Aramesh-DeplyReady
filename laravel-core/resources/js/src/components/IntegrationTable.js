@@ -18,12 +18,7 @@ const IntegrationTable = (props) => {
             <>
             <tr>
               <td  rowSpan={props.parents.length}>
-                <span
-                  style={{
-                    writingMode: 'vertical-lr',
-                    transform: 'rotate(180deg)',
-                  }}
-                >P/P</span>
+                PARENT<br/>/<br/>PARENT
               </td>
             </tr>
               <tr>
@@ -38,12 +33,7 @@ const IntegrationTable = (props) => {
             <>
               <tr>
                 <td rowSpan={props.children.length * props.parents.length + 1}>
-                  <span
-                    style={{
-                      writingMode: 'vertical-lr',
-                      transform: 'rotate(180deg)',
-                    }}
-                  >P/C</span>
+                  PARENT<br/>/<br/>CHILD
                 </td>
               </tr>
               {props.integration.map((integration, index) => {
@@ -61,12 +51,7 @@ const IntegrationTable = (props) => {
             <>
               <tr>
                 <td rowSpan={(props.children.length * (props.children.length - 1))}>
-                  <span
-                      style={{
-                        writingMode: 'vertical-lr',
-                        transform: 'rotate(180deg)',
-                      }}
-                    >C/C</span>
+                  CHILD<br/>/<br/>CHILD
                 </td>
               </tr>
               {props.integration.map((integration, index) => {
