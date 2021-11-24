@@ -1,55 +1,63 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../css/styles.css';
 
-const emptyCellsRender = (array, field, empty) => {
-  return array.map((obj, index) => {
-    return <td key={`data-fields-${index}`}>{!empty ? obj[field].toFixed(2) : ''}</td>;
-  });
-};
-
-const EmptyRowsTableRender = ({ object, field, rowText, colSpan, empty }) => {
-  return (
-    <tr>
-      <td colSpan={colSpan}>{rowText}</td>
-      {emptyCellsRender(object.integration, field, empty ? empty : '')}
-    </tr>
-  );
-};
-
 const IntegrationTable = (props) => {
-
   return (
     <>
       <table className="charts-table" bordercollapse="collapse">
         <thead>
           <tr>
-            <th rowSpan={2} colSpan={2}>
+            <th colSpan={2}>
               INDICATORS
             </th>
-            {props.parents.length > 1 && <th colSpan={1}>P/P</th>}
-            {props.children.length > 0 && <th colSpan={props.children.length * props.parents.length}>P/C</th>}
-            {props.children.length > 1 && <th colSpan={(props.children.length * (props.children.length - 1)) / 2}>C/C</th>}
-          </tr>
-
-          <tr>
-            {props.integration.map((integration, index) => {
-              return <td key={`parent-parent-${index}`}>{integration.role}</td>;
-            })}
+            <th>INTEGRATION</th>
           </tr>
         </thead>
         <tbody>
-          <EmptyRowsTableRender
-            object={props}
-            field="integration"
-            rowText="PROCESS"
-            colSpan={2}
-          />
-          <EmptyRowsTableRender
-            object={props}
-            field="family-integration"
-            rowText="CONTENT"
-            colSpan={2}
-          />
+          {props.parents.length > 1 && (
+            <>
+            <tr>
+              <td  rowSpan={props.parents.length}>P/P</td>
+            </tr>
+              <tr>
+                {props.integration.map((integration, index) => {
+                  (index <= 0 && <td>{integration.role}</td>)
+                })}
+              </tr>
+            </>
+          )}
+
+          {props.children.length > 0 && (
+            <>
+              <tr>
+                <td rowSpan={props.children.length * props.parents.length + 1}>P/C</td>
+              </tr>
+              {props.integration.map((integration, index) => {
+                let parentNumber = 0;
+                if(props.parents.length > 1)  parentNumber = 1;
+                return (index >= parentNumber && index < props.children.length * props.parents.length + parentNumber && <tr>
+                  <td  key={`parent-children-role-${index}`}>{integration.role}</td>
+                  <td key={`parent-children-data-${index}`}>{integration.integration}</td>
+                </tr>)
+              })}
+            </>
+          )}
+
+          {props.children.length > 1 && (
+            <>
+              <tr>
+                <td rowSpan={(props.children.length * (props.children.length - 1))}>C/C</td>
+              </tr>
+              {props.integration.map((integration, index) => {
+                let parentNumber = 0;
+                if(props.parents.length > 1)  parentNumber = 1;
+                return (index >= props.children.length * props.parents.length + parentNumber && index < props.children.length * props.parents.length + parentNumber + ((props.children.length * (props.children.length - 1)) / 2) && <tr>
+                  <td  key={`parent-children-role-${index}`}>{integration.role}</td>
+                  <td key={`parent-children-data-${index}`}>{integration.integration}</td>
+                </tr>)
+              })}
+            </>
+          )}
         </tbody>
       </table>
     </>

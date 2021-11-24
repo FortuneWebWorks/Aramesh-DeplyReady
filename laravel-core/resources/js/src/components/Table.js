@@ -32,7 +32,6 @@ const RowsTableRender = ({ parents, children, rowText, colSpan, empty, className
 };
 
 const Table = ({parents, children}) => {
-
   return (
     <table className="charts-table" bordercollapse="collapse">
       <thead>
@@ -41,7 +40,7 @@ const Table = ({parents, children}) => {
             INDICATORS
           </th>
           <th colSpan={parents.length}>PARENTS</th>
-          <th colSpan={children.length}>CHILDREN</th>
+          {children.length > 0 && <th colSpan={children.length}>CHILDREN</th>}
         </tr>
         <tr>
           {parents.map((parent, index) => {
