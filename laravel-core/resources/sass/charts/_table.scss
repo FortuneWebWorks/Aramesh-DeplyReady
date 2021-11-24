@@ -61,10 +61,14 @@
 
       border-top: 1px solid var(--table1-color) !important;
     }
+
+    tr:nth-of-type(1) {
+      // display: none !important;
+      border: none !important;
+    }
   }
 
   .b {
-    // background-color: green;
     border-top: 1px solid var(--table1-color) !important;
     border-bottom: 1px solid var(--table1-color) !important;
   }
@@ -86,5 +90,8 @@
 
   .tabel-title {
     width: 20rem;
+  }
+
+  table {
   }
 }
