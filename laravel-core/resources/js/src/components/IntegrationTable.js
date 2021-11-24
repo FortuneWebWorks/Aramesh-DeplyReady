@@ -17,7 +17,14 @@ const IntegrationTable = (props) => {
           {props.parents.length > 1 && (
             <>
             <tr>
-              <td  rowSpan={props.parents.length}>P/P</td>
+              <td  rowSpan={props.parents.length}>
+                <span
+                  style={{
+                    writingMode: 'vertical-lr',
+                    transform: 'rotate(180deg)',
+                  }}
+                >P/P</span>
+              </td>
             </tr>
               <tr>
                 {props.integration.map((integration, index) => {
@@ -30,7 +37,14 @@ const IntegrationTable = (props) => {
           {props.children.length > 0 && (
             <>
               <tr>
-                <td rowSpan={props.children.length * props.parents.length + 1}>P/C</td>
+                <td rowSpan={props.children.length * props.parents.length + 1}>
+                  <span
+                    style={{
+                      writingMode: 'vertical-lr',
+                      transform: 'rotate(180deg)',
+                    }}
+                  >P/C</span>
+                </td>
               </tr>
               {props.integration.map((integration, index) => {
                 let parentNumber = 0;
@@ -46,7 +60,14 @@ const IntegrationTable = (props) => {
           {props.children.length > 1 && (
             <>
               <tr>
-                <td rowSpan={(props.children.length * (props.children.length - 1))}>C/C</td>
+                <td rowSpan={(props.children.length * (props.children.length - 1))}>
+                  <span
+                      style={{
+                        writingMode: 'vertical-lr',
+                        transform: 'rotate(180deg)',
+                      }}
+                    >C/C</span>
+                </td>
               </tr>
               {props.integration.map((integration, index) => {
                 let parentNumber = 0;
