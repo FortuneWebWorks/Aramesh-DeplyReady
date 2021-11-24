@@ -779,6 +779,7 @@ export function lineChart(data, config) {
 export function barChart(data, config) {
   let resWidth;
   let resHeight;
+  let numberOfRows = data['integration'].length;
 
   if (window.innerWidth < 550) {
     resWidth = 300;
@@ -787,7 +788,11 @@ export function barChart(data, config) {
     resWidth = 600; // 600
     resHeight = 1.3;
   } else {
-    resWidth = 1000;
+    if (numberOfRows <= 3) {
+      resWidth = 900;
+    } else if (numberOfRows > 3) {
+      resWidth = 1000;
+    }
     resHeight = 2.7; // 2.2
   }
 
