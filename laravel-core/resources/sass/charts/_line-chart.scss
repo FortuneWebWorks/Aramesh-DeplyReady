@@ -17,10 +17,10 @@
     padding: 0 1vw !important;
 
     @include mq(380px) {
-      margin-top: 3rem !important;
+      margin-top: 4rem !important;
     }
     @include mq(600px) {
-      margin-top: -2rem;
+      margin-top: 0rem !important;
     }
   }
 
@@ -37,7 +37,7 @@
       top: -2% !important;
     }
     @include mq(1023px) {
-      top: 2% !important;
+      top: 5% !important;
     }
   }
 

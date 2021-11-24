@@ -53,7 +53,7 @@ export const configBarChart = {
   labelsId: 'bar-chart-labels',
   titleId: 'bar-chart-title',
   hoverClass: 'bar-chart-hover',
-  sizeY: 6,
+  sizeY: 7,
   sizeX: 5,
   color: '#222',
   title: 'نمودار یکپارچگی بین فردی اعضای خانواده',
@@ -842,8 +842,10 @@ export function barChart(data, config) {
       this.titles = this.dataX.map((item) => {
         return item.role;
       });
+      // y axis length
+      this.sizeY = config.sizeY;
       // y axis
-      this.ay = canvas.height / 7;
+      this.ay = canvas.height / 8;
       // x axis
       this.ax = canvas.width / this.dataX.length - 3;
       this.cw = canvas.width;
@@ -882,12 +884,13 @@ export function barChart(data, config) {
       ctx.font = `${this.fontSize}px IRANSans`;
       ctx.fillStyle = this.color;
 
-      ctx.fillText('5', 10, this.ay * 1.5);
-      ctx.fillText('4', 10, this.ay * 2.5);
-      ctx.fillText('3', 10, this.ay * 3.5);
-      ctx.fillText('2', 10, this.ay * 4.5);
-      ctx.fillText('1', 10, this.ay * 5.5);
-      ctx.fillText('0', 10, this.ay * 6.5);
+      ctx.fillText('6', 10, this.ay * 1.5);
+      ctx.fillText('5', 10, this.ay * 2.5);
+      ctx.fillText('4', 10, this.ay * 3.5);
+      ctx.fillText('3', 10, this.ay * 4.5);
+      ctx.fillText('2', 10, this.ay * 5.5);
+      ctx.fillText('1', 10, this.ay * 6.5);
+      ctx.fillText('0', 10, this.ay * 7.5);
 
       ctx.stroke();
       ctx.closePath();
@@ -900,8 +903,8 @@ export function barChart(data, config) {
       ctx.closePath();
       // middle line X axis
       ctx.beginPath();
-      ctx.moveTo(20, this.ay * 3.5 - this.fontSize / 3);
-      ctx.lineTo(this.cw - 10, this.ay * 3.5 - this.fontSize / 3);
+      ctx.moveTo(20, this.ay * 4.5 - this.fontSize / 3);
+      ctx.lineTo(this.cw - 10, this.ay * 4.5 - this.fontSize / 3);
       ctx.lineWidth = '1';
       ctx.strokeStyle = this.color;
       ctx.stroke();
