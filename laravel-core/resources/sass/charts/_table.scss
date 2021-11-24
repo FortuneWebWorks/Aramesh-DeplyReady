@@ -74,14 +74,17 @@
 .table-2 {
   overflow-x: auto;
   direction: ltr;
-  .charts-table {
-    &::-webkit-scrollbar {
-      height: 1vw;
-      background-color: #333;
-    }
 
-    &::-webkit-scrollbar-thumb {
-      background-color: #ccc;
-    }
+  &::-webkit-scrollbar {
+    height: 0.5rem;
+    background-color: #ccc;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #333;
+  }
+
+  .tabel-title {
+    width: 20rem;
   }
 }

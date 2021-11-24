@@ -52,11 +52,11 @@ const LoginScreen = (props) => {
     let userExist;
     try {
       userExist = await fetch(
-        `http://aramesh.org/api/user-exists/${phoneNumber}`
+        `http://localhost:8000/api/user-exists/${phoneNumber}`
       );
     } catch (error) {
       userExist = await fetch(
-        `https://aramesh.org/api/user-exists/${phoneNumber}`
+        `https://localhost:8000/api/user-exists/${phoneNumber}`
       );
     }
 
