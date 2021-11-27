@@ -2135,7 +2135,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-if (!(0,_src_sessions_themeSession__WEBPACK_IMPORTED_MODULE_3__["default"])().getSession()) {
+if ((0,_src_sessions_themeSession__WEBPACK_IMPORTED_MODULE_3__["default"])().getSession() === null) {
   (0,_src_sessions_themeSession__WEBPACK_IMPORTED_MODULE_3__["default"])().setSession(true);
 } else {
   (0,_src_sessions_themeSession__WEBPACK_IMPORTED_MODULE_3__["default"])().setTheme();
@@ -4940,12 +4940,14 @@ var IntegrationTable = function IntegrationTable(props) {
               rowSpan: props.parents.length,
               children: ["PARENT", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), "/", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), "PARENT"]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
-            children: props.integration.map(function (integration, index) {
-              index <= 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+          }), props.integration.map(function (integration, index) {
+            return index <= 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                 children: integration.role
-              }, "parent-parent-role-".concat(index));
-            })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                children: integration.integration
+              })]
+            }, "parent-parent-role-".concat(index));
           })]
         }), props.children.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
