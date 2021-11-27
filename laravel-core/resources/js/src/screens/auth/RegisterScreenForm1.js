@@ -49,9 +49,9 @@ const RegisterScreenForm1 = (props) => {
     setCity(e.name);
     let clinics;
     try {
-      clinics = await fetch(`http://localhost:8000/api/cities/${e.id}`);
+      clinics = await fetch(`http://aramesh.org/api/cities/${e.id}`);
     } catch (error) {
-      clinics = await fetch(`https://localhost:8000/api/cities/${e.id}`);
+      clinics = await fetch(`https://aramesh.org/api/cities/${e.id}`);
     }
     setClinics(await clinics.json());
   };
@@ -60,9 +60,9 @@ const RegisterScreenForm1 = (props) => {
     setClinic(e.name);
     let practitioners;
     try {
-      practitioners = await fetch(`http://localhost:8000/api/clinics/${e.id}`);
+      practitioners = await fetch(`http://aramesh.org/api/clinics/${e.id}`);
     } catch (error) {
-      practitioners = await fetch(`https://localhost:8000/api/clinics/${e.id}`);
+      practitioners = await fetch(`https://aramesh.org/api/clinics/${e.id}`);
     }
     setPractitioners(await practitioners.json());
   };
