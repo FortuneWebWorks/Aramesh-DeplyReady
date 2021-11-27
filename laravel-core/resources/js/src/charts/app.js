@@ -107,16 +107,18 @@ export function lineChart(data, config) {
       let labels1 = [];
       let labels2 = [];
       let merg = [];
-      labels1 = Array(data['children']);
       labels2 = Array(data['parents']);
       element = labes.querySelector(`.${config.hoverClass}`).classList;
 
       labels2[0].forEach((item) => {
         merg.push(item);
       });
-      labels1[0].forEach((item) => {
-        merg.push(item);
-      });
+      if (data['children'].length > 0) {
+        labels1 = Array(data['children']);
+        labels1[0].forEach((item) => {
+          merg.push(item);
+        });
+      }
 
       let res = merg.filter((item) => item.role === element[0]);
       if (res.length > 0) {
@@ -567,21 +569,24 @@ export function lineChart(data, config) {
       let labels2 = [];
       let merg = [];
       let mergRole = [];
-      labels1 = Array(data['children']);
       labels2 = Array(data['parents']);
 
       labels2[0].forEach((item) => {
         merg.push(item);
       });
-      labels1[0].forEach((item) => {
-        merg.push(item);
-      });
       labels2[0].forEach((item) => {
         mergRole.push(item.role);
       });
-      labels1[0].forEach((item) => {
-        mergRole.push(item.role);
-      });
+      if (data['children'].length > 0) {
+        labels1 = Array(data['children']);
+        labels1[0].forEach((item) => {
+          merg.push(item);
+        });
+        labels1[0].forEach((item) => {
+          mergRole.push(item.role);
+        });
+      }
+
       document
         .getElementById(`${config.labelsId}`)
         .addEventListener('click', (e) => {
@@ -716,15 +721,17 @@ export function lineChart(data, config) {
     let labels1 = [];
     let labels2 = [];
     let merg = [];
-    labels1 = Array(data['children']);
     labels2 = Array(data['parents']);
 
     labels2[0].forEach((item) => {
       merg.push(item);
     });
-    labels1[0].forEach((item) => {
-      merg.push(item);
-    });
+    if (data['children'].length > 0) {
+      labels1 = Array(data['children']);
+      labels1[0].forEach((item) => {
+        merg.push(item);
+      });
+    }
 
     let peoples = merg;
     for (let i = 0; i < peoples.length; i++) {
@@ -740,15 +747,18 @@ export function lineChart(data, config) {
     let labels1 = [];
     let labels2 = [];
     let merg = [];
-    labels1 = Array(data['children']);
     labels2 = Array(data['parents']);
 
     labels2[0].forEach((item) => {
       merg.push(item);
     });
-    labels1[0].forEach((item) => {
-      merg.push(item);
-    });
+
+    if (data['children'].length > 0) {
+      labels1 = Array(data['children']);
+      labels1[0].forEach((item) => {
+        merg.push(item);
+      });
+    }
 
     let labels = merg;
     labels = labels.map((item) => {
@@ -789,7 +799,9 @@ export function barChart(data, config) {
     resHeight = 1.3;
   } else {
     if (numberOfRows <= 3) {
-      resWidth = 900;
+      resWidth =
+        document.body.getBoundingClientRect().width -
+        document.body.getBoundingClientRect().width / 5;
     } else if (numberOfRows > 3) {
       resWidth = 1000;
     }
@@ -811,8 +823,12 @@ export function barChart(data, config) {
 
   // responsiveness
   window.addEventListener('resize', () => {
+    if (numberOfRows <= 3) {
+      resWidth =
+        document.body.getBoundingClientRect().width -
+        document.body.getBoundingClientRect().width / 5;
+    }
     canvas.width = resWidth;
-
     canvas.height =
       Math.max(document.documentElement.clientWidth, window.innerWidth || 0) /
       resHeight;
@@ -852,7 +868,11 @@ export function barChart(data, config) {
       // y axis
       this.ay = canvas.height / 8;
       // x axis
-      this.ax = canvas.width / this.dataX.length - 3;
+      if (numberOfRows > 3) {
+        this.ax = canvas.width / this.dataX.length - 3;
+      } else {
+        this.ax = canvas.width / 5;
+      }
       this.cw = canvas.width;
       this.ch = canvas.height;
       // animation speed
@@ -1063,8 +1083,8 @@ export function epChart(data, config) {
     resWidth = 1.56;
     resHeight = 1.56;
   } else {
-    resWidth = 3.3;
-    resHeight = 3.3;
+    resWidth = 3.1;
+    resHeight = 3.1;
   }
 
   // create canvas and constructor
@@ -1087,8 +1107,8 @@ export function epChart(data, config) {
       resWidth = 1.56;
       resHeight = 1.56;
     } else {
-      resWidth = 3;
-      resHeight = 3;
+      resWidth = 3.1;
+      resHeight = 3.1;
     }
 
     canvas.width =
@@ -1374,27 +1394,29 @@ export function epChart(data, config) {
     }
 
     pointConnect() {
-      ctx.font = `16px IRANSans`;
-      let grahamNeed = [];
+      if (data['integration'].length > 2) {
+        ctx.font = `16px IRANSans`;
+        let grahamNeed = [];
 
-      this.positions.map((item) => {
-        grahamNeed.push([item.x, item.y]);
-      });
+        this.positions.map((item) => {
+          grahamNeed.push([item.x, item.y]);
+        });
 
-      const graham = new GrahamScan();
-      graham.setPoints(grahamNeed);
-      grahamNeed = graham.getHull();
+        const graham = new GrahamScan();
+        graham.setPoints(grahamNeed);
+        grahamNeed = graham.getHull();
 
-      ctx.globalCompositeOperation = 'overlay';
-      ctx.beginPath();
-      ctx.moveTo(grahamNeed[0][0], grahamNeed[0][1]);
-      grahamNeed.forEach((item) => {
-        ctx.lineTo(item[0], item[1]);
-      });
-      ctx.lineTo(grahamNeed[0][0], grahamNeed[0][1]);
-      ctx.fillStyle = 'rgba(95, 158, 160, 0.3)';
-      ctx.fill();
-      ctx.closePath();
+        ctx.globalCompositeOperation = 'overlay';
+        ctx.beginPath();
+        ctx.moveTo(grahamNeed[0][0], grahamNeed[0][1]);
+        grahamNeed.forEach((item) => {
+          ctx.lineTo(item[0], item[1]);
+        });
+        ctx.lineTo(grahamNeed[0][0], grahamNeed[0][1]);
+        ctx.fillStyle = 'rgba(95, 158, 160, 0.3)';
+        ctx.fill();
+        ctx.closePath();
+      }
     }
 
     displayLabels() {
@@ -1403,15 +1425,18 @@ export function epChart(data, config) {
       let labels1 = [];
       let labels2 = [];
       let merg = [];
-      labels1 = Array(data['children']);
-      labels2 = Array(data['parents']);
 
+      labels2 = Array(data['parents']);
       labels2[0].forEach((item) => {
         merg.push(item);
       });
-      labels1[0].forEach((item) => {
-        merg.push(item);
-      });
+
+      if (data['children'].length > 0) {
+        labels1 = Array(data['children']);
+        labels1[0].forEach((item) => {
+          merg.push(item);
+        });
+      }
 
       let peoples = merg;
 
@@ -1771,15 +1796,18 @@ export function epChart(data, config) {
     let labels1 = [];
     let labels2 = [];
     let merg = [];
-    labels1 = Array(data['children']);
     labels2 = Array(data['parents']);
 
     labels2[0].forEach((item) => {
       merg.push(item);
     });
-    labels1[0].forEach((item) => {
-      merg.push(item);
-    });
+
+    if (data['children'].length > 0) {
+      labels1 = Array(data['children']);
+      labels1[0].forEach((item) => {
+        merg.push(item);
+      });
+    }
 
     const peoples = merg;
 
@@ -1818,8 +1846,8 @@ export function familyChart(data, config) {
     resWidth = 1.56;
     resHeight = 1.56;
   } else {
-    resWidth = 3;
-    resHeight = 3;
+    resWidth = 3.1;
+    resHeight = 3.1;
   }
 
   // create canvas and constructor
@@ -1842,8 +1870,8 @@ export function familyChart(data, config) {
       resWidth = 1.56;
       resHeight = 1.56;
     } else {
-      resWidth = 2.75;
-      resHeight = 2.75;
+      resWidth = 3.1;
+      resHeight = 3.1;
     }
 
     canvas.width =
@@ -2203,15 +2231,17 @@ export function familyChart(data, config) {
     let labels1 = [];
     let labels2 = [];
     let merg = [];
-    labels1 = Array(data['children']);
     labels2 = Array(data['parents']);
 
     labels2[0].forEach((item) => {
       merg.push(item.results[0]);
     });
-    labels1[0].forEach((item) => {
-      merg.push(item.results[0]);
-    });
+    if (data['children'].length > 0) {
+      labels1 = Array(data['children']);
+      labels1[0].forEach((item) => {
+        merg.push(item.results[0]);
+      });
+    }
 
     // content
     let res = merg.map((item) => {

@@ -32,10 +32,10 @@
     color: var(--text-color);
 
     @include mq(660px) {
-      font-size: 0.6rem !important;
+      font-size: 1rem !important;
     }
     @include mq(960px) {
-      font-size: 0.6rem !important;
+      font-size: 1rem !important;
     }
   }
 
@@ -153,10 +153,11 @@
       'f g' !important;
 
     .chart {
-      // width: 40vw;
-      min-height: 32rem;
-      // width: 92% !important;
-      padding: 0 2vw !important;
+      // width: 86% !important;
+      min-height: 35rem;
+      padding: 0 2vw;
+      margin-left: auto !important;
+      margin-right: auto !important;
       page-break-after: always;
     }
 
@@ -168,21 +169,21 @@
     }
     .bar-chart-container {
       grid-area: e;
-      width: 84vw;
+      width: 85vw !important;
       page-break-after: always;
     }
     .Content-process-family-container {
       grid-area: c;
-      padding: 0 3vw !important;
+      padding: 0 !important;
     }
     .Content-process-members-container {
       grid-area: d;
-      padding: 0 4.5vw !important;
+      padding: 0 !important;
     }
 
     .table-scroll {
-      max-width: 80% !important;
-      width: auto;
+      max-width: 88% !important;
+      width: 100% !important;
       height: 31rem !important;
       padding: 5vh;
       border-radius: 10px;

@@ -24,16 +24,23 @@
   --user-panel-user-bgcolor: #ebebeb;
   --admin-text-color: #000;
   --admin-border-color: #c4c4c4;
-  --admin-box-shadow: 9px 9px 18px var(--admin-neumorphism-color-1), -2px -2px 14px var(--admin-neumorphism-color-2);
+  --admin-box-shadow: 9px 9px 18px var(--admin-neumorphism-color-1),
+    -2px -2px 14px var(--admin-neumorphism-color-2);
   --admin-clinicNumber-color: rgba(0, 0, 0, 0.5);
   --admin-secondary-color: #828282;
   --neumorphism-color-1: #d6d6d6;
   --neumorphism-color-2: #fff;
   --admin-neumorphism-color-1: #d6d6d6;
   --admin-neumorphism-color-2: #ddd;
-  --admin-toggler-box-shadow: inset 2px 2px 4px var(--admin-toggler-box-shadow-color-1), inset -2px -2px 12px var(--admin-toggler-box-shadow-color-2);
-  --admin-toggler-box-shadow-color-1: inset 2px 2px 4px var(--admin-toggler-box-shadow-color-1), inset -2px -2px 12px var(--admin-toggler-box-shadow-color-2);
-  --admin-toggler-box-shadow-color-2: inset 2px 2px 4px var(--admin-toggler-box-shadow-color-1), inset -2px -2px 12px var(--admin-toggler-box-shadow-color-2);
+  --admin-toggler-box-shadow: inset 2px 2px 4px
+      var(--admin-toggler-box-shadow-color-1),
+    inset -2px -2px 12px var(--admin-toggler-box-shadow-color-2);
+  --admin-toggler-box-shadow-color-1: inset 2px 2px 4px
+      var(--admin-toggler-box-shadow-color-1),
+    inset -2px -2px 12px var(--admin-toggler-box-shadow-color-2);
+  --admin-toggler-box-shadow-color-2: inset 2px 2px 4px
+      var(--admin-toggler-box-shadow-color-1),
+    inset -2px -2px 12px var(--admin-toggler-box-shadow-color-2);
   --admin-toggler-box-shadow-bgcolor: rgba(0, 0, 0, 0.8);
   --neumorphism-home-color-1: #c4aa55;
   --neumorphism-home-color-2: #fff077;
@@ -71,15 +78,19 @@
   --user-panel-user-bgcolor: #ebebeb;
   --admin-text-color: #f4f4f4;
   --admin-border-color: #c4c4c4;
-  --admin-box-shadow: 2px 2px 14px var(--admin-neumorphism-color-1), -2px -2px 12px var(--admin-neumorphism-color-2);
+  --admin-box-shadow: 2px 2px 14px var(--admin-neumorphism-color-1),
+    -2px -2px 12px var(--admin-neumorphism-color-2);
   --admin-clinicNumber-color: rgba(255, 255, 255, 0.5);
   --admin-secondary-color: #828282;
   --neumorphism-color-1: #111;
   --neumorphism-color-2: #181818;
   --admin-neumorphism-color-1: #000;
   --admin-neumorphism-color-2: rgba(0, 0, 0, 0.06);
-  --admin-toggler-box-shadow: inset 2px 2px 4px var(--admin-toggler-box-shadow-color-1), inset -2px -2px 12px var(--admin-toggler-box-shadow-color-2);
-  --admin-toggler-btn-box-shadow: 2px -2px 14px var(--admin-neumorphism-color-1), -2px 2px 12px var(--admin-neumorphism-color-2);
+  --admin-toggler-box-shadow: inset 2px 2px 4px
+      var(--admin-toggler-box-shadow-color-1),
+    inset -2px -2px 12px var(--admin-toggler-box-shadow-color-2);
+  --admin-toggler-btn-box-shadow: 2px -2px 14px var(--admin-neumorphism-color-1),
+    -2px 2px 12px var(--admin-neumorphism-color-2);
   --admin-toggler-box-shadow-color-1: #d6d6d6;
   --admin-toggler-box-shadow-color-2: #f4f4f4;
   --admin-toggler-box-shadow-bgcolor: white;
@@ -723,7 +734,7 @@ body {
   -webkit-appearance: none;
   margin: 0;
 }
-.signup-table input[type=number] {
+.signup-table input[type='number'] {
   -moz-appearance: textfield;
 }
 .signup-table .card {
@@ -1097,7 +1108,7 @@ body {
   width: 100vw;
   padding: 0 13vw;
   text-align: center;
-  background: url("../images/bg-shape.svg") no-repeat bottom center/cover #fff;
+  background: url('../images/bg-shape.svg') no-repeat bottom center/cover #fff;
   background-size: 300vh;
 }
 .test-screen .title-content {
@@ -1319,7 +1330,10 @@ body {
   width: 55%;
 }
 .test-screen .radio-btn-container:nth-child(1) .radio-control,
-.test-screen .options-container .radio-btn-container:nth-child(5) .radio-control {
+.test-screen
+  .options-container
+  .radio-btn-container:nth-child(5)
+  .radio-control {
   height: 10vw;
   width: 10vw;
 }
@@ -1383,12 +1397,15 @@ body {
     border-radius: 50%;
   }
   .test-screen .radio-btn-container:nth-child(1) .radio-control,
-.test-screen .options-container .radio-btn-container:nth-child(5) .radio-control {
+  .test-screen
+    .options-container
+    .radio-btn-container:nth-child(5)
+    .radio-control {
     height: 55px;
     width: 55px;
   }
   .test-screen .radio-btn-container:nth-child(2) .radio-control,
-.test-screen .radio-btn-container:nth-child(4) .radio-control {
+  .test-screen .radio-btn-container:nth-child(4) .radio-control {
     height: 45px;
     width: 45px;
   }
@@ -1765,13 +1782,13 @@ body {
 }
 @media (min-width: 380px) {
   .line-chart .canvas-size,
-.biger-line-chart .canvas-size {
+  .biger-line-chart .canvas-size {
     margin-top: -1rem;
   }
 }
 @media (min-width: 600px) {
   .line-chart .canvas-size,
-.biger-line-chart .canvas-size {
+  .biger-line-chart .canvas-size {
     margin-top: -2rem;
   }
 }
@@ -1784,13 +1801,13 @@ body {
 }
 @media (min-width: 380px) {
   .line-chart h2,
-.biger-line-chart h2 {
+  .biger-line-chart h2 {
     top: 7.5%;
   }
 }
 @media (min-width: 600px) {
   .line-chart h2,
-.biger-line-chart h2 {
+  .biger-line-chart h2 {
     top: 10%;
   }
 }
@@ -1815,55 +1832,55 @@ body {
 }
 .line-chart .labels span.family::after,
 .biger-line-chart .labels span.family::after {
-  content: "خانواده";
+  content: 'خانواده';
 }
 .line-chart .labels span.father::after,
 .biger-line-chart .labels span.father::after {
-  content: "پدر";
+  content: 'پدر';
 }
 .line-chart .labels span.mother::after,
 .biger-line-chart .labels span.mother::after {
-  content: "مادر";
+  content: 'مادر';
 }
 .line-chart .labels span.first-daughter::after,
 .biger-line-chart .labels span.first-daughter::after {
-  content: "دختر(اول)";
+  content: 'دختر(اول)';
 }
 .line-chart .labels span.second-daughter::after,
 .biger-line-chart .labels span.second-daughter::after {
-  content: "دختر(دوم)";
+  content: 'دختر(دوم)';
 }
 .line-chart .labels span.third-daughter::after,
 .biger-line-chart .labels span.third-daughter::after {
-  content: "دختر(سوم)";
+  content: 'دختر(سوم)';
 }
 .line-chart .labels span.fourth-daughter::after,
 .biger-line-chart .labels span.fourth-daughter::after {
-  content: "دختر(چهارم)";
+  content: 'دختر(چهارم)';
 }
 .line-chart .labels span.fifth-daughter::after,
 .biger-line-chart .labels span.fifth-daughter::after {
-  content: "دختر(پنجم)";
+  content: 'دختر(پنجم)';
 }
 .line-chart .labels span.first-son::after,
 .biger-line-chart .labels span.first-son::after {
-  content: "پسر(اول)";
+  content: 'پسر(اول)';
 }
 .line-chart .labels span.second-son::after,
 .biger-line-chart .labels span.second-son::after {
-  content: "پسر(دوم)";
+  content: 'پسر(دوم)';
 }
 .line-chart .labels span.third-son::after,
 .biger-line-chart .labels span.third-son::after {
-  content: "پسر(سوم)";
+  content: 'پسر(سوم)';
 }
 .line-chart .labels span.fourth-son::after,
 .biger-line-chart .labels span.fourth-son::after {
-  content: "پسر(چهارم)";
+  content: 'پسر(چهارم)';
 }
 .line-chart .labels span.fifth-son::after,
 .biger-line-chart .labels span.fifth-son::after {
-  content: "پسر(پنجم)";
+  content: 'پسر(پنجم)';
 }
 .line-chart .labels div,
 .biger-line-chart .labels div {
@@ -1905,11 +1922,11 @@ body {
 }
 @media (min-width: 768px) {
   .line-chart,
-.biger-line-chart {
+  .biger-line-chart {
     padding: 0 1.5vw;
   }
   .line-chart .canvas-size,
-.biger-line-chart .canvas-size {
+  .biger-line-chart .canvas-size {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1919,11 +1936,11 @@ body {
     margin-top: 0;
   }
   .line-chart h2,
-.biger-line-chart h2 {
+  .biger-line-chart h2 {
     top: 5%;
   }
   .line-chart .labels,
-.biger-line-chart .labels {
+  .biger-line-chart .labels {
     width: 80%;
     font-size: 1rem;
   }
@@ -1941,17 +1958,42 @@ body {
   height: auto;
   width: fit-content;
   /* ff 3.6+ */
-  background: -moz-linear-gradient(43deg, rgba(255, 0, 0, 0.35) 0%, #ffdddd 37%, rgba(130, 238, 190, 0.65) 100%);
+  background: -moz-linear-gradient(
+    43deg,
+    rgba(255, 0, 0, 0.35) 0%,
+    #ffdddd 37%,
+    rgba(130, 238, 190, 0.65) 100%
+  );
   /* safari 5.1+,chrome 10+ */
-  background: -webkit-linear-gradient(43deg, rgba(255, 0, 0, 0.35) 0%, #ffdddd 37%, rgba(130, 238, 190, 0.65) 100%);
+  background: -webkit-linear-gradient(
+    43deg,
+    rgba(255, 0, 0, 0.35) 0%,
+    #ffdddd 37%,
+    rgba(130, 238, 190, 0.65) 100%
+  );
   /* opera 11.10+ */
-  background: -o-linear-gradient(43deg, rgba(255, 0, 0, 0.35) 0%, #ffdddd 37%, rgba(130, 238, 190, 0.65) 100%);
+  background: -o-linear-gradient(
+    43deg,
+    rgba(255, 0, 0, 0.35) 0%,
+    #ffdddd 37%,
+    rgba(130, 238, 190, 0.65) 100%
+  );
   /* ie 6-9 */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#FF0000", endColorstr="#82EEBE", GradientType=1 );
   /* ie 10+ */
-  background: -ms-linear-gradient(43deg, rgba(255, 0, 0, 0.35) 0%, #ffdddd 37%, rgba(130, 238, 190, 0.65) 100%);
+  background: -ms-linear-gradient(
+    43deg,
+    rgba(255, 0, 0, 0.35) 0%,
+    #ffdddd 37%,
+    rgba(130, 238, 190, 0.65) 100%
+  );
   /* global 94%+ browsers support */
-  background: linear-gradient(43deg, rgba(255, 0, 0, 0.35) 0%, #ffdddd 37%, rgba(130, 238, 190, 0.65) 100%);
+  background: linear-gradient(
+    43deg,
+    rgba(255, 0, 0, 0.35) 0%,
+    #ffdddd 37%,
+    rgba(130, 238, 190, 0.65) 100%
+  );
 }
 .Content-process-members-container h2 {
   margin-top: 2vh;
@@ -1964,43 +2006,43 @@ body {
   margin: 2vh 0;
 }
 .Content-process-members-container .labels span.family::after {
-  content: "خانواده";
+  content: 'خانواده';
 }
 .Content-process-members-container .labels span.father::after {
-  content: "پدر";
+  content: 'پدر';
 }
 .Content-process-members-container .labels span.mother::after {
-  content: "مادر";
+  content: 'مادر';
 }
 .Content-process-members-container .labels span.first-daughter::after {
-  content: "دختر(اول)";
+  content: 'دختر(اول)';
 }
 .Content-process-members-container .labels span.second-daughter::after {
-  content: "دختر(دوم)";
+  content: 'دختر(دوم)';
 }
 .Content-process-members-container .labels span.third-daughter::after {
-  content: "دختر(سوم)";
+  content: 'دختر(سوم)';
 }
 .Content-process-members-container .labels span.fourth-daughter::after {
-  content: "دختر(چهارم)";
+  content: 'دختر(چهارم)';
 }
 .Content-process-members-container .labels span.fifth-daughter::after {
-  content: "دختر(پنجم)";
+  content: 'دختر(پنجم)';
 }
 .Content-process-members-container .labels span.first-son::after {
-  content: "پسر(اول)";
+  content: 'پسر(اول)';
 }
 .Content-process-members-container .labels span.second-son::after {
-  content: "پسر(دوم)";
+  content: 'پسر(دوم)';
 }
 .Content-process-members-container .labels span.third-son::after {
-  content: "پسر(سوم)";
+  content: 'پسر(سوم)';
 }
 .Content-process-members-container .labels span.fourth-son::after {
-  content: "پسر(چهارم)";
+  content: 'پسر(چهارم)';
 }
 .Content-process-members-container .labels span.fifth-son::after {
-  content: "پسر(پنجم)";
+  content: 'پسر(پنجم)';
 }
 .Content-process-members-container .labels div {
   border-radius: 5px;
@@ -2086,17 +2128,42 @@ body {
   height: auto;
   width: fit-content;
   /* ff 3.6+ */
-  background: -moz-linear-gradient(43deg, rgba(255, 0, 0, 0.35) 0%, #ffdddd 37%, rgba(130, 238, 190, 0.65) 100%);
+  background: -moz-linear-gradient(
+    43deg,
+    rgba(255, 0, 0, 0.35) 0%,
+    #ffdddd 37%,
+    rgba(130, 238, 190, 0.65) 100%
+  );
   /* safari 5.1+,chrome 10+ */
-  background: -webkit-linear-gradient(43deg, rgba(255, 0, 0, 0.35) 0%, #ffdddd 37%, rgba(130, 238, 190, 0.65) 100%);
+  background: -webkit-linear-gradient(
+    43deg,
+    rgba(255, 0, 0, 0.35) 0%,
+    #ffdddd 37%,
+    rgba(130, 238, 190, 0.65) 100%
+  );
   /* opera 11.10+ */
-  background: -o-linear-gradient(43deg, rgba(255, 0, 0, 0.35) 0%, #ffdddd 37%, rgba(130, 238, 190, 0.65) 100%);
+  background: -o-linear-gradient(
+    43deg,
+    rgba(255, 0, 0, 0.35) 0%,
+    #ffdddd 37%,
+    rgba(130, 238, 190, 0.65) 100%
+  );
   /* ie 6-9 */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#FF0000", endColorstr="#82EEBE", GradientType=1 );
   /* ie 10+ */
-  background: -ms-linear-gradient(43deg, rgba(255, 0, 0, 0.35) 0%, #ffdddd 37%, rgba(130, 238, 190, 0.65) 100%);
+  background: -ms-linear-gradient(
+    43deg,
+    rgba(255, 0, 0, 0.35) 0%,
+    #ffdddd 37%,
+    rgba(130, 238, 190, 0.65) 100%
+  );
   /* global 94%+ browsers support */
-  background: linear-gradient(43deg, rgba(255, 0, 0, 0.35) 0%, #ffdddd 37%, rgba(130, 238, 190, 0.65) 100%);
+  background: linear-gradient(
+    43deg,
+    rgba(255, 0, 0, 0.35) 0%,
+    #ffdddd 37%,
+    rgba(130, 238, 190, 0.65) 100%
+  );
 }
 .Content-process-family-container h2 {
   margin-top: 2vh;
@@ -2109,43 +2176,43 @@ body {
   margin: 2vh;
 }
 .Content-process-family-container .labels span.family::after {
-  content: "خانواده";
+  content: 'خانواده';
 }
 .Content-process-family-container .labels span.father::after {
-  content: "پدر";
+  content: 'پدر';
 }
 .Content-process-family-container .labels span.mother::after {
-  content: "مادر";
+  content: 'مادر';
 }
 .Content-process-family-container .labels span.first-daughter::after {
-  content: "دختر(اول)";
+  content: 'دختر(اول)';
 }
 .Content-process-family-container .labels span.second-daughter::after {
-  content: "دختر(دوم)";
+  content: 'دختر(دوم)';
 }
 .Content-process-family-container .labels span.third-daughter::after {
-  content: "دختر(سوم)";
+  content: 'دختر(سوم)';
 }
 .Content-process-family-container .labels span.fourth-daughter::after {
-  content: "دختر(چهارم)";
+  content: 'دختر(چهارم)';
 }
 .Content-process-family-container .labels span.fifth-daughter::after {
-  content: "دختر(پنجم)";
+  content: 'دختر(پنجم)';
 }
 .Content-process-family-container .labels span.first-son::after {
-  content: "پسر(اول)";
+  content: 'پسر(اول)';
 }
 .Content-process-family-container .labels span.second-son::after {
-  content: "پسر(دوم)";
+  content: 'پسر(دوم)';
 }
 .Content-process-family-container .labels span.third-son::after {
-  content: "پسر(سوم)";
+  content: 'پسر(سوم)';
 }
 .Content-process-family-container .labels span.fourth-son::after {
-  content: "پسر(چهارم)";
+  content: 'پسر(چهارم)';
 }
 .Content-process-family-container .labels span.fifth-son::after {
-  content: "پسر(پنجم)";
+  content: 'پسر(پنجم)';
 }
 .Content-process-family-container .labels div {
   width: auto;
@@ -2213,7 +2280,7 @@ body {
     padding: 2vh 0;
   }
   .Content-process-family-container .point-value span {
-    font-size: 0.9rem !important;
+    font-size: 2rem !important;
   }
 }
 @media (min-width: 640px) and (max-width: 760px) {
@@ -2233,7 +2300,8 @@ body {
   margin-bottom: 10vh;
   background-color: var(--card-color);
   border-radius: 10px;
-  box-shadow: 9px 9px 18px var(--neumorphism-color-1), -9px -9px 18px var(--neumorphism-color-2);
+  box-shadow: 9px 9px 18px var(--neumorphism-color-1),
+    -9px -9px 18px var(--neumorphism-color-2);
 }
 .bar-chart-container .canvas-size {
   padding: 0 2vw;
@@ -2386,7 +2454,8 @@ body {
   justify-content: space-evenly;
   background-color: var(--card-color);
   border-radius: 10px;
-  box-shadow: 9px 9px 18px var(--neumorphism-color-1), -9px -9px 18px var(--neumorphism-color-2);
+  box-shadow: 9px 9px 18px var(--neumorphism-color-1),
+    -9px -9px 18px var(--neumorphism-color-2);
 }
 .charts-container span {
   font-size: 0.7rem !important;
@@ -2443,7 +2512,8 @@ body {
   justify-content: center;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 9px 9px 18px var(--neumorphism-color-1), -9px -9px 18px var(--neumorphism-color-2);
+  box-shadow: 9px 9px 18px var(--neumorphism-color-1),
+    -9px -9px 18px var(--neumorphism-color-2);
   background-color: var(--card-color);
   font-size: 0.7rem;
 }
@@ -2471,7 +2541,7 @@ body {
     justify-content: unset;
     justify-items: center;
     align-items: center;
-    grid-template-areas: "a b" "c d" "e e" "f f";
+    grid-template-areas: 'a b' 'c d' 'e e' 'f f';
   }
   .charts-container .chart {
     width: 40vw;
@@ -2527,7 +2597,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 9px 9px 18px var(--neumorphism-color-1), -9px -9px 18px var(--neumorphism-color-2);
+    box-shadow: 9px 9px 18px var(--neumorphism-color-1),
+      -9px -9px 18px var(--neumorphism-color-2);
     font-size: 0.685rem;
   }
 }
@@ -2587,7 +2658,7 @@ body {
     margin-bottom: 0.7rem;
   }
   .home-header p,
-.home-header a {
+  .home-header a {
     font-size: 0.55rem;
   }
 }
@@ -2601,7 +2672,7 @@ body {
     margin-bottom: 0.7rem;
   }
   .home-header p,
-.home-header a {
+  .home-header a {
     font-size: 0.65rem;
   }
 }
@@ -2618,7 +2689,7 @@ body {
     margin-bottom: 1.7rem;
   }
   .home-header p,
-.home-header a {
+  .home-header a {
     font-size: 1rem;
   }
 }
@@ -2635,7 +2706,7 @@ body {
     margin-bottom: 2rem;
   }
   .home-header p,
-.home-header a {
+  .home-header a {
     font-size: 1rem;
   }
 }
@@ -2652,7 +2723,7 @@ body {
     margin-bottom: 1rem;
   }
   .home-header p,
-.home-header a {
+  .home-header a {
     font-size: 0.7rem;
   }
 }
@@ -2687,7 +2758,7 @@ body {
     flex-flow: row-reverse nowrap;
   }
   .home-header .get-in,
-.home-header .start {
+  .home-header .start {
     padding: 1vh 1vw;
     font-size: 0.9rem;
     background: transparent;
@@ -2711,7 +2782,7 @@ body {
     font-weight: 400;
   }
   .home-header p,
-.home-header a {
+  .home-header a {
     font-size: 0.5rem;
     font-weight: 400;
   }
@@ -2743,7 +2814,8 @@ body {
   border-radius: 15px;
   padding: 2vh 3.2vw;
   background-color: var(--home-bg);
-  box-shadow: 9px 9px 18px var(--home-neumorphism1), -9px -9px 18px var(--home-neumorphism2);
+  box-shadow: 9px 9px 18px var(--home-neumorphism1),
+    -9px -9px 18px var(--home-neumorphism2);
 }
 .main1 h2,
 .main1 p {
@@ -2777,7 +2849,8 @@ body {
   margin-bottom: 0;
   background-color: var(--btn-bgcolor) !important;
   border-radius: 10px;
-  box-shadow: 5px 5px 10px var(--neumorphism-home-color-1), -1px -1px 10px var(--neumorphism-home-color-2);
+  box-shadow: 5px 5px 10px var(--neumorphism-home-color-1),
+    -1px -1px 10px var(--neumorphism-home-color-2);
   text-align: center;
 }
 .main1 .arrow {
@@ -3003,8 +3076,8 @@ body {
     transform-box: fill-box;
   }
   body .main2 #boot-right,
-body .main2 #boot-left,
-body .main2 #boy-hair {
+  body .main2 #boot-left,
+  body .main2 #boy-hair {
     animation: boot 1.5s infinite alternate ease-in-out;
     transition: all 1s ease;
     transform-origin: bottom;
@@ -3039,7 +3112,8 @@ body .main2 #boy-hair {
     justify-content: center;
     align-items: center;
     margin-bottom: 0;
-    box-shadow: 5px 5px 10px var(--neumorphism-home-color-1), -1px -1px 10px var(--neumorphism-home-color-2);
+    box-shadow: 5px 5px 10px var(--neumorphism-home-color-1),
+      -1px -1px 10px var(--neumorphism-home-color-2);
   }
   body .main2 .arrow {
     width: 2rem;
@@ -3070,11 +3144,12 @@ body .main2 #boy-hair {
     align-items: center;
     justify-content: flex-start;
     align-items: flex-start;
-    box-shadow: 9px 9px 18px var(--home-neumorphism1), -9px -9px 18px var(--home-neumorphism2);
+    box-shadow: 9px 9px 18px var(--home-neumorphism1),
+      -9px -9px 18px var(--home-neumorphism2);
     background-color: var(--home-bg);
   }
   body .services .service h1,
-body .services .service p {
+  body .services .service p {
     text-align: right;
   }
   body .services .service h2 {
@@ -3155,7 +3230,8 @@ body .services .service p {
 }
 
 @keyframes spin {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0);
   }
   25% {
@@ -3370,13 +3446,14 @@ body {
 }
 #root .toggle .toggle-control:after {
   transition: 0.3s ease-out;
-  content: "";
+  content: '';
   width: 2em;
   height: 2em;
   display: block;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
-  box-shadow: 0 1px 2px var(--admin-toggler-box-shadow-color), 0 3px 2px var(--admin-toggler-box-shadow-color);
+  box-shadow: 0 1px 2px var(--admin-toggler-box-shadow-color),
+    0 3px 2px var(--admin-toggler-box-shadow-color);
   position: absolute;
   top: 0;
   left: 0;

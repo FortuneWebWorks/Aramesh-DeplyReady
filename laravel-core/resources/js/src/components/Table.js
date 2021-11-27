@@ -6,13 +6,24 @@ const emptyCellsRender = (array, empty, field, className) => {
   return array.map((obj) => {
     return (
       <td key={`${obj.role}-${obj.results.field}`} className={className}>
-        {!empty ? obj.results.length > 0 ? obj.results[0][field].toFixed(2) : '' : ''}
+        {!empty
+          ? obj.results.length > 0
+            ? obj.results[0][field].toFixed(2)
+            : ''
+          : ''}
       </td>
     );
   });
 };
 
-const RowsTableRender = ({ parents, children, rowText, colSpan, empty, className }) => {
+const RowsTableRender = ({
+  parents,
+  children,
+  rowText,
+  colSpan,
+  empty,
+  className,
+}) => {
   return (
     <tr>
       <td colSpan={colSpan}>{rowText}</td>
@@ -31,7 +42,7 @@ const RowsTableRender = ({ parents, children, rowText, colSpan, empty, className
   );
 };
 
-const Table = ({parents, children}) => {
+const Table = ({ parents, children }) => {
   return (
     <table className="charts-table" bordercollapse="collapse">
       <thead>
@@ -53,8 +64,18 @@ const Table = ({parents, children}) => {
         </tr>
       </thead>
       <tbody>
-        <RowsTableRender parents={parents} children={children} rowText="PROCESS" colSpan={2} />
-        <RowsTableRender parents={parents} children={children} rowText="CONTENT" colSpan={2} />
+        <RowsTableRender
+          parents={parents}
+          children={children}
+          rowText="PROCESS"
+          colSpan={2}
+        />
+        <RowsTableRender
+          parents={parents}
+          children={children}
+          rowText="CONTENT"
+          colSpan={2}
+        />
 
         <tr>
           <td rowSpan={6} className="b">
@@ -71,7 +92,11 @@ const Table = ({parents, children}) => {
         <RowsTableRender parents={parents} children={children} rowText="CS" />
         <RowsTableRender parents={parents} children={children} rowText="PS" />
         <RowsTableRender parents={parents} children={children} rowText="RFC" />
-        <RowsTableRender parents={parents} children={children} rowText="Cstra" />
+        <RowsTableRender
+          parents={parents}
+          children={children}
+          rowText="Cstra"
+        />
         <RowsTableRender parents={parents} children={children} rowText="RB" />
 
         <tr>

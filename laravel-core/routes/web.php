@@ -131,7 +131,7 @@ Route::get('/data', function () {
     ]);
     
     $aramesh->practitioners()->create([
-        'name' => 'تست',
+        'name' => 'doctor',
         'code' => '345',
         'phone-number' => '9052409115'
     ]);
