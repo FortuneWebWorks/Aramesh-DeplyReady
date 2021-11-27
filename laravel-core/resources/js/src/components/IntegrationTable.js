@@ -21,11 +21,12 @@ const IntegrationTable = (props) => {
                 PARENT<br/>/<br/>PARENT
               </td>
             </tr>
-              <tr>
                 {props.integration.map((integration, index) => {
-                  (index <= 0 && <td key={`parent-parent-role-${index}`}>{integration.role}</td>)
+                  return (index <= 0 && <tr key={`parent-parent-role-${index}`}>
+                    <td>{integration.role}</td>
+                    <td>{integration.integration}</td>
+                  </tr>)
                 })}
-              </tr>
             </>
           )}
 
