@@ -26,7 +26,7 @@ import loaderSession from './src/sessions/loaderSession';
 // import Spinner from './components/Spinner'
 // import LoadingContextProvider from './context/LoadingContext'
 
-if(!themeSession().getSession()) {
+if(themeSession().getSession() === null) {
     themeSession().setSession(true);
 } else {
     themeSession().setTheme();
