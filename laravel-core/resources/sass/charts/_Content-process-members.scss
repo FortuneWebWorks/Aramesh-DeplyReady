@@ -100,7 +100,11 @@
     }
     @include mq(900px) {
       .point-value {
-        width: 98%;
+        width: 105%;
+      }
+
+      .labels {
+        width: 100%;
       }
     }
   }
