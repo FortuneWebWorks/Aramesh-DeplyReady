@@ -605,10 +605,6 @@ export function lineChart(data, config) {
                 addPoints(people, people.role);
                 outChart.pointConnect();
 
-                // document
-                //   .getElementById(`${config.labelsId}`)
-                //   .querySelector(`.${e.target.classList[0]}`)
-                //   .classList.add(`${config.hoverClass}`);
                 e.target.classList.add(config.hoverClass);
 
                 this.shadowGiver(label.role);
@@ -617,8 +613,8 @@ export function lineChart(data, config) {
               ) {
                 addLabel();
                 let peoples = merg;
-                let targetRole =
-                  e.target.previousElementSibling.getAttribute('data-before');
+
+                let targetRole = e.target.getAttribute('data-before');
 
                 let people = peoples.find((item) => {
                   return item.role === targetRole;
@@ -628,15 +624,9 @@ export function lineChart(data, config) {
                 addPoints(people, people.role);
                 outChart.pointConnect();
 
-                // document
-                //   .getElementById(`${config.labelsId}`)
-                //   .querySelector(`.${e.target.classList[0]}`)
-                //   .classList.add(`${config.hoverClass}`);
-                e.target.previousElementSibling.classList.add(
-                  config.hoverClass
-                );
+                e.target.classList.add(config.hoverClass);
 
-                this.shadowGiver(label.role);
+                this.shadowGiver(people.role);
               }
             }
           });
@@ -866,7 +856,7 @@ export function barChart(data, config) {
       // y axis length
       this.sizeY = config.sizeY;
       // y axis
-      this.ay = canvas.height / 8;
+      this.ay = canvas.height / 7;
       // x axis
       if (numberOfRows > 3) {
         this.ax = canvas.width / this.dataX.length - 3;
@@ -893,11 +883,14 @@ export function barChart(data, config) {
       this.tempValuesData = [];
       this.valuesData = [];
       // colors
-      this.father = '#7b72db';
-      this.mother = '#79d2de';
-      this.girl = '#eccd66';
-      this.son = '#ee8a48';
-      this.colors = ['#7b72db', '#79d2de', '#eccd66', '#ee8a48'];
+      this.colors = [
+        '#7b72db',
+        '#79d2de',
+        '#eccd66',
+        '#ee8a48',
+        '#ff2003',
+        '#fc2b2b',
+      ];
       // x axis titles distance
       this.tDis = 0.8;
     }
@@ -909,13 +902,12 @@ export function barChart(data, config) {
       ctx.font = `${this.fontSize}px IRANSans`;
       ctx.fillStyle = this.color;
 
-      ctx.fillText('6', 10, this.ay * 1.5);
-      ctx.fillText('5', 10, this.ay * 2.5);
-      ctx.fillText('4', 10, this.ay * 3.5);
-      ctx.fillText('3', 10, this.ay * 4.5);
-      ctx.fillText('2', 10, this.ay * 5.5);
-      ctx.fillText('1', 10, this.ay * 6.5);
-      ctx.fillText('0', 10, this.ay * 7.5);
+      ctx.fillText('5', 10, this.ay * 1.5);
+      ctx.fillText('4', 10, this.ay * 2.5);
+      ctx.fillText('3', 10, this.ay * 3.5);
+      ctx.fillText('2', 10, this.ay * 4.5);
+      ctx.fillText('1', 10, this.ay * 5.5);
+      ctx.fillText('0', 10, this.ay * 6.5);
 
       ctx.stroke();
       ctx.closePath();
@@ -928,8 +920,8 @@ export function barChart(data, config) {
       ctx.closePath();
       // middle line X axis
       ctx.beginPath();
-      ctx.moveTo(20, this.ay * 4.5 - this.fontSize / 3);
-      ctx.lineTo(this.cw - 10, this.ay * 4.5 - this.fontSize / 3);
+      ctx.moveTo(20, this.ay * 4 - this.fontSize / 3);
+      ctx.lineTo(this.cw - 10, this.ay * 4 - this.fontSize / 3);
       ctx.lineWidth = '1';
       ctx.strokeStyle = this.color;
       ctx.stroke();
@@ -1397,15 +1389,12 @@ export function epChart(data, config) {
       if (data['integration'].length > 2) {
         ctx.font = `16px IRANSans`;
         let grahamNeed = [];
-
         this.positions.map((item) => {
           grahamNeed.push([item.x, item.y]);
         });
-
         const graham = new GrahamScan();
         graham.setPoints(grahamNeed);
         grahamNeed = graham.getHull();
-
         ctx.globalCompositeOperation = 'overlay';
         ctx.beginPath();
         ctx.moveTo(grahamNeed[0][0], grahamNeed[0][1]);

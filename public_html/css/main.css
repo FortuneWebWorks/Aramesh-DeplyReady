@@ -1345,7 +1345,7 @@ body {
 .user-panel-container .container {
   height: 100%;
   width: 100%;
-  padding: 3vh 0;
+  padding: 1vh 0;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -1353,10 +1353,13 @@ body {
   font-size: 110%;
 }
 .user-panel-container .container .btn {
-  width: 100% !important;
+  width: 103% !important;
   font-size: 1rem;
   background-color: var(--primary-bgcolor);
-  padding: 0 1vw !important;
+  padding: 0 4vw !important;
+}
+.user-panel-container .container .btn span {
+  font-size: 2rem;
 }
 .user-panel-container .container h5 {
   font-weight: bold;
@@ -1364,6 +1367,7 @@ body {
 .user-panel-container .container h4 {
   font-weight: bold;
   line-height: 1.5rem;
+  margin-bottom: 1rem;
 }
 .user-panel-container .tested-people-section {
   display: flex;
@@ -1372,8 +1376,20 @@ body {
   align-items: center;
 }
 .user-panel-container .radio-btns {
+  width: 110% !important;
+  direction: ltr;
+  max-height: 22vh;
   display: grid !important;
   grid-template-columns: repeat(2, 1fr);
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+.user-panel-container .radio-btns::-webkit-scrollbar {
+  background-color: #ccc;
+  width: 0.4rem;
+}
+.user-panel-container .radio-btns::-webkit-scrollbar-thumb {
+  background-color: #333;
 }
 .user-panel-container .radio-btns .radio-btn-container {
   position: relative;
@@ -1393,7 +1409,7 @@ body {
   cursor: pointer;
 }
 .user-panel-container .radio-btns .radio-btn-container .radio-btn {
-  font-size: 85%;
+  font-size: 0.8rem !important;
   font-weight: bolder;
   padding: 1vh 0.5rem !important;
   line-height: 140%;
@@ -2617,7 +2633,7 @@ body {
     width: auto;
   }
   .Content-process-family-container .point-value {
-    width: 100% !important;
+    width: 96% !important;
     padding: 2vh 0;
   }
   .Content-process-family-container .point-value span {

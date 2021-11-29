@@ -2272,7 +2272,7 @@ body {
     padding: 2vh 0;
   }
   .Content-process-family-container .point-value span {
-    font-size: 2rem !important;
+    font-size: 0.9rem !important;
   }
 }
 @media (min-width: 640px) and (max-width: 760px) {
