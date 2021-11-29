@@ -42,11 +42,12 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/dashboard';
 
-    public function redirectTo() {
+    public function redirectTo()
+    {
         $user = User::where('phone-number', Auth::user()['phone-number'])->first();
         $practitioner = Practitioner::where('phone-number', Auth::user()['phone-number'])->first();
 
-        if(!$user && $practitioner) {
+        if (!$user && $practitioner) {
             $this->redirectTo = '/admin/dashboard';
             return '/admin/dashboard';
         }
@@ -93,9 +94,9 @@ class RegisterController extends Controller
             'both-parents' => request()->input('data')['bothParents'] === "false" ? false : true
         ]);
 
-        foreach(request()->input('data')['familyData'] as $member) {
+        foreach (request()->input('data')['familyData'] as $member) {
             $newUser->members()->create([
-                'role' => $member['role'] ,
+                'role' => $member['role'],
                 'date-of-birth' => $member['birthDate']
             ]);
         }
@@ -109,11 +110,11 @@ class RegisterController extends Controller
     {
         $user = User::where('phone-number', $phoneNumber)->first();
         $practitioner = Practitioner::where('phone-number', $phoneNumber)->first();
-        
-        if($user) {
+
+        if ($user) {
             $prevCode = $user->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
-            
-            if(!$prevCode) {
+
+            if (!$prevCode) {
                 $code = $this->makeVerificationCode($user);
                 $req = curl_init();
                 curl_setopt_array($req, [
@@ -124,33 +125,33 @@ class RegisterController extends Controller
                     CURLOPT_TIMEOUT => 60,
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => "POST",
-                    CURLOPT_POSTFIELDS => "receptor=0".$phoneNumber."&template=aramesh&type=1&param1=".$code,
+                    CURLOPT_POSTFIELDS => "receptor=0" . $phoneNumber . "&template=aramesh&type=1&param1=" . $code,
                     CURLOPT_HTTPHEADER => array(
-                    "apikey: ". env("GHASEDAKAPI_KEY"),
-                    "cache-control: no-cache",
-                    "content-type: application/x-www-form-urlencoded",
+                        "apikey: " . env("GHASEDAKAPI_KEY"),
+                        "cache-control: no-cache",
+                        "content-type: application/x-www-form-urlencoded",
                     )
                 ]);
                 $userResponse = curl_exec($req);
                 curl_close($req);
-                if(json_decode($userResponse)->result->code !== 200) {
+                if (json_decode($userResponse)->result->code !== 200) {
                     return redirect()->back()->withError(json_decode($userResponse)->result->message);
                 } else {
                     return Inertia::render('auth/UserConfirm', [
-                        'phoneNumber'=> $phoneNumber,
+                        'phoneNumber' => $phoneNumber,
                         'nextRoute' => request()->input('nextRoute'),
                     ]);
                 }
             } else {
                 return Inertia::render('auth/UserConfirm', [
-                    'phoneNumber'=> $phoneNumber,
+                    'phoneNumber' => $phoneNumber,
                     'nextRoute' => request()->input('nextRoute'),
-                    'errors'=> array(0 => "کد فعالسازی قبلا برای شما ارسال شده است لطفا دو دقیقه ی دیگر دوباره تلاش کنید")
+                    'errors' => array(0 => "کد فعالسازی قبلا برای شما ارسال شده است لطفا دو دقیقه ی دیگر دوباره تلاش کنید")
                 ]);
             }
         } else if (!$user && $practitioner) {
             $prevCode = $practitioner->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
-            if(!$prevCode) {
+            if (!$prevCode) {
                 $code = $this->makeVerificationCode($practitioner);
                 $req = curl_init();
                 curl_setopt_array($req, [
@@ -161,28 +162,28 @@ class RegisterController extends Controller
                     CURLOPT_TIMEOUT => 60,
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => "POST",
-                    CURLOPT_POSTFIELDS => "receptor=0".$phoneNumber."&template=aramesh&type=1&param1=".$code,
+                    CURLOPT_POSTFIELDS => "receptor=0" . $phoneNumber . "&template=aramesh&type=1&param1=" . $code,
                     CURLOPT_HTTPHEADER => array(
-                    "apikey: ". env("GHASEDAKAPI_KEY"),
-                    "cache-control: no-cache",
-                    "content-type: application/x-www-form-urlencoded",
+                        "apikey: " . env("GHASEDAKAPI_KEY"),
+                        "cache-control: no-cache",
+                        "content-type: application/x-www-form-urlencoded",
                     )
                 ]);
                 $adminResponse = curl_exec($req);
                 curl_close($req);
-                if(json_decode($adminResponse)->result->code !== 200) {
+                if (json_decode($adminResponse)->result->code !== 200) {
                     return redirect()->back()->withError(json_decode($adminResponse)->result->message);
                 } else {
                     return Inertia::render('auth/UserConfirm', [
-                        'phoneNumber'=> $phoneNumber,
+                        'phoneNumber' => $phoneNumber,
                         'nextRoute' => request()->input('nextRoute'),
                     ]);
                 }
             } else {
                 return Inertia::render('auth/UserConfirm', [
-                    'phoneNumber'=> $phoneNumber,
+                    'phoneNumber' => $phoneNumber,
                     'nextRoute' => request()->input('nextRoute'),
-                    'errors'=> array(0 => "کد فعالسازی قبلا برای شما ارسال شده است لطفا دو دقیقه ی دیگر دوباره تلاش کنید")
+                    'errors' => array(0 => "کد فعالسازی قبلا برای شما ارسال شده است لطفا دو دقیقه ی دیگر دوباره تلاش کنید")
                 ]);
             }
         }
@@ -215,7 +216,8 @@ class RegisterController extends Controller
         return Inertia::render('auth/TestTaker');
     }
 
-    public function makeVerificationCode(Model $model) {
+    public function makeVerificationCode(Model $model)
+    {
         $code = $this->codeGenerator($model);
         $model->verificationCodes()->create([
             'code' => $code,
@@ -224,10 +226,11 @@ class RegisterController extends Controller
         return $code;
     }
 
-    public function codeGenerator(Model $model) {
+    public function codeGenerator(Model $model)
+    {
         $randomNumber = rand(100000, 999999);
         $codeExists = $model->verificationCodes()->where('code', $randomNumber)->where('expires_at', '>', Carbon::now())->get();
-        if(sizeof($codeExists) > 0) {
+        if (sizeof($codeExists) > 0) {
             $this->codeGenerator($model);
         } else {
             return $randomNumber;

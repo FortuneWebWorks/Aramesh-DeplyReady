@@ -1,8 +1,8 @@
-@use '../variables' as *;
-@use '../flex' as *;
-@use '../buttons' as *;
-@use '../user-select' as *;
-@use '../mq' as *;
+@use "../variables" as *;
+@use "../flex" as *;
+@use "../buttons" as *;
+@use "../user-select" as *;
+@use "../mq" as *;
 
 .user-panel-container {
   @include flex-center;

@@ -33,7 +33,7 @@ const AdminPanel = () => {
           <p className="admin-files-title">وارد شدن به قسمت فایل ها</p>
           {logo}
         </Link>
-        <div className="admin-panel-card">
+        {/* <div className="admin-panel-card">
           <div className="admin-panel-card-title">
             <p className="admin-panel-card-title-name">دکتر ایپسوم</p>
             <p className="seperator"></p>
@@ -51,7 +51,7 @@ const AdminPanel = () => {
               <p>8</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Toggler */}
         <div className="admin-panel-darkmode-container">
