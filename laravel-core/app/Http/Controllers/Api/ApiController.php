@@ -13,41 +13,35 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-    public function userExists(Request $request, $phoneNumber) 
+
+    public function isUser(Request $request, $phoneNumber)
     {
         $user = User::where('phone-number', $phoneNumber)->get();
         $practitioner = Practitioner::where('phone-number', $phoneNumber)->get();
+
         if(sizeof($user) > 0 || sizeof($practitioner) > 0) {
             return response()->json(true, 200);
         }
         return response()->json(false, 200);
     }
 
-    public function clinics(Request $request, City $city) 
+    public function getClinics(Request $request, City $city)
     {
         return $city->clinics()->get(['id', 'name']);
     }
 
-    public function practitioners(Request $request, Clinic $clinic) 
+    public function getPractitioners(Request $request, Clinic $clinic)
     {
         return $clinic->practitioners()->get(['id', 'name']);
-    }
-
-    public function isAdmin(Request $request, $phoneNumber) 
-    {
-        $practitioner = Practitioner::where('phone-number', $phoneNumber)->get();
-        if(sizeof($practitioner) > 0) {
-            return response()->json(true, 200);
-        }
-        return response()->json(false, 200);
     }
 
     public function sendConfirmationCode(Request $request) {
         $user = User::where('phone-number', $request['phone-number'])->first();
         $practitioner = Practitioner::where('phone-number', $request['phone-number'])->first();
+
         if($user) {
             $prevCode = $user->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
-            
+
             if(!$prevCode) {
                 $code = $this->makeVerificationCode($user);
                 $req = curl_init();
@@ -87,6 +81,7 @@ class ApiController extends Controller
             }
         } else if (!$user && $practitioner) {
             $prevCode = $practitioner->verificationCodes()->where('expires_at', '>', Carbon::now())->first();
+
             if(!$prevCode) {
                 $code = $this->makeVerificationCode($practitioner);
                 $req = curl_init();

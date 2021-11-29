@@ -28,11 +28,19 @@ class AdminController extends Controller
         $parents = array();
         $children = array();
 
+        /*
+         * pushing father to the parents array
+         * father is sperated becuase we want it to be always the first member
+         */
+
         foreach($members as $index => $member) {
             if(str_contains($member->role, 'پدر')) {
                 array_push($parents, $member);
             }
         }
+
+        //Pushing mother to the parents array and children to children array
+
         foreach($members as $index => $member) {
             if(str_contains($member->role, 'مادر')) {
                 array_push($parents, $member);
@@ -40,18 +48,18 @@ class AdminController extends Controller
                 array_push($children, $member);
             }
         }
-        
+
+        //Check if the family test is not completed throw an alert
+
         foreach($members as $member) {
             if(sizeof($member->results) === 0) {
                 return Inertia::render('ChartScreen', [
-                    'family' => User::find($id), 
-                    'parents' => $parents,
-                    'children' => $children,
-                    'integration' => User::find($id)->integrations()->get(),
                     'testCompleted' => false
                 ]);
             }
         }
+
+        //If the test is completed send the props
 
         return Inertia::render('ChartScreen', [
             'family' => User::find($id), 
