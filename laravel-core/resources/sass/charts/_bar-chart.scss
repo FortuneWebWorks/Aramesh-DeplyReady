@@ -4,35 +4,29 @@
 @use '../mq' as *;
 
 .bar-chart-container {
-  height: auto !important;
-  // border-radius: 4px;
+  padding: 1rem 0;
+  min-height: fit-content;
+  height: fit-content;
   justify-content: space-evenly;
-  background-color: white;
-  margin-bottom: 10vh;
   background-color: var(--card-color);
   border-radius: 10px;
   box-shadow: $neumorphism;
 
   .canvas-size {
-    // @include flex-center;
+    height: fit-content;
     padding: 0 2vw;
     padding-bottom: 3vh;
-    margin-bottom: 1rem;
-    margin-top: -7vh;
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     direction: ltr;
-    @include mq(579px) {
-      margin-top: -11vh;
-    }
 
     &::-webkit-scrollbar {
       height: 0.5rem;
       background-color: var(--card-color);
       border-left: 6vw solid var(--card-color);
       border-right: 4vw solid var(--card-color);
-      transform: translateX(100px);
+      transform: translateX(10px);
       overflow: hidden;
     }
     &::-webkit-scrollbar-thumb {
@@ -42,41 +36,6 @@
       background-color: var(--bar-scrollbar);
       background-clip: padding-box;
       border-radius: 4px;
-    }
-  }
-
-  h2 {
-    margin: 3vh;
-    text-align: center;
-    color: var(--text-color);
-  }
-
-  @include mq(753px) {
-    .canvas-size {
-      margin-top: -8vh;
-
-      @include mq(930px) {
-        margin-top: -10.5vh;
-      }
-    }
-    h2 {
-      margin: 3vh;
-    }
-  }
-
-  @media (max-width: 375px) and (max-height: 812px) {
-    .canvas-size {
-      margin-top: -8vh;
-    }
-  }
-  @media (max-width: 1024px) and (min-height: 1366px) {
-    .canvas-size {
-      margin-top: -7vh;
-    }
-  }
-  @media (width: 540px) and (height: 720px) {
-    .canvas-size {
-      margin-top: -5vh;
     }
   }
 }

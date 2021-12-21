@@ -62,18 +62,24 @@ export const configBarChart = {
 export function lineChart(data, config) {
   let resWidth;
   let resHeight;
-  if (window.innerWidth < 760) {
+  let titleSize;
+  if (window.innerWidth < 460) {
+    resWidth = 1.7;
+    resHeight = 1.4;
+    titleSize = 12;
+  } else if (window.innerWidth < 760) {
     resWidth = 1.4;
     resHeight = 1.4;
+    titleSize = 16;
   } else {
     resWidth = 3;
     resHeight = 3;
+    titleSize = 22;
   }
 
   // create canvas and constructor
   const html = `
   <div class="canvas-size" style="text-align: center" id="${config.cnavasSizeId}">
-      <h2>${config.title}</h2>
       <canvas class="canvas" style="text-align: center" id="${config.canvasId}"></canvas>
       <span id="${config.titleId}"></span>
     </div>
@@ -86,12 +92,18 @@ export function lineChart(data, config) {
 
   // responsiveness
   window.addEventListener('resize', () => {
-    if (window.innerWidth < 760) {
+    if (window.innerWidth < 460) {
+      resWidth = 1.7;
+      resHeight = 1.4;
+      titleSize = 12;
+    } else if (window.innerWidth < 760) {
       resWidth = 1.4;
       resHeight = 1.4;
+      titleSize = 16;
     } else {
       resWidth = 2.75;
       resHeight = 2.75;
+      titleSize = 22;
     }
     canvas.width =
       Math.max(document.documentElement.clientWidth, window.innerWidth || 0) /
@@ -232,6 +244,20 @@ export function lineChart(data, config) {
     }
 
     drawChart() {
+      // Title
+      let ifLarge;
+      if (this.sizeX <= 6) {
+        ifLarge = 2.8;
+      } else {
+        ifLarge = 3.8;
+      }
+      ctx.beginPath();
+      ctx.moveTo(0, this.ch);
+      ctx.font = `${titleSize}px IRANSans`;
+      ctx.fillStyle = config.color;
+      ctx.textAlign = 'center';
+      ctx.fillText(`${config.title}`, this.ax * ifLarge, this.ay * 0.5);
+      ctx.closePath();
       // draw the chart x & y
       // x axis
       ctx.beginPath();
@@ -779,14 +805,17 @@ export function lineChart(data, config) {
 export function barChart(data, config) {
   let resWidth;
   let resHeight;
+  let titleSize;
   let numberOfRows = data['integration'].length;
 
   if (window.innerWidth < 550) {
     resWidth = 300;
     resHeight = 1.3;
+    titleSize = 12;
   } else if (window.innerWidth < 660) {
     resWidth = 600; // 600
     resHeight = 1.3;
+    titleSize = 16;
   } else {
     if (numberOfRows <= 3) {
       resWidth =
@@ -796,11 +825,11 @@ export function barChart(data, config) {
       resWidth = 1000;
     }
     resHeight = 2.7; // 2.2
+    titleSize = 22;
   }
 
   // create canvas and constructor
   const html = `
-      <h2  style="text-align: center" >${config.title}</h2>
       <div class="canvas-size" id="${config.cnavasSizeId}">
         <canvas class="canvas" id="${config.canvasId}"></canvas>
       </div>
@@ -813,10 +842,24 @@ export function barChart(data, config) {
 
   // responsiveness
   window.addEventListener('resize', () => {
-    if (numberOfRows <= 3) {
-      resWidth =
-        document.body.getBoundingClientRect().width -
-        document.body.getBoundingClientRect().width / 5;
+    if (window.innerWidth < 550) {
+      resWidth = 300;
+      resHeight = 1.3;
+      titleSize = 12;
+    } else if (window.innerWidth < 660) {
+      resWidth = 600; // 600
+      resHeight = 1.3;
+      titleSize = 16;
+    } else {
+      if (numberOfRows <= 3) {
+        resWidth =
+          document.body.getBoundingClientRect().width -
+          document.body.getBoundingClientRect().width / 5;
+      } else if (numberOfRows > 3) {
+        resWidth = 1000;
+      }
+      resHeight = 2.7; // 2.2
+      titleSize = 22;
     }
     canvas.width = resWidth;
     canvas.height =
@@ -896,6 +939,14 @@ export function barChart(data, config) {
     }
 
     drawChart() {
+      ctx.beginPath();
+      ctx.moveTo(0, this.ch);
+      ctx.font = `${titleSize}px IRANSans`;
+      ctx.fillStyle = config.color;
+      ctx.textAlign = 'center';
+      ctx.fillText(`${config.title}`, canvas.width / 2, this.ay * 0.5);
+      ctx.closePath();
+
       // x axis
       ctx.beginPath();
       ctx.moveTo(0, this.ch);

@@ -37,9 +37,11 @@ const ChartScreen = (props) => {
     if (loaderSession().getLoader()) {
       setTimeout(() => {
         loaderSession().setLoader(false);
-        forceUpdate()        
-        if(props.testCompleted && !document.querySelector('.chart.line-chart')) {
-
+        forceUpdate();
+        if (
+          props.testCompleted &&
+          !document.querySelector('.chart.line-chart')
+        ) {
           lineChart(props, configSmallerLineChart);
           lineChart(props, configBigLineChart);
           epChart(props, configEpChart);
@@ -52,15 +54,13 @@ const ChartScreen = (props) => {
 
   return (
     <>
-
-      {!props.testCompleted ? 
-        (
-          <div className="container">
-            <Alert text="تست خانواده کامل نیست"/>
-          </div>
-        )
-      : loaderSession().getLoader() ? <Spinner/> : (
-
+      {!props.testCompleted ? (
+        <div className="container">
+          <Alert text="تست خانواده کامل نیست" />
+        </div>
+      ) : loaderSession().getLoader() ? (
+        <Spinner />
+      ) : (
         <div>
           <div className="charts-container">
             <div className="table-scroll table-1">

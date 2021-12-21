@@ -5,9 +5,11 @@
 .line-chart,
 .biger-line-chart {
   @include cflex-center;
-  height: auto !important;
+  height: fit-content !important;
+  min-height: fit-content;
   border-radius: 4px;
   justify-content: space-evenly;
+  padding: 1rem 0;
 
   .canvas-size {
     width: 100%;
@@ -15,13 +17,6 @@
     position: relative;
     margin-top: 0;
     padding: 0 1vw !important;
-
-    @include mq(380px) {
-      margin-top: 4rem !important;
-    }
-    @include mq(600px) {
-      margin-top: 0rem !important;
-    }
   }
 
   h2 {
@@ -29,16 +24,6 @@
     left: 50%;
     transform: translateX(-50%);
     top: 0 !important;
-
-    @include mq(380px) {
-      top: 0 !important;
-    }
-    @include mq(600px) {
-      top: -2% !important;
-    }
-    @include mq(1023px) {
-      top: 5% !important;
-    }
   }
 
   #biger-line-chart-title,
@@ -70,6 +55,7 @@
       img {
         height: 1rem !important;
         margin-left: 0.5vw;
+        pointer-events: none;
       }
 
       span {
@@ -92,22 +78,16 @@
   }
 
   @include mq(768px) {
-    padding: 0 1.5vw;
+    padding: 2rem 1.5vw;
 
     .canvas-size {
       @include cflex-center;
       width: 100%;
-      height: 30%;
-      margin-top: 0;
-    }
-
-    h2 {
-      top: 5%;
+      height: auto;
     }
 
     .labels {
       width: 80%;
-      // @include flex-center;
       font-size: 1rem;
     }
   }

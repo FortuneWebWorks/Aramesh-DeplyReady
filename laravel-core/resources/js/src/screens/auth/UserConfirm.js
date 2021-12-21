@@ -10,7 +10,6 @@ import PhoneNumber from '../../components/PhoneNumber';
 import alertSession from '../../sessions/alertSession';
 
 const UserConfirm = (props) => {
-
   const { phoneNumber } = props;
   const [counter, setCounter] = useState();
   const [code, setCode] = useState();
@@ -21,7 +20,7 @@ const UserConfirm = (props) => {
 
   useEffect(() => {
     if (counter === 0) clearInterval(refs.current.hello || '');
-    if(props.errors && props.errors[0]) {
+    if (props.errors && props.errors[0]) {
       setTimeout(() => {
         delete props.errors[0];
         forceUpdate();
@@ -30,31 +29,31 @@ const UserConfirm = (props) => {
   });
 
   const counterHandler = async () => {
-    if(counter === 0 || counter === undefined) {
+    if (counter === 0 || counter === undefined) {
       let codeRequest;
       try {
-        codeRequest = await fetch('http://aramesh.org/api/user-confirm', {
+        codeRequest = await fetch('http://localhost:3000/api/user-confirm', {
           method: 'POST',
-          body: JSON.stringify({'phone-number': phoneNumber}),
+          body: JSON.stringify({ 'phone-number': phoneNumber }),
           headers: {
             'Content-Type': 'application/json',
-          }
+          },
         });
       } catch (error) {
-        codeRequest = await fetch('https://aramesh.org/api/user-confirm', {
+        codeRequest = await fetch('https://localhost:3000/api/user-confirm', {
           method: 'POST',
-          body: JSON.stringify({'phone-number': phoneNumber}),
+          body: JSON.stringify({ 'phone-number': phoneNumber }),
           headers: {
             'Content-Type': 'application/json',
-          }
+          },
         });
       }
       const codeResponse = await codeRequest.json();
-      if(codeResponse.success) {
-        alertSession().addAlert(codeResponse.message)
+      if (codeResponse.success) {
+        alertSession().addAlert(codeResponse.message);
         alertsUpdate();
         setCounter(60);
-  
+
         refs.current.hello = setInterval(() => {
           setCounter((prevCounter) => {
             if (prevCounter > 0) return prevCounter - 1;
@@ -64,12 +63,12 @@ const UserConfirm = (props) => {
         alertSession().addAlert(codeResponse.message);
         alertsUpdate();
       }
-    } 
+    }
   };
 
   const validator = () => {
     if (!code) {
-      alertSession().addAlert('لطفا کد را وارد کنید')
+      alertSession().addAlert('لطفا کد را وارد کنید');
       alertsUpdate();
       return false;
     } else {
@@ -79,22 +78,22 @@ const UserConfirm = (props) => {
 
   const alertsUpdate = () => {
     forceUpdate();
-    setTimeout(() => forceUpdate() , 5100);
-  }
+    setTimeout(() => forceUpdate(), 5100);
+  };
 
   const redirect = async () => {
     Inertia.post('/login', {
       'phone-number': phoneNumber,
-      'password': '',
-      'code': code
-    })
+      password: '',
+      code: code,
+    });
   };
 
   return (
     <div className="bg-height-100 bg-dark user-confirm-container">
       <Card errors={props.errors}>
         <div className="container user-confirm">
-          <Header title="ورود کاربران" backTo='/login'/>
+          <Header title="ورود کاربران" backTo="/login" />
 
           <PhoneNumber
             title="کد ارسال شده به شماره"
@@ -124,8 +123,8 @@ const UserConfirm = (props) => {
         </div>
 
         {/* Alert */}
-        {(alerts && alerts.length > 0) || (props.errors && props.errors[0])  ? (
-          <Alert text={props.errors[0] || alerts[alerts.length - 1]}/>
+        {(alerts && alerts.length > 0) || (props.errors && props.errors[0]) ? (
+          <Alert text={props.errors[0] || alerts[alerts.length - 1]} />
         ) : (
           ''
         )}
