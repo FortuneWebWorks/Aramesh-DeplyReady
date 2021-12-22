@@ -2351,10 +2351,6 @@ body {
   text-align: center;
 }
 @media (min-width: 768px) {
-  .line-chart,
-.biger-line-chart {
-    padding: 2rem 1.5vw;
-  }
   .line-chart .canvas-size,
 .biger-line-chart .canvas-size {
     display: flex;
@@ -2485,19 +2481,22 @@ body {
     width: auto;
   }
   .charts-container .Content-process-members-container .point-value {
-    width: 97%;
+    width: 82%;
     padding: 2vh 0;
   }
   .charts-container .Content-process-members-container .point-value span {
     font-size: 0.9rem !important;
   }
+  .charts-container .Content-process-members-container h2 {
+    font-size: 16px !important;
+  }
 }
 @media (min-width: 900px) {
   .charts-container .Content-process-members-container .point-value {
-    width: 105%;
+    width: 91%;
   }
   .charts-container .Content-process-members-container .labels {
-    width: 100%;
+    width: 91%;
   }
 }
 
@@ -2620,11 +2619,14 @@ body {
     width: auto;
   }
   .Content-process-family-container .point-value {
-    width: 96% !important;
+    width: 88% !important;
     padding: 2vh 0;
   }
   .Content-process-family-container .point-value span {
     font-size: 0.9rem !important;
+  }
+  .Content-process-family-container h2 {
+    font-size: 16px !important;
   }
 }
 @media (min-width: 640px) and (max-width: 760px) {
@@ -2791,7 +2793,7 @@ body {
   }
 }
 .charts-container h2 {
-  font-size: 1.1rem !important;
+  font-size: 14px;
   line-height: 1.4rem;
   color: var(--text-color);
 }
@@ -2862,10 +2864,6 @@ body {
   .charts-container .table-scroll {
     font-size: 0.4rem;
   }
-  .charts-container h2 {
-    font-size: 1rem;
-    color: var(--text-color);
-  }
   .charts-container .table-scroll {
     max-width: 80% !important;
     width: 100%;
@@ -2908,21 +2906,22 @@ body {
   }
   .charts-container .Content-process-family-container {
     grid-area: c;
-    padding: 0 !important;
-    min-height: 35rem;
-    padding: 0 2vw;
+    min-height: 26rem;
+    padding: 0 2rem;
+    padding-top: 1rem !important;
   }
   .charts-container .Content-process-members-container {
     grid-area: d;
-    padding: 0 !important;
-    min-height: 35rem;
-    padding: 0 2vw;
+    min-height: 26rem;
+    padding: 0 2rem;
+    padding-top: 1rem !important;
   }
   .charts-container .table-scroll {
     max-width: 88% !important;
     width: 100% !important;
     height: 31rem !important;
-    padding: 5vh;
+    padding: 5rem;
+    padding-top: 7rem;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -2936,6 +2935,11 @@ body {
   }
   .charts-container .table-2 {
     grid-area: g;
+  }
+  .charts-container h2 {
+    font-size: 18px !important;
+    line-height: 1.4rem;
+    color: var(--text-color);
   }
 }
 @media (min-width: 761px) and (min-width: 1000px) {

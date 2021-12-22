@@ -78,8 +78,6 @@
   }
 
   @include mq(768px) {
-    padding: 2rem 1.5vw;
-
     .canvas-size {
       @include cflex-center;
       width: 100%;

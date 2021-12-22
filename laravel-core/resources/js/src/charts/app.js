@@ -66,7 +66,7 @@ export function lineChart(data, config) {
   if (window.innerWidth < 460) {
     resWidth = 1.7;
     resHeight = 1.4;
-    titleSize = 12;
+    titleSize = 14;
   } else if (window.innerWidth < 760) {
     resWidth = 1.4;
     resHeight = 1.4;
@@ -74,7 +74,7 @@ export function lineChart(data, config) {
   } else {
     resWidth = 3;
     resHeight = 3;
-    titleSize = 22;
+    titleSize = 18;
   }
 
   // create canvas and constructor
@@ -95,15 +95,15 @@ export function lineChart(data, config) {
     if (window.innerWidth < 460) {
       resWidth = 1.7;
       resHeight = 1.4;
-      titleSize = 12;
+      titleSize = 14;
     } else if (window.innerWidth < 760) {
       resWidth = 1.4;
       resHeight = 1.4;
       titleSize = 16;
     } else {
-      resWidth = 2.75;
-      resHeight = 2.75;
-      titleSize = 22;
+      resWidth = 3;
+      resHeight = 3;
+      titleSize = 18;
     }
     canvas.width =
       Math.max(document.documentElement.clientWidth, window.innerWidth || 0) /
@@ -254,7 +254,7 @@ export function lineChart(data, config) {
       ctx.beginPath();
       ctx.moveTo(0, this.ch);
       ctx.font = `${titleSize}px IRANSans`;
-      ctx.fillStyle = config.color;
+      ctx.fillStyle = config.color === '#fff' ? '#fff' : '#000';
       ctx.textAlign = 'center';
       ctx.fillText(`${config.title}`, this.ax * ifLarge, this.ay * 0.5);
       ctx.closePath();
@@ -799,7 +799,9 @@ export function lineChart(data, config) {
     }
     chart.hover();
   };
-  update();
+  setTimeout(() => {
+    update();
+  }, 200);
 }
 // bar chart driver
 export function barChart(data, config) {
@@ -808,11 +810,11 @@ export function barChart(data, config) {
   let titleSize;
   let numberOfRows = data['integration'].length;
 
-  if (window.innerWidth < 550) {
+  if (window.innerWidth < 450) {
     resWidth = 300;
     resHeight = 1.3;
-    titleSize = 12;
-  } else if (window.innerWidth < 660) {
+    titleSize = 14;
+  } else if (window.innerWidth < 760) {
     resWidth = 600; // 600
     resHeight = 1.3;
     titleSize = 16;
@@ -825,7 +827,7 @@ export function barChart(data, config) {
       resWidth = 1000;
     }
     resHeight = 2.7; // 2.2
-    titleSize = 22;
+    titleSize = 18;
   }
 
   // create canvas and constructor
@@ -842,11 +844,11 @@ export function barChart(data, config) {
 
   // responsiveness
   window.addEventListener('resize', () => {
-    if (window.innerWidth < 550) {
+    if (window.innerWidth < 460) {
       resWidth = 300;
       resHeight = 1.3;
-      titleSize = 12;
-    } else if (window.innerWidth < 660) {
+      titleSize = 14;
+    } else if (window.innerWidth < 760) {
       resWidth = 600; // 600
       resHeight = 1.3;
       titleSize = 16;
@@ -859,8 +861,9 @@ export function barChart(data, config) {
         resWidth = 1000;
       }
       resHeight = 2.7; // 2.2
-      titleSize = 22;
+      titleSize = 18;
     }
+
     canvas.width = resWidth;
     canvas.height =
       Math.max(document.documentElement.clientWidth, window.innerWidth || 0) /
@@ -942,7 +945,7 @@ export function barChart(data, config) {
       ctx.beginPath();
       ctx.moveTo(0, this.ch);
       ctx.font = `${titleSize}px IRANSans`;
-      ctx.fillStyle = config.color;
+      ctx.fillStyle = config.color === '#fff' ? '#fff' : '#000';
       ctx.textAlign = 'center';
       ctx.fillText(`${config.title}`, canvas.width / 2, this.ay * 0.5);
       ctx.closePath();
@@ -1116,7 +1119,9 @@ export function barChart(data, config) {
     const chart = new BarChart();
     chart.drawChart();
   }
-  bupdate();
+  setTimeout(() => {
+    bupdate();
+  }, 200);
 }
 // each person chart
 export function epChart(data, config) {

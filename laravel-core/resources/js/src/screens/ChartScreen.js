@@ -24,7 +24,8 @@ const ChartScreen = (props) => {
   const light = themeSession().getSession();
 
   useEffect(() => {
-    if (!light && loaderSession().getLoader()) {
+    // if (!light && loaderSession().getLoader()) {
+    if (!light) {
       configSmallerLineChart.color = '#fff';
       configBigLineChart.color = '#fff';
       configBarChart.color = '#fff';

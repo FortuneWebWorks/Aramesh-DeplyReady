@@ -1881,7 +1881,6 @@ body {
   align-items: center;
   align-items: flex-end;
   height: 5vh;
-  width: 82.5%;
   padding: 2vh 0;
   text-align: left;
   transition: all 0.3s ease;
@@ -2051,7 +2050,6 @@ body {
   align-items: center;
   align-items: flex-end;
   height: 4vh;
-  width: 82%;
   padding: 2vh 0;
   text-align: left;
   transition: all 1s ease;
@@ -2064,7 +2062,6 @@ body {
   }
   .Content-process-family-container .point-value {
     height: 2vh;
-    width: 82%;
     text-align: left;
     font-size: 0.7rem;
   }
@@ -2199,10 +2196,6 @@ body {
     font-size: 0.8rem;
   }
 }
-.charts-container h2 {
-  font-size: 1.3rem;
-  color: var(--text-color);
-}
 .charts-container .labels div {
   cursor: pointer;
 }
@@ -2247,11 +2240,9 @@ body {
 
   .charts-container .Content-process-family-container {
     grid-area: c;
-    padding: 0 3vw !important;
   }
   .charts-container .Content-process-members-container {
     grid-area: d;
-    padding: 0 4.5vw !important;
   }
   .charts-container .tables {
     grid-area: f;
